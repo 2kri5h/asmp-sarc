@@ -58,7 +58,7 @@ body::-webkit-scrollbar {
 .mentor-card {
   flex: 0 0 auto;
   width: 360px;
-  height: 380px;
+  height: 400px;
   background-color: #A4B4B8;
   border: none; /* or use a solid border below */
   border-radius: 28px;
@@ -122,6 +122,7 @@ body::-webkit-scrollbar {
   font-size: 18px;
   text-transform: uppercase;
   font-family: "Exima Geometric", sans-serif;
+  line-height: 1.5;
   letter-spacing: 0.03em;
   color: #010101 !important;
 }
@@ -129,6 +130,7 @@ body::-webkit-scrollbar {
 .company-name {
   margin: 0 !important;
   font-size: 20px;
+  padding-top: 8px;
   font-family: "BatmanForeverAlternate", sans-serif;
   color: #324046 !important;
   
