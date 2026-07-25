@@ -377,17 +377,27 @@ html {
 }
 
 /* React Select Overrides */
-.react-select__control {
+.react-select-container {
   width: 578px !important;
   max-width: 100% !important;
+  margin-bottom: 10px !important;
+}
+
+.react-select__control {
+  width: 100% !important;
+  max-width: 100% !important;
   height: 58px !important;
-  min-height: 58px !important;
+  min-height: unset !important;
+  max-height: 58px !important;
   background: rgba(164, 180, 184, 0.45) !important;
   backdrop-filter: blur(8px) !important;
   border: none !important;
   border-radius: 20px !important;
   padding: 0 !important;
-  margin-bottom: 10px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  box-shadow: none !important;
 }
 
 .react-select__control--menu-is-open {
@@ -397,33 +407,49 @@ html {
 .react-select__value-container {
   height: 58px !important;
   padding: 0 20px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.react-select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .react-select__indicators {
   height: 58px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.react-select__dropdown-indicator {
+  padding: 0 15px 0 0 !important;
+  color: white !important;
 }
 
 .react-select__menu {
-  width: 578px !important;
+  width: 100% !important;
   max-width: 100% !important;
-  background: rgba(0, 0, 0, 0.9) !important;
-  border-radius: 0 0 10px 10px !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  border-radius: 0 0 20px 20px !important;
   margin-top: -5px !important;
   border: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5) !important;
+  z-index: 99 !important;
 }
 
 .react-select__menu-list {
   padding: 0 !important;
-  background: rgba(0, 0, 0, 0.9) !important;
-  border-radius: 0 0 10px 10px !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  border-radius: 0 0 20px 20px !important;
 }
 
 .react-select__option {
-  font-family: 'Space Grotesk';
-  font-size: 22px !important;
+  font-family: 'Space Grotesk', serif !important;
+  font-size: 18px !important;
   color: white !important;
-  padding: 15px 20px !important;
+  padding: 12px 20px !important;
   background: transparent !important;
 }
 
@@ -435,16 +461,16 @@ html {
   background: #C8A840 !important;
 }
 
-.react-select__single-value {
+.react-select__single-value,
+.react-select__placeholder {
   color: white !important;
   font-family: 'Space Grotesk', serif !important;
   font-size: 22px !important;
+  margin: 0 !important;
 }
 
 .react-select__placeholder {
   color: rgba(255, 255, 255, 0.7) !important;
-  font-family: 'Space Grotesk', serif !important;
-  font-size: 22px !important;
 }
 
 /* Responsive Media Queries */
@@ -455,9 +481,12 @@ html {
 
   .input-field,
   .register-button,
+  .react-select-container,
   .react-select__control {
     font-size: 18px !important;
     height: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
   }
 
   .input-field {
@@ -486,9 +515,15 @@ html {
     padding: 10px 15px;
   }
 
-  .react-select__value-container {
+  .react-select__value-container,
+  .react-select__indicators {
     height: 50px !important;
     padding: 0 15px !important;
+  }
+
+  .react-select__single-value,
+  .react-select__placeholder {
+    font-size: 18px !important;
   }
 
   .react-select__menu {
@@ -512,9 +547,12 @@ html {
 
   .input-field,
   .register-button,
+  .react-select-container,
   .react-select__control {
     font-size: 16px !important;
     height: 45px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
   }
 
   .input-field {
@@ -535,6 +573,17 @@ html {
     min-width: 32px;
     height: 32px;
     padding: 5px;
+  }
+
+  .react-select__value-container,
+  .react-select__indicators {
+    height: 45px !important;
+    padding: 0 10px !important;
+  }
+
+  .react-select__single-value,
+  .react-select__placeholder {
+    font-size: 16px !important;
   }
 
   .password-match-indicator {

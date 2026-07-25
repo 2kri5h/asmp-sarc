@@ -21,7 +21,7 @@ const UseRegisterMentors = (props) => {
       console.log("CSRF token:", csrfToken);
 
       const response = await fetch(
-        "https://asmp.sarc-iitb.org/api/registration/register/",
+        "http://127.0.0.1:8000/api/registration/register/",
         // `http://127.0.0.1:8000/api/registration/register/`,
         {
           method: "POST",

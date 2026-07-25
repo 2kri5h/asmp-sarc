@@ -704,7 +704,7 @@
 .mentor-capsule-card {
   box-sizing: border-box;
   width: 257px;
-  height: 603px;
+  height: 720px;
   background: #2C465B;
   border: 4px solid #ADB7AC;
   border-radius: 128.5px;
@@ -716,7 +716,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 16px 20px 16px;
+  padding: 0 16px 0 16px;
+  position: relative;
+  /* needed for absolute button */
 }
 
 .mentor-capsule-card:hover {
@@ -758,8 +760,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+  padding: 10px;
   box-sizing: border-box;
+}
+
+/* Invisible scroll container inside circular avatar frame */
+.mentor-circle-scroll {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 24px 12px 10px 12px;
+
+  /* Invisible scrollbar */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.mentor-circle-scroll::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .mentor-circle-designation {
@@ -775,8 +802,8 @@
   justify-content: center;
   word-break: break-word;
   max-width: 190px;
-  margin-top: 10px;
-  margin-bottom: 12px;
+  margin-top: 4px;
+  margin-bottom: 6px;
 }
 
 .mentor-circle-company {
@@ -790,6 +817,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  word-break: break-word;
   max-width: 190px;
 }
 
@@ -800,10 +828,101 @@
   align-items: flex-start;
   width: 100%;
   padding-left: 28px;
-  margin-top: 48px;
-  gap: 20px;
+  padding-right: 14px;
+  margin-top: 20px;
   box-sizing: border-box;
   flex-shrink: 0;
+}
+
+/* Combined scrollable container for Graduation Year + Work Profile */
+.mentor-info-combined-scroll {
+  width: 100%;
+  max-height: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+  box-sizing: border-box;
+
+  /* Transparent & aesthetic scrollbar by default */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.mentor-info-combined-scroll:hover {
+  scrollbar-color: rgba(100, 220, 200, 0.45) transparent;
+}
+
+.mentor-info-combined-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mentor-info-combined-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.mentor-info-combined-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.mentor-info-combined-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(100, 220, 200, 0.45);
+  box-shadow: 0 0 6px rgba(100, 220, 200, 0.3);
+}
+
+.mentor-info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+/* Graduation Year and Experience text rules */
+.mentor-label {
+  font-family: 'El Messiri', serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+.mentor-value {
+  font-family: 'El Messiri', serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #FFFFFF;
+  text-align: left;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
+
+.mentor-grad-year,
+.mentor-experience {
+  margin: 0;
+}
+
+/* Work Profile text inside combined container */
+.mentor-work-profile-text {
+  font-family: 'El Messiri', serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  letter-spacing: 0.02em;
+  word-break: break-word;
+  white-space: pre-line;
 }
 
 .mentor-info-block {
@@ -843,6 +962,31 @@
   margin: 0;
 }
 
+/* Work Profile text (plain — scroll is handled by the combined container) */
+.mentor-work-profile-text {
+  font-family: 'El Messiri', serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: left;
+  letter-spacing: 0.02em;
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+/* Legacy class — keep for safety, hidden */
+.mentor-work-profile-block {
+  display: none;
+}
+
+.mentor-work-profile-scroll {
+  display: none;
+}
+
+
+
+
 /* Rectangle 94 - Wishlist Button inside Capsule Card */
 .mentor-wishlist-btn {
   box-sizing: border-box;
@@ -866,9 +1010,12 @@
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin-top: auto;
-  margin-bottom: 56px;
   flex-shrink: 0;
+  /* Always pinned cleanly above the bottom curve of the capsule card */
+  position: absolute;
+  bottom: 76px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .mentor-wishlist-btn:hover {
@@ -1016,38 +1163,85 @@
   margin: 0 !important;
 }
 
-/* Experience - absolutely positioned inside the content container */
-.wishlist-card-exp {
+/* Combined Scroll Container for Wishlist / Batman Wireframe Card */
+.wishlist-card-info-scroll {
   position: absolute !important;
-  top: 120px !important;
-  left: 12px !important;
-  width: 180px !important;
-  font-family: 'Oxanium', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px !important;
-  line-height: 18px !important;
-  color: #121B3D;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 0 !important;
-  padding: 0 !important;
+  top: 112px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 185px !important;
+  max-height: 64px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  padding-right: 4px !important;
+  box-sizing: border-box !important;
+
+  /* Transparent & aesthetic scrollbar by default */
+  scrollbar-width: thin !important;
+  scrollbar-color: transparent transparent !important;
+  transition: scrollbar-color 0.3s ease !important;
 }
 
-/* Graduation Year - absolutely positioned inside the content container */
+.wishlist-card-info-scroll:hover {
+  scrollbar-color: rgba(18, 27, 61, 0.4) transparent !important;
+}
+
+.wishlist-card-info-scroll::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+.wishlist-card-info-scroll::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 3px !important;
+}
+
+.wishlist-card-info-scroll::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 3px !important;
+  transition: background 0.3s ease !important;
+}
+
+.wishlist-card-info-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(18, 27, 61, 0.45) !important;
+}
+
+/* Graduation Year inside Wishlist Card (First element above Experience) */
 .wishlist-card-grad {
-  position: absolute !important;
-  top: 142px !important;
-  left: 12px !important;
-  width: 180px !important;
-  font-family: 'Oxanium', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px !important;
-  line-height: 18px !important;
-  color: #121B3D;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+  font-family: 'Oxanium', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  line-height: 17px !important;
+  color: #121B3D !important;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15) !important;
   margin: 0 !important;
   padding: 0 !important;
+  text-align: left !important;
+}
+
+/* Experience / Work Profile inside Wishlist Card */
+.wishlist-card-exp {
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+  font-family: 'Oxanium', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  line-height: 16px !important;
+  color: #121B3D !important;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  word-break: break-word !important;
+  white-space: pre-line !important;
 }
 
 /* 4. Remove/Select Button Pill (Rectangle 33 / 50: 135px x 36px) - placed inside the content box above the frame */
@@ -1245,13 +1439,12 @@
     height: 185px !important;
     border: 2px solid #ADB7AC !important;
     border-radius: 46px !important;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5) !important;
-    overflow: visible !important;
-    /* Allow graduation & experience text to display outside card boundaries without clipping */
+    overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 0 4px 10px 4px !important;
+    padding: 0 4px 0 4px !important;
+    position: relative !important;
   }
 
   .mentor-circle-avatar {
@@ -1266,14 +1459,36 @@
   }
 
   .mentor-circle-info {
-    padding: 4px !important;
+    padding: 2px !important;
+  }
+
+  .mentor-circle-scroll {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 12px 4px 4px 4px !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .mentor-circle-scroll::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
 
   .mentor-circle-designation {
     font-size: 7.5px !important;
     line-height: 9px !important;
-    margin-top: 6px !important;
-    margin-bottom: 4px !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
     max-width: 70px !important;
     letter-spacing: 0.01em !important;
   }
@@ -1285,14 +1500,59 @@
   }
 
   .mentor-info-section {
-    margin-top: 10px !important;
-    padding-left: 0 !important;
-    align-items: center !important;
-    gap: 6px !important;
+    margin-top: 6px !important;
+    padding-left: 10px !important;
+    padding-right: 4px !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .mentor-info-combined-scroll {
+    width: 100% !important;
+    max-height: 52px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    padding-right: 3px !important;
+    box-sizing: border-box !important;
+    align-items: flex-start !important;
+
+    /* Transparent & aesthetic scrollbar on mobile */
+    scrollbar-width: thin !important;
+    scrollbar-color: transparent transparent !important;
+    transition: scrollbar-color 0.3s ease !important;
+  }
+
+  .mentor-info-combined-scroll:hover {
+    scrollbar-color: rgba(100, 220, 200, 0.45) transparent !important;
+  }
+
+  .mentor-info-combined-scroll::-webkit-scrollbar {
+    width: 3px !important;
+  }
+
+  .mentor-info-combined-scroll::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 3px !important;
+  }
+
+  .mentor-info-combined-scroll::-webkit-scrollbar-thumb {
+    background: transparent !important;
+    border-radius: 3px !important;
+    transition: background 0.3s ease !important;
+  }
+
+  .mentor-info-combined-scroll:hover::-webkit-scrollbar-thumb {
+    background: rgba(100, 220, 200, 0.45) !important;
   }
 
   .mentor-info-block {
     gap: 0px !important;
+    width: 100% !important;
+    align-items: flex-start !important;
   }
 
   .mentor-label {
@@ -1300,6 +1560,7 @@
     font-size: 7.5px !important;
     line-height: 9px !important;
     opacity: 0.8;
+    text-align: left !important;
   }
 
   .mentor-value {
@@ -1307,41 +1568,55 @@
     font-size: 9.5px !important;
     line-height: 11px !important;
     font-weight: 700 !important;
+    text-align: left !important;
   }
 
-  .mentor-grad-year {
-    width: 90px !important;
-    height: auto !important;
-    text-align: center !important;
-    letter-spacing: 0.02em !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
+  .mentor-work-profile-text {
+    font-size: 7px !important;
+    line-height: 1.3 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-align: left !important;
+    word-break: break-word !important;
+    white-space: normal !important;
   }
 
+  .mentor-grad-year,
   .mentor-experience {
-    width: 90px !important;
-    height: auto !important;
-    margin-top: 0 !important;
-    text-align: center !important;
-    letter-spacing: 0.02em !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
+    width: 100% !important;
+    text-align: left !important;
+    align-items: flex-start !important;
   }
 
+  /* Pin button absolutely to bottom — never moves regardless of content */
   .mentor-wishlist-btn {
+    position: absolute !important;
+    bottom: 22px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     width: 68px !important;
-    height: 28px !important;
+    height: 26px !important;
     border-radius: 8px !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    font-size: 8px !important;
-    line-height: 10px !important;
+    font-size: 7.5px !important;
+    line-height: 9.5px !important;
     letter-spacing: 0.01em !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
-    margin-top: auto !important;
-    margin-bottom: 16px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Mobile Wishlist Card scroll adjustments */
+  .wishlist-card-info-scroll {
+    max-height: 54px !important;
+  }
+
+  .wishlist-card-grad {
+    font-size: 11px !important;
+    line-height: 14px !important;
+  }
+
+  .wishlist-card-exp {
+    font-size: 10.5px !important;
+    line-height: 13.5px !important;
   }
 }
