@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "../assets/images/mk.png";
-import group25Svg from "../assets/images/Group 25.svg";
-import bgImg from "../assets/images/login.png";
+import loginButtonBg from "../assets/images/registerbat.png";
 import "../styles/Register.css";
 import Select from "react-select";
 import UseSignup from "../hooks/useSignup";
@@ -104,6 +103,8 @@ function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isTokenValid, setIsTokenValid] = useState(true);
   const [isCheckingToken, setIsCheckingToken] = useState(true);
+  const [hover,sethover]=useState(false);
+  
 
   const navigate = useNavigate();
 
@@ -391,6 +392,8 @@ function Register() {
           )}
 
           <button
+          onMouseEnter={() => sethover(true)}
+          onMouseLeave={() => sethover(false)}
             className={
               canRegister()
                 ? "register-button"
@@ -399,7 +402,7 @@ function Register() {
             onClick={handleRegistration}
             disabled={!canRegister() || loading}
           >
-            {loading ? "REGISTERING..." : "REGISTER"}
+            {loading ? "REGISTERING..." : hover ? (<div  style={{height:"54px",width:"578",backgroundImage:`url(${loginButtonBg})`}}></div>):"REGISTER"}
           </button>
 
           <div className="login-link">

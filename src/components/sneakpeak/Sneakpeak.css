@@ -58,7 +58,7 @@ body::-webkit-scrollbar {
 .mentor-card {
   flex: 0 0 auto;
   width: 360px;
-  height: 380px;
+  height: 400px;
   background-color: #A4B4B8;
   border: none; /* or use a solid border below */
   border-radius: 28px;
@@ -122,6 +122,7 @@ body::-webkit-scrollbar {
   font-size: 18px;
   text-transform: uppercase;
   font-family: "Exima Geometric", sans-serif;
+  line-height: 1.5;
   letter-spacing: 0.03em;
   color: #010101 !important;
 }
@@ -129,6 +130,7 @@ body::-webkit-scrollbar {
 .company-name {
   margin: 0 !important;
   font-size: 20px;
+  padding-top: 8px;
   font-family: "BatmanForeverAlternate", sans-serif;
   color: #324046 !important;
   
@@ -263,7 +265,7 @@ body::-webkit-scrollbar {
 
   .mentor-card{
     width: 320px;
-    height: 360px;
+    height: 420px;
     padding: 24px 20px;
   }
 
@@ -272,11 +274,11 @@ body::-webkit-scrollbar {
   }
 
   .position-title{
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   .company-name{
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .cssbuttons-io-button{
@@ -308,7 +310,7 @@ body::-webkit-scrollbar {
 
   .mentor-card{
     width: 280px;
-    height: 340px;
+    height: 380px;
     border-radius: 22px;
     padding: 20px;
   }
@@ -318,7 +320,7 @@ body::-webkit-scrollbar {
   }
 
   .position-title{
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 
   .company-name{
@@ -379,7 +381,8 @@ body::-webkit-scrollbar {
   }
 
   .company-name{
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    padding-top: 8px;
   }
 
   .btn-wrapper{
@@ -438,7 +441,7 @@ body::-webkit-scrollbar {
   }
 
   .company-name{
-    font-size: 0.82rem;
+    font-size: 1rem;
   }
 
   .cssbuttons-io-button{
