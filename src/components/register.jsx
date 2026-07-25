@@ -28,27 +28,38 @@ function Register() {
     control: (base, state) => ({
       ...base,
       width: "100%",
-      height: "58px",
-      background: "rgba(255, 255, 255, 0.1)",
-      borderRadius: state.isFocused ? "10px 10px 0 0" : "10px",
+      minHeight: "unset",
+      background: "rgba(164, 180, 184, 0.45)",
+      backdropFilter: "blur(8px)",
+      borderRadius: state.isFocused ? "20px 20px 0 0" : "20px",
       border: "none",
       boxShadow: "none",
-      marginBottom: "20px",
-      paddingLeft: "20px",
+      marginBottom: "10px",
+      paddingLeft: "0px",
+      paddingRight: "0px",
+      alignItems: "center",
       "&:hover": {
         borderColor: "transparent",
       },
     }),
+    valueContainer: (base) => ({
+      ...base,
+      height: "100%",
+      margin: "0",
+      display: "flex",
+      alignItems: "center",
+    }),
     singleValue: (provided) => ({
       ...provided,
       color: "white",
-      fontSize: "22px",
-      fontFamily: "'Fraunces', serif",
+      fontFamily: "'Space Grotesk', serif",
+      margin: "0",
     }),
     input: (base) => ({
       ...base,
       color: "white",
-      height: "40px",
+      margin: "0",
+      padding: "0",
     }),
     indicatorSeparator: (base) => ({
       ...base,
@@ -58,25 +69,30 @@ function Register() {
       ...base,
       color: "white",
     }),
+    indicatorsContainer: (base) => ({
+      ...base,
+      height: "100%",
+    }),
     menu: (base) => ({
       ...base,
-      width: "578px",
-      borderRadius: "0 0 10px 10px",
+      width: "100%",
+      borderRadius: "0 0 20px 20px",
       marginTop: "-5px",
-      background: "rgba(0, 0, 0, 0.9)",
+      background: "rgba(0, 0, 0, 0.95)",
       border: "none",
-      boxShadow: "none",
+      boxShadow: "0 8px 16px rgba(0, 0, 0, 0.5)",
+      zIndex: 99,
     }),
     menuList: (base) => ({
       ...base,
       padding: 0,
-      borderRadius: "0 0 10px 10px",
+      borderRadius: "0 0 20px 20px",
     }),
     placeholder: (base) => ({
       ...base,
       color: "rgba(255, 255, 255, 0.7)",
-      fontSize: "22px",
-      fontFamily: "'Fraunces', serif",
+      fontFamily: "'Space Grotesk', serif",
+      margin: "0",
     }),
     option: (base, { isFocused, isSelected }) => ({
       ...base,
@@ -86,9 +102,8 @@ function Register() {
         ? "rgba(189, 4, 231, 0.3)"
         : "transparent",
       color: "white",
-      fontSize: "22px",
-      // fontFamily: "'Fraunces', serif",
-      padding: "15px 20px",
+      fontFamily: "'Space Grotesk', serif",
+      padding: "12px 20px",
     }),
   };
 
@@ -326,6 +341,7 @@ function Register() {
             styles={customStyles}
             placeholder="DEPARTMENT"
             onChange={handleDepartmentChange}
+            className="react-select-container"
             classNamePrefix="react-select"
           />
 
@@ -334,6 +350,7 @@ function Register() {
             styles={customStyles}
             placeholder="DEGREE"
             onChange={handleDegreeChange}
+            className="react-select-container"
             classNamePrefix="react-select"
           />
 

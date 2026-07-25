@@ -17,7 +17,7 @@ const UseForgotPassword = () => {
 
             const response = await fetch(
                 // 'http://127.0.0.1:8000/api/authentication/forgot-password/',
-                "https://asmp.sarc-iitb.org/api/authentication/forgot-password/",
+                "http://127.0.0.1:8000/api/authentication/forgot-password/",
                 {
                     method: 'POST',
                     headers: {

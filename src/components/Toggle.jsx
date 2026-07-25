@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Toggle.css";
 import CursorAnimation from "./CursorAnimation";
 import UnifiedMentorCard from "./UnifiedMentorCard";
@@ -88,13 +88,36 @@ const RIGHT_NONCORE_FIELDS = [
 const Toggle = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeField, setActiveField] = useState("all");
+  const [visibleCount, setVisibleCount] = useState(12);
+  const observerTarget = useRef(null);
   const { fetchMentors, mentors, setMentors } = UseFetchMentors();
 
   useEffect(() => {
-    if (activeField !== "all") {
-      fetchMentors(activeField);
-    }
+    fetchMentors(activeField);
+    setVisibleCount(12);
   }, [activeField, fetchMentors]);
+
+  useEffect(() => {
+    const target = observerTarget.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount((prev) => prev + 12);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, []);
 
   const handleFieldClick = (fieldId) => {
     if (activeField === fieldId) {
@@ -175,10 +198,10 @@ const Toggle = () => {
             </div>
           </div>
 
-          {/* Mentor Cards 3x2 Grid Section */}
+          {/* Mentor Cards Grid Section */}
           <div className="mentor-cards-section">
             <div className="mentor-cards-grid">
-              {displayMentors.slice(0, 6).map((mentor, index) => (
+              {displayMentors.slice(0, visibleCount).map((mentor, index) => (
                 <div key={mentor.id || index} className={`mentor-grid-item card-pos-${index + 1}`}>
                   <UnifiedMentorCard
                     mentor={mentor}
@@ -190,6 +213,8 @@ const Toggle = () => {
                 </div>
               ))}
             </div>
+            {/* Infinite Scroll Sentinel */}
+            <div ref={observerTarget} style={{ height: "40px", width: "100%" }} />
           </div>
         </div>
       </div>

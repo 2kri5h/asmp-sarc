@@ -18,7 +18,7 @@ const UseLogin = () => {
       const csrfToken = csrfTokenMatch ? csrfTokenMatch[1] : "DUMMY_CSRF_TOKEN";
 
       const response = await fetch(
-        "https://asmp.sarc-iitb.org/api/authentication/login/",
+        "http://127.0.0.1:8000/api/authentication/login/",
         // `http://127.0.0.1:8000/api/authentication/login/`,
         {
           method: "POST",

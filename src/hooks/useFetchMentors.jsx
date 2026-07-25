@@ -26,7 +26,7 @@ const UseFetchMentors = () => {
       // console.log()
       const csrfToken = csrfTokenMatch ? csrfTokenMatch[1] : "";
       const response = await axios.post(
-        `https://asmp.sarc-iitb.org/api/mentors/${field}/`,
+        `http://127.0.0.1:8000/api/mentors/${field}/`,
         // `http://127.0.0.1:8000/api/mentors/${field}/`,
         userData,
         {

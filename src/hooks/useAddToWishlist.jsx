@@ -24,7 +24,7 @@ const UseAddToWishlist = () => {
       // const csrfToken = "35Znfr3R2fYtO0zbFhuj3Li6s68F9sx9";
 
       const response = await axios.put(
-        `https://asmp.sarc-iitb.org/api/registration/wishlist/`,
+        `http://127.0.0.1:8000/api/registration/wishlist/`,
         // `http://127.0.0.1:8000/api/registration/wishlist/`,
         userData,
         {

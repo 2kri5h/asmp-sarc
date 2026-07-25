@@ -16,7 +16,7 @@ const UseFetchProfile = () => {
       const accessToken = localStorage.getItem("accessToken");
 
       const response = await axios.get(
-        `https://asmp.sarc-iitb.org/api/authentication/profile/`,
+        `http://127.0.0.1:8000/api/authentication/profile/`,
         // `http://127.0.0.1:8000/api/authentication/profile/`,
         {
           params: {

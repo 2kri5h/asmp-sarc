@@ -19,7 +19,7 @@ const UseFetchWishlist = () => {
       const accessToken = localStorage.getItem("accessToken");
 
       const response = await axios.get(
-        `https://asmp.sarc-iitb.org/api/registration/wishlist/`,
+        `http://127.0.0.1:8000/api/registration/wishlist/`,
         // `http://127.0.0.1:8000/api/registration/wishlist/`,
         {
           params: {

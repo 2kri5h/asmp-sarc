@@ -17,7 +17,7 @@ const UseSignup = () => {
 
       console.log("Sending userData:", userData);
       const response = await fetch(
-        "https://asmp.sarc-iitb.org/api/authentication/create-user/",
+        "http://127.0.0.1:8000/api/authentication/create-user/",
         // `http://127.0.0.1:8000/api/authentication/create-user/`,
         {
           method: "POST",
@@ -36,7 +36,17 @@ const UseSignup = () => {
         setSuccess(true);
         return { success: true };
       } else if (response.status === 400) {
-        const message = responseData?.message || "User already exists. Please login.";
+        // DRF returns validation errors as field: [error] objects
+        let message = responseData?.message || responseData?.error;
+        if (!message) {
+          // Extract first validation error from DRF field errors
+          const firstKey = Object.keys(responseData || {})[0];
+          if (firstKey && Array.isArray(responseData[firstKey])) {
+            message = `${firstKey}: ${responseData[firstKey][0]}`;
+          } else {
+            message = "Registration failed. Please check your details.";
+          }
+        }
         setError(message);
         return { success: false, message };
       } else {

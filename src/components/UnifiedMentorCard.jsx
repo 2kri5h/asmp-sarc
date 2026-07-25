@@ -50,6 +50,18 @@ const getCircleCompanyStyle = (text) => {
   return { fontSize: "24px", lineHeight: "32px" };
 };
 
+const getExperienceText = (mentor) => {
+  if (!mentor) return "2 Yrs";
+  if (mentor.experience) return mentor.experience;
+  if (mentor.exp) return mentor.exp;
+  const gradYear = parseInt(mentor.year || mentor.graduation_year, 10);
+  if (!isNaN(gradYear) && gradYear > 1950 && gradYear <= 2026) {
+    const years = Math.max(1, 2026 - gradYear);
+    return `${years} Yrs`;
+  }
+  return "2 Yrs";
+};
+
 const UnifiedMentorCard = ({
   mentor,
   mentors,
@@ -76,7 +88,7 @@ const UnifiedMentorCard = ({
       if (!accessToken) return;
       try {
         const response = await axios.get(
-          `https://asmp.sarc-iitb.org/api/registration/wishlist/`,
+          `http://127.0.0.1:8000/api/registration/wishlist/`,
           {
             params: { accessToken },
             headers: { "Content-Type": "application/json" }
@@ -303,11 +315,13 @@ const UnifiedMentorCard = ({
                     {mentor.company_name || mentor.name || "Company Name"}
                   </div>
                   <div className="wishlist-card-divider"></div>
-                  <div className="wishlist-card-exp">
-                    Experience: {mentor.experience || mentor.exp || "2 Yrs"}
-                  </div>
-                  <div className="wishlist-card-grad">
-                    Graduation year: {mentor.year || mentor.graduation_year || "2023"}
+                  <div className="wishlist-card-info-scroll">
+                    <div className="wishlist-card-grad">
+                      Graduation year: {mentor.year || mentor.graduation_year || "2023"}
+                    </div>
+                    <div className="wishlist-card-exp">
+                      Experience: {mentor.work_profile || getExperienceText(mentor)}
+                    </div>
                   </div>
                   <button
                     className="wishlist-card-remove-btn-inner"
@@ -380,12 +394,13 @@ const UnifiedMentorCard = ({
 
             <div className="wishlist-card-divider"></div>
 
-            <div className="wishlist-card-exp">
-              Experience: {mentor?.experience || mentor?.exp || "2 Yrs"}
-            </div>
-
-            <div className="wishlist-card-grad">
-              Graduation year: {mentor?.year || mentor?.graduation_year || "2023"}
+            <div className="wishlist-card-info-scroll">
+              <div className="wishlist-card-grad">
+                Graduation year: {mentor?.year || mentor?.graduation_year || "2023"}
+              </div>
+              <div className="wishlist-card-exp">
+                Experience: {mentor?.work_profile || getExperienceText(mentor)}
+              </div>
             </div>
 
             {/* 4. Remove Button inside Inner Content Box */}
@@ -402,28 +417,34 @@ const UnifiedMentorCard = ({
   return (
     <div className="mentor-capsule-wrapper">
       <div className="mentor-capsule-card" data-mode={mode}>
-        {/* Profile Circle containing Designation and Company Name */}
+        {/* Profile Circle containing Designation and Company Name with invisible scroll */}
         <div className="mentor-circle-avatar mentor-circle-info">
-          <div className="mentor-circle-designation" style={getCircleDesignationStyle(mentor?.designation || mentor?.work_profile)}>
-            {mentor?.designation || mentor?.work_profile || "Associate Product Manager"}
-          </div>
-          <div className="mentor-circle-company" style={getCircleCompanyStyle(mentor?.company_name || mentor?.name)}>
-            {mentor?.company_name || mentor?.name || "Company Name"}
+          <div className="mentor-circle-scroll">
+            <div className="mentor-circle-designation" style={getCircleDesignationStyle(mentor?.designation || mentor?.work_profile)}>
+              {mentor?.designation || mentor?.work_profile || "Associate Product Manager"}
+            </div>
+            <div className="mentor-circle-company" style={getCircleCompanyStyle(mentor?.company_name || mentor?.name)}>
+              {mentor?.company_name || mentor?.name || "Company Name"}
+            </div>
           </div>
         </div>
 
-        {/* Information Section Wrapper */}
+        {/* Information Section — combined scrollable area */}
         <div className="mentor-info-section">
-          {/* Graduation Year */}
-          <div className="mentor-info-block mentor-grad-year">
-            <div className="mentor-label">Graduation Year:</div>
-            <div className="mentor-value">{mentor?.year || mentor?.graduation_year || "2023"}</div>
-          </div>
+          <div className="mentor-info-combined-scroll">
+            {/* Graduation Year */}
+            <div className="mentor-info-block mentor-grad-year">
+              <div className="mentor-label">Graduation Year:</div>
+              <div className="mentor-value">{mentor?.year || mentor?.graduation_year || "2023"}</div>
+            </div>
 
-          {/* Experience */}
-          <div className="mentor-info-block mentor-experience">
-            <div className="mentor-label">Experience:</div>
-            <div className="mentor-value">{mentor?.experience || mentor?.exp || "2 Yrs"}</div>
+            {/* Work Profile */}
+            <div className="mentor-info-block mentor-experience">
+              <div className="mentor-label">Experience:</div>
+              <div className="mentor-work-profile-text">
+                {mentor?.work_profile || "—"}
+              </div>
+            </div>
           </div>
         </div>
 

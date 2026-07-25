@@ -18,7 +18,7 @@ const UseEditProfile = () => {
       // console.log(localStorage.getItem('profile'));
 
       const response = await fetch(
-        "https://asmp.sarc-iitb.org/api/authentication/profile/",
+        "http://127.0.0.1:8000/api/authentication/profile/",
         // `http://127.0.0.1:8000/api/authentication/profile/`,
         {
           method: localStorage.getItem("profile") ? "PUT" : "POST",
