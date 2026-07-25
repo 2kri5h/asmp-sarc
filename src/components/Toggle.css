@@ -288,7 +288,7 @@
 
 @media (max-width: 767px) {
   .figma-content-container {
-    padding: 24px 10px 40px 10px;
+    padding: 34px 10px 40px 10px;
   }
 
   .top-bat-row {
@@ -296,6 +296,7 @@
     justify-content: center;
     gap: 12px;
     max-width: 320px;
+    margin-top: 10px !important;
   }
 
   .bat-badge-box {
@@ -306,7 +307,7 @@
   .bat-badge-text {
     font-size: 13px;
     line-height: 22px;
-    margin-top: 4px;
+    margin-top: 8px;
   }
 
   .filter-rectangles-container {
