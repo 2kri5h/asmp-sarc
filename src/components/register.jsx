@@ -288,11 +288,8 @@ function Register() {
   ) : (
     <>
       <CursorAnimation />
-      <div className="register-page form-container">
-        <div className="bg-container">
-          <img src={bgImg} className="register-bg-img" alt="" />
-          <img src={group25Svg} className="batman-group25-img" alt="" />
-        </div>
+      <div style={{ height: "10vh" }}></div>
+      <div className="form-container">
         <div className="image-containerr">
           <img src={logo} alt="Logo" className="logoo" />
         </div>
