@@ -315,42 +315,33 @@ const UnifiedMentorCard = ({
     );
   }
 
-  // For display mode, use standard capsule stadium card styling
+  // For display mode, use standard capsule stadium card styling with details inside the circle
   return (
     <div className="mentor-capsule-wrapper">
       <div className="mentor-capsule-card" data-mode={mode}>
-        {/* Profile Circle */}
-        <div className="mentor-circle-avatar">
-          {mentor?.img ? (
-            <img src={mentor.img} alt={mentor.company_name || mentor.name} className="mentor-img" />
-          ) : (
-            <div className="mentor-img-placeholder">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </div>
-          )}
+        {/* Profile Circle containing Designation and Company Name */}
+        <div className="mentor-circle-avatar mentor-circle-info">
+          <div className="mentor-circle-designation">
+            {mentor?.designation || mentor?.work_profile || "Associate Product Manager"}
+          </div>
+          <div className="mentor-circle-company">
+            {mentor?.company_name || mentor?.name || "Company Name"}
+          </div>
         </div>
 
-        {/* Designation / Work Profile */}
-        <div className="mentor-designation">
-          {mentor?.designation || mentor?.work_profile || "Associate Product Manager"}
-        </div>
+        {/* Information Section Wrapper */}
+        <div className="mentor-info-section">
+          {/* Graduation Year */}
+          <div className="mentor-info-block mentor-grad-year">
+            <div className="mentor-label">Graduation Year:</div>
+            <div className="mentor-value">{mentor?.year || mentor?.graduation_year || "2023"}</div>
+          </div>
 
-        {/* Company Name */}
-        <div className="mentor-company">
-          {mentor?.company_name || mentor?.name || "Company Name"}
-        </div>
-
-        {/* Graduation Year */}
-        <div className="mentor-grad-year">
-          Graduation Year: {mentor?.year || mentor?.graduation_year || "2023"}
-        </div>
-
-        {/* Experience */}
-        <div className="mentor-experience">
-          Experience: {mentor?.experience || mentor?.exp || "2 Yrs"}
+          {/* Experience */}
+          <div className="mentor-info-block mentor-experience">
+            <div className="mentor-label">Experience:</div>
+            <div className="mentor-value">{mentor?.experience || mentor?.exp || "2 Yrs"}</div>
+          </div>
         </div>
 
         {/* Add / Remove Wishlist Button */}
@@ -359,11 +350,20 @@ const UnifiedMentorCard = ({
           onClick={mode === "wishlist" && showRemoveButton ? handleDelete : handleAddToWishlist}
         >
           {mode === "wishlist" && showRemoveButton ? (
-            "Remove Wishlist"
+            <>
+              <div>Remove</div>
+              <div>Wishlist</div>
+            </>
           ) : isInWishlist ? (
-            "In Wishlist ✓"
+            <>
+              <div>In</div>
+              <div>Wishlist ✓</div>
+            </>
           ) : (
-            "Add to Wishlist"
+            <>
+              <div>Add to</div>
+              <div>Wishlist</div>
+            </>
           )}
         </div>
       </div>
@@ -371,4 +371,4 @@ const UnifiedMentorCard = ({
   );
 };
 
-export default UnifiedMentorCard; 
+export default UnifiedMentorCard;
