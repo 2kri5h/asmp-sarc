@@ -58,98 +58,78 @@ const TestimonialSlider = () => {
     ref={testimonialRef}
     id="testimonials"
     style={{
-      minHeight: "100vh",
+      backgroundImage: `url(${testimonialBg})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
       width: "100%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: "40px 0",
+      minHeight: "100vh",
+      padding: "80px 0",
     }}
   >
-    <div
-      style={{
-        backgroundImage: `url(${testimonialBg})`,
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        width: "1100px",
-        height: "650px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="testimonials-panel">
       <div
-        className="testimonials-panel"
+        className="testimonialHeading"
+        id="TestimoinalHeading"
         style={{
-          width: "90%",
-          height: "90%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          marginTop: "2%",
+          fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+          fontWeight: "700",
+          lineHeight: "1.2",
+          textAlign: "center",
+          marginLeft: "5%",
+          marginRight: "5%",
+          color: "#fff",
         }}
       >
-        <div
-          className="testimonialHeading"
-          id="TestimoinalHeading"
-          style={{
-            marginBottom: "30px",
-            fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
-            fontWeight: "700",
-            textAlign: "center",
-            color: "#fff",
+        TESTIMONIALS
+      </div>
+
+      <div className="slider-container">
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={30}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          loop={true}
+          centeredSlides={true}
+          breakpoints={{
+            1300: { slidesPerView: 3, spaceBetween: 50 },
+            1024: { slidesPerView: 3, spaceBetween: 40 },
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            480: { slidesPerView: 1, spaceBetween: 20 },
+            0: { slidesPerView: 1, spaceBetween: 15 },
           }}
         >
-          TESTIMONIALS
-        </div>
-
-        <div className="slider-container">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={3}
-            navigation
-            pagination={{ clickable: true }}
-            loop={true}
-            centeredSlides={true}
-            onImagesReady={(swiper) => swiper.update()}
-            breakpoints={{
-              1300: { slidesPerView: 3, spaceBetween: 50 },
-              1024: { slidesPerView: 3, spaceBetween: 40 },
-              768: { slidesPerView: 2, spaceBetween: 30 },
-              480: { slidesPerView: 1, spaceBetween: 20 },
-              0: { slidesPerView: 1, spaceBetween: 15 },
-            }}
-          >
-            {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={index}>
-                <div className="testimonial-card">
-                  <div className="avatar-wrapper">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="avatar-img"
-                    />
-                  </div>
-
-                  <div
-                    className="name-heading"
-                    id="TestimonialHeading"
-                  >
-                    {testimonial.name}
-                  </div>
-
-                  <div
-                    className="testimonal-content"
-                    id="TestimonialContent"
-                  >
-                    {testimonial.feedback}
-                  </div>
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index}>
+              <div className="testimonial-card">
+                <div className="avatar-wrapper">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="avatar-img"
+                  />
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+
+                <div
+                  className="name-heading"
+                  id="TestimonialHeading"
+                >
+                  {testimonial.name}
+                </div>
+
+                <div
+                  className="testimonal-content"
+                  id="TestimonialContent"
+                >
+                  {testimonial.feedback}
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   </div>
