@@ -285,9 +285,9 @@ body, html {
   transition: all 0.3s ease;
 }
 
-.register-button:hover {
-  background: #ecb608;
-}
+/* .register-button:hover {
+  background-image: url('../assets/images/loginbuttonbg.png');
+} */
 
 .register-button:disabled,
 .register-button.button-disabled {
