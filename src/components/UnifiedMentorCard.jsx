@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Wishlist/Wishlist_MentorCards.css";
 import Swal from "sweetalert2";
+import axios from "axios";
 import UseAddToWishlist from "../hooks/useAddToWishlist";
 import UseDeleteFromWishlist from "../hooks/useDeleteFromWishlist";
 import UseFetchWishlist from "../hooks/useFetchWishlist";
@@ -66,23 +67,44 @@ const UnifiedMentorCard = ({
   const [isInWishlist, setIsInWishlist] = useState(false);
   const { addMentor } = UseAddToWishlist();
   const { deleteMentor } = UseDeleteFromWishlist();
-  const { fetchMentors, mentors: wishlistMentors } = UseFetchWishlist();
 
-  // Check if mentor is in wishlist
+  // Check if mentor is in wishlist on mount or when mentor id changes
   useEffect(() => {
+    let isMounted = true;
     const checkWishlist = async () => {
-      await fetchMentors();
-      const mentorInWishlist = wishlistMentors.some((item) => item.id === mentor.id);
-      setIsInWishlist(mentorInWishlist);
+      const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) return;
+      try {
+        const response = await axios.get(
+          `https://asmp.sarc-iitb.org/api/registration/wishlist/`,
+          {
+            params: { accessToken },
+            headers: { "Content-Type": "application/json" }
+          }
+        );
+        if (response.status === 200 && isMounted) {
+          const list = response.data || [];
+          const mentorInWishlist = list.some((item) => item.id === mentor.id);
+          setIsInWishlist(mentorInWishlist);
+        }
+      } catch (err) {
+        console.error("Error checking wishlist status:", err);
+      }
     };
+
     if (mentor && mentor.id) {
       checkWishlist();
     }
-  }, [mentor?.id, fetchMentors, wishlistMentors]);
+    return () => {
+      isMounted = false;
+    };
+  }, [mentor?.id]);
 
-  const handleAddToWishlist = async () => {
-    if (!isInWishlist) {
-      setClicked((prevState) => !prevState);
+  const handleWishlistAction = async (e) => {
+    if (e) e.stopPropagation();
+    if (isInWishlist) {
+      await deleteFromWishlist(mentor.id);
+    } else {
       await addToWishlist(mentor.id);
     }
   };
@@ -149,10 +171,17 @@ const UnifiedMentorCard = ({
     }).then(async (result) => {
       if (result.isConfirmed) {
         await deleteMentor(id);
-        const newMentors = [...mentors];
-        let something = newMentors.filter((mentor) => mentor.id == id)[0];
-        newMentors.splice(newMentors.indexOf(something), 1);
-        setMentors(newMentors);
+        setIsInWishlist(false);
+        if (mode === "wishlist" || mode === "selection") {
+          if (setMentors && mentors) {
+            const newMentors = [...mentors];
+            let something = newMentors.filter((m) => m.id == id)[0];
+            if (something) {
+              newMentors.splice(newMentors.indexOf(something), 1);
+              setMentors(newMentors);
+            }
+          }
+        }
         Swal.fire({
           title: "Removed!",
           text: "Mentor has been removed from wishlist.",
@@ -401,7 +430,7 @@ const UnifiedMentorCard = ({
         {/* Add / Remove Wishlist Button */}
         <div
           className={`mentor-wishlist-btn ${isInWishlist ? "active" : ""}`}
-          onClick={mode === "wishlist" && showRemoveButton ? handleDelete : handleAddToWishlist}
+          onClick={mode === "wishlist" && showRemoveButton ? handleDelete : handleWishlistAction}
         >
           {mode === "wishlist" && showRemoveButton ? (
             <>
