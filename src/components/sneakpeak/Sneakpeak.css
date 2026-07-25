@@ -265,7 +265,7 @@ body::-webkit-scrollbar {
 
   .mentor-card{
     width: 320px;
-    height: 360px;
+    height: 420px;
     padding: 24px 20px;
   }
 
@@ -274,11 +274,11 @@ body::-webkit-scrollbar {
   }
 
   .position-title{
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   .company-name{
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .cssbuttons-io-button{
@@ -310,7 +310,7 @@ body::-webkit-scrollbar {
 
   .mentor-card{
     width: 280px;
-    height: 340px;
+    height: 380px;
     border-radius: 22px;
     padding: 20px;
   }
@@ -320,7 +320,7 @@ body::-webkit-scrollbar {
   }
 
   .position-title{
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 
   .company-name{
@@ -441,7 +441,7 @@ body::-webkit-scrollbar {
   }
 
   .company-name{
-    font-size: 0.82rem;
+    font-size: 1rem;
   }
 
   .cssbuttons-io-button{
