@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @font-face {
-  font-family: "Exima Geometric";
-  src: url("../assets/fonts/exima_geometric/Exima Geometric.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Exima Geometric";
+    src: url("../assets/fonts/exima_geometric/Exima Geometric.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
 }
 
 * {
@@ -14,8 +14,7 @@
   box-sizing: border-box;
 }
 
-body,
-html {
+body, html {
   height: 100vh;
   background: #000000;
   font-family: 'Space Grotesk', serif;
@@ -24,82 +23,42 @@ html {
 }
 
 /* Form Container */
-.register-page.form-container {
-  position: relative;
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 100vh;
-  padding: 0 20px 60px 20px;
-  background: #1C1C2E;
+  padding: 20px;
+  background-image: url("/teampage/registerbg1.png");
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  overflow: hidden;
-}
-
-/* Background Wrapper (Locks bg image and SVG together) */
-.register-page .bg-container {
-  position: absolute;
-  width: 2315px;
-  height: 1292px;
-  left: 50%;
-  transform: translateX(-50%) translateX(36.5px);
-  top: -60px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.register-page .register-bg-img {
-  position: absolute;
-  top: -8px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Batman SVG Element (Group 25) */
-.register-page .batman-group25-img {
-  position: absolute;
-  width: 490px;
-  height: 853px;
-  left: 885px;
-  /* Figma offset: 448px - (-433px) */
-  top: -170px;
-  /* Figma offset */
-  z-index: 1;
-  pointer-events: none;
 }
 
 /* Form Box */
-.register-page .form-box {
-  position: relative;
+.form-box {
   width: 578px;
-  max-width: 80%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0;
-  z-index: 2;
+  
 }
 
 /* Image Container */
-.register-page .image-containerr {
-  position: relative;
+.image-containerr {
   display: flex;
   justify-content: center;
-  width: 485px;
-  max-width: 90vw;
-  height: 225px;
-  margin-top: 200px;
-  margin-bottom: 1px;
-  z-index: 2;
+  width: 100%;
+  ;
 }
 
 /* Logo Image */
-.register-page .logoo {
-  width: 100%;
-  height: 100%;
+.logoo {
+  width: 544px;
+  max-width: 90vw;
+  height: auto;
   object-fit: contain;
 }
 
@@ -109,10 +68,9 @@ html {
   max-width: 100%;
   height: 58px;
   padding: 0 20px;
-  background: rgba(164, 180, 184, 0.45);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.35);
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   color: white;
   font-family: 'Space Grotesk', serif;
   font-size: 22px;
@@ -121,20 +79,6 @@ html {
 
 .input-field::placeholder {
   color: rgba(255, 255, 255, 0.7);
-}
-
-/* Prevent Chrome autofill white/blue background */
-.input-field:-webkit-autofill,
-.input-field:-webkit-autofill:hover,
-.input-field:-webkit-autofill:focus,
-.input-field:-webkit-autofill:active,
-.password-input:-webkit-autofill,
-.password-input:-webkit-autofill:hover,
-.password-input:-webkit-autofill:focus,
-.password-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px rgba(164, 180, 184, 0.45) inset !important;
-  -webkit-text-fill-color: #ffffff !important;
-  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Password Field Container */
@@ -152,21 +96,19 @@ html {
 
 .password-input {
   width: 100%;
-  padding-right: 70px;
-  /* Make room for the eye icon */
-  background: rgba(164, 180, 184, 0.45);
+  padding-right: 70px; /* Make room for the eye icon */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.25) 100%);
   border: 2px solid transparent;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  box-shadow:
+  box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .password-input:focus {
   border-color: #C8A840;
-  box-shadow:
+  box-shadow: 
     0 8px 32px rgba(189, 4, 231, 0.2),
     0 0 0 3px rgba(189, 4, 231, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -201,7 +143,7 @@ html {
   color: white;
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-50%) scale(1.1);
-  box-shadow:
+  box-shadow: 
     0 8px 25px rgba(0, 0, 0, 0.2),
     0 4px 15px rgba(255, 255, 255, 0.1);
 }
@@ -251,7 +193,7 @@ html {
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.25) 100%);
   color: #10b981;
   border-color: rgba(34, 197, 94, 0.4);
-  box-shadow:
+  box-shadow: 
     0 8px 32px rgba(34, 197, 94, 0.15),
     0 4px 16px rgba(34, 197, 94, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -270,7 +212,7 @@ html {
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.25) 100%);
   color: #ef4444;
   border-color: rgba(239, 68, 68, 0.4);
-  box-shadow:
+  box-shadow: 
     0 8px 32px rgba(239, 68, 68, 0.15),
     0 4px 16px rgba(239, 68, 68, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -291,12 +233,10 @@ html {
     transform: scale(0) rotate(-45deg);
     opacity: 0;
   }
-
   50% {
     transform: scale(1.2) rotate(0deg);
     opacity: 1;
   }
-
   100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
@@ -308,12 +248,10 @@ html {
     transform: scale(0) rotate(45deg);
     opacity: 0;
   }
-
   50% {
     transform: scale(1.2) rotate(0deg);
     opacity: 1;
   }
-
   100% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
@@ -323,7 +261,7 @@ html {
 /* Enhanced input field styling */
 .input-field:focus {
   border-color: #C8A840;
-  box-shadow:
+  box-shadow: 
     0 8px 32px #f6be06,
     0 0 0 3px #c5a026,
     inset 0 1px 0 #C8A840;
@@ -332,19 +270,18 @@ html {
 
 /* Button */
 .register-button {
-  width: 315px;
+  width: 578px;
   max-width: 100%;
-  height: 65px;
+  height: 58px;
   background: #C8A840;
   border: none;
-  border-radius: 20px;
-  color: #000000;
+  border-radius: 10px;
+  color: black;
   font-family: 'Exima Geometric', serif;
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 900;
   cursor: pointer;
-  margin-top: 15px;
-  box-shadow: 1px 4px 5px 3px rgba(0, 0, 0, 0.8);
+  margin-top: 10px;
   transition: all 0.3s ease;
 }
 
@@ -360,9 +297,9 @@ html {
 
 /* Login Link */
 .login-link {
-  color: #FFFFFF;
-  font-family: 'Oxanium', 'Space Grotesk', serif;
-  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Space Grotesk', serif;
+  font-size: 22px;
   text-align: center;
   margin-top: 20px;
 }
@@ -382,16 +319,14 @@ html {
   max-width: 100% !important;
   height: 58px !important;
   min-height: 58px !important;
-  background: rgba(164, 180, 184, 0.45) !important;
-  backdrop-filter: blur(8px) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
   border: none !important;
-  border-radius: 20px !important;
+  border-radius: 10px !important;
   padding: 0 !important;
-  margin-bottom: 10px !important;
 }
 
 .react-select__control--menu-is-open {
-  border-radius: 20px 20px 0 0 !important;
+  border-radius: 10px 10px 0 0 !important;
 }
 
 .react-select__value-container {
@@ -420,7 +355,7 @@ html {
 }
 
 .react-select__option {
-  font-family: 'Space Grotesk';
+  font-family:'Space Grotesk';
   font-size: 22px !important;
   color: white !important;
   padding: 15px 20px !important;
@@ -428,7 +363,7 @@ html {
 }
 
 .react-select__option--is-focused {
-  background: #b4a061 !important;
+  background:#b4a061!important;
 }
 
 .react-select__option--is-selected {
@@ -558,6 +493,6 @@ html {
   }
 }
 
-#registerlink {
+#registerlink{
   font-family: "Space Grotesk";
 }

@@ -303,13 +303,36 @@ function Register() {
             className="input-field"
           />
 
-          <input
+          {/* <input
             type="text"
             placeholder="LDAP ID"
             value={emailId}
             onChange={handleEmailIdChange}
             className="input-field"
-          />
+          /> */}
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <input
+              type="text"
+              placeholder="LDAP ID"
+              value={emailId}
+              onChange={handleEmailIdChange}
+              className="input-field"
+              style={{ flex: "1" }}
+            />
+            <div
+              className="input-field" 
+              style={{
+                padding: "0 12px",
+                borderRadius: "6px",
+                height: "58px",
+                color: "#d4d4d6",
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              @iitb.ac.in
+            </div>
+          </div>
 
           <input
             type="text"
