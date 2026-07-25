@@ -1,76 +1,138 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* Default styles for all devices */
-.form-container {
+.login-page.form-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Space Grotesk", sans-serif;
-    background-image: url('../assets/images/login.png');
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 1);
+    justify-content: flex-start;
     min-height: 100vh;
-    justify-content: center;
-    padding: 20px;
+    padding: 0 20px 60px 20px;
+    background: #1C1C2E;
+    width: 100%;
+    overflow: hidden;
+    font-family: "Space Grotesk", sans-serif;
 }
 
-.image-containerr {
+/* Background Wrapper (Locks bg image and SVG together) */
+.login-page .bg-container {
+    position: absolute;
+    width: 2315px;
+    height: 1292px;
+    left: 50%;
+    transform: translateX(-50%) translateX(36.5px);
+    top: -120px;
+    z-index: 0;
+    pointer-events: none;
+
+}
+
+.login-page .register-bg-img {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Batman SVG Element (Group 25) */
+.login-page .batman-group25-img {
+    position: absolute;
+    width: 480px;
+    height: 853px;
+    left: 885px;
+    /* Figma offset: 448px - (-433px) */
+    top: -105px;
+    /* Figma offset */
+    z-index: 1;
+    pointer-events: none;
+
+}
+
+.login-page .image-containerr {
+    position: relative;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 485px;
+    max-width: 90vw;
+    height: 143px;
+    margin-top: 200px;
+    margin-bottom: 40px;
+    z-index: 2;
+
 }
 
-/* ASMP LOGO: Applied size based on your data */
-.logoo {
-    width: 544px;
-    height: 199px;
-    max-width: 100%; /* Ensures it shrinks on small screens */
+.login-page .logoo {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    margin-bottom: 30px;
-    margin-top:70px;
 }
 
 .heading {
     font-size: 26px;
     margin-bottom: 20px;
-    color: white;
-    
+    color: rgb(245, 240, 240);
+
 }
 
 .input2 {
     font-family: 'Space Grotesk';
-    width: 591px;
-    height: 68px;
+    width: 578px;
+    max-width: 100%;
+    height: 58px;
     border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.4);
-    color: #fff;
-    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 22px;
+    background-color: rgba(164, 180, 184, 0.45);
+    backdrop-filter: blur(8px);
+    color: #000000;
+    padding: 0 20px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.input2:focus {
+    background-color: rgba(164, 180, 184, 0.72);
+    outline: none;
+}
+
+/* Prevent Chrome autofill white/blue background */
+.input2:-webkit-autofill,
+.input2:-webkit-autofill:hover,
+.input2:-webkit-autofill:focus,
+.input2:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px rgba(164, 180, 184, 0.45) inset !important;
+    -webkit-text-fill-color: #000000 !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .css-b62m3t-container {
     font-family: 'Space Grotesk';
-    width: 591px;
+    width: 578px;
 }
 
 .input2::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: #000000;
+    opacity: 0.65;
 }
 
 /* Password Input Container */
 .password-input-container {
     position: relative;
-    width: 591px;
+    width: 578px;
     max-width: 100%;
     margin-bottom: 10px;
+    z-index: 2;
 }
 
 .password-input-container .input2 {
     width: 100%;
-    padding-right: 60px; /* Make room for the eye icon */
+    padding-right: 60px;
+    /* Make room for the eye icon */
     margin-bottom: 0;
 }
 
@@ -95,7 +157,7 @@
 }
 
 .password-toggle:hover {
-    color: white;
+    color: rgba(255, 255, 255, 0.685);
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -111,26 +173,26 @@
 
 /* Updated Login Button Styles to match new specs */
 .button {
-    margin: 10px;
+    margin: 15px;
     width: 315px;
     height: 65px;
     padding: 0;
     background-color: #C8A840;
     border: none;
-    border-radius: 10px;
-    color:black;
-    font-family: 'Space Grotesk', serif;
+    border-radius: 20px;
+    color: black;
+    font-family: 'Exima Geometric', 'Space Grotesk', serif;
     font-weight: 700;
-    font-style: bold;
-    font-size: 30px;
+    font-size: 32px;
     line-height: 100%;
-    letter-spacing: 0%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    box-shadow: 1px 4px 5px 3px rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease;
+    z-index: 2;
 }
 
 .button:hover {
@@ -176,7 +238,9 @@
         margin-bottom: 30px;
     }
 
-    .email-input input, .input2, .react-select__control {
+    .email-input input,
+    .input2,
+    .react-select__control {
         max-width: 591px;
         height: 68px;
     }
@@ -218,7 +282,10 @@
         max-width: 100%;
     }
 
-    .email-input input, .input2, .react-select__control, .css-b62m3t-container {
+    .email-input input,
+    .input2,
+    .react-select__control,
+    .css-b62m3t-container {
         max-width: 591px;
         height: 68px;
     }

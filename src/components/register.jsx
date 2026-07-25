@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "../assets/images/mk.png";
+import group25Svg from "../assets/images/Group 25.svg";
+import bgImg from "../assets/images/login.png";
 import "../styles/Register.css";
 import Select from "react-select";
 import UseSignup from "../hooks/useSignup";
@@ -285,8 +287,11 @@ function Register() {
   ) : (
     <>
       <CursorAnimation />
-      <div style={{ height: "10vh" }}></div>
-      <div className="form-container">
+      <div className="register-page form-container">
+        <div className="bg-container">
+          <img src={bgImg} className="register-bg-img" alt="" />
+          <img src={group25Svg} className="batman-group25-img" alt="" />
+        </div>
         <div className="image-containerr">
           <img src={logo} alt="Logo" className="logoo" />
         </div>
@@ -300,36 +305,13 @@ function Register() {
             className="input-field"
           />
 
-          {/* <input
+          <input
             type="text"
             placeholder="LDAP ID"
             value={emailId}
             onChange={handleEmailIdChange}
             className="input-field"
-          /> */}
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <input
-              type="text"
-              placeholder="LDAP ID"
-              value={emailId}
-              onChange={handleEmailIdChange}
-              className="input-field"
-              style={{ flex: "1" }}
-            />
-            <div
-              className="input-field" 
-              style={{
-                padding: "0 12px",
-                borderRadius: "6px",
-                height: "58px",
-                color: "#d4d4d6",
-                display: "flex",
-                alignItems: "center"
-              }}
-            >
-              @iitb.ac.in
-            </div>
-          </div>
+          />
 
           <input
             type="text"

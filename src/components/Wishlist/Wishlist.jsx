@@ -66,15 +66,34 @@ export default function Wishlist(props) {
       text: "You want to remove this mentor from wishlist",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
+      confirmButtonText: "YES",
+      cancelButtonText: "Cancel",
+      customClass: {
+        popup: 'custom-swal-popup',
+        title: 'custom-swal-title',
+        htmlContainer: 'custom-swal-text',
+        confirmButton: 'custom-swal-confirm-btn',
+        cancelButton: 'custom-swal-cancel-btn',
+      },
+      buttonsStyling: false
     }).then(async (result) => {
       if (result.isConfirmed) {
         await deleteMentor(id);
         const newMentors = displayMentors.filter((m) => m.id !== id);
         setMentors(newMentors);
-        Swal.fire("Removed!", "Mentor has been removed from wishlist.", "success");
+        Swal.fire({
+          title: "Removed!",
+          text: "Mentor has been removed from wishlist.",
+          icon: "success",
+          confirmButtonText: "OK",
+          customClass: {
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            htmlContainer: 'custom-swal-text',
+            confirmButton: 'custom-swal-confirm-btn',
+          },
+          buttonsStyling: false
+        });
       }
     });
   }

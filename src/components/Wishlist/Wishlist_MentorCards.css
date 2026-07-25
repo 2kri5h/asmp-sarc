@@ -707,7 +707,8 @@
   height: 603px;
   background: #2C465B;
   border: 4px solid #ADB7AC;
-  border-radius: 128.5px; /* Capsule stadium shape */
+  border-radius: 128.5px;
+  /* Capsule stadium shape */
   color: #FFFFFF;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1245,7 +1246,8 @@
     border: 2px solid #ADB7AC !important;
     border-radius: 46px !important;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5) !important;
-    overflow: visible !important; /* Allow graduation & experience text to display outside card boundaries without clipping */
+    overflow: visible !important;
+    /* Allow graduation & experience text to display outside card boundaries without clipping */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
