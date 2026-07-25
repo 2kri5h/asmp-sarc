@@ -175,7 +175,11 @@ function Login() {
           </span>
         </div>
 
-        <div style={{ color: "white" }}>{error}</div>
+        {error && (
+          <div style={{ color: "#FF6B6B", background: "rgba(255, 107, 107, 0.15)", border: "1px solid #FF6B6B", padding: "8px 16px", borderRadius: "10px", margin: "10px 0", fontSize: "14px", fontFamily: "Space Grotesk, sans-serif" }}>
+            ⚠️ {error}
+          </div>
+        )}
         <button
           onMouseEnter={() => sethover(true)}
           onMouseLeave={() => sethover(false)}
