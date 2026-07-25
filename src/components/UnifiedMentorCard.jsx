@@ -10,6 +10,7 @@ import companyNameSvg from "../assets/images/Company Name.svg";
 import subtractSvg from "../assets/images/Subtract.svg";
 import rectangle47Svg from "../assets/images/Rectangle 47.svg";
 import batmanLogoSvg from "../assets/images/Batman-Logo-2018 1.svg";
+
 const getDesignationStyle = (text) => {
   if (!text) return { fontStyle: "normal" };
   const len = text.length;
@@ -88,7 +89,7 @@ const UnifiedMentorCard = ({
       if (!accessToken) return;
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/registration/wishlist/`,
+          `https://asmp.sarc-iitb.org/api/registration/wishlist/`,
           {
             params: { accessToken },
             headers: { "Content-Type": "application/json" }
@@ -230,8 +231,6 @@ const UnifiedMentorCard = ({
       onRemove();
     }
   };
-
-
 
   // For Selection / Modal mode
   if (mode === "selection") {
