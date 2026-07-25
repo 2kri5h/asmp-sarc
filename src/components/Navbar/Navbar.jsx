@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import Checkbox from "./HamburgerIcon";
 import { useNavigate, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 import logo from "../../assets/images/sarclogo.png";
 import {
   NavbarContainer,
@@ -18,9 +19,6 @@ function NavbarContent({ navigate, location }) {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isOpen, setOpen] = useState(false);
   const [isBigScreen, setIsBigScreen] = useState(window.innerWidth > 950);
-  // const [isLogged, setLogged] = useState(localStorage.getItem('accessToken') ? true : setLogged(false));
-
-  // let accessToken = localStorage.getItem('accessToken')
 
   const notLoggedNavigationItems = [
     {
@@ -114,6 +112,17 @@ function NavbarContent({ navigate, location }) {
       id: "team",
       navLink: "/team",
     },
+    ...(localStorage.getItem("accessToken")
+      ? [
+          {
+            name: "Logout",
+            to: "logout",
+            className: "logout-nav",
+            id: "logout",
+            navLink: "/login",
+          },
+        ]
+      : []),
   ];
 
   const loggedNavSmallScreen = [
@@ -167,6 +176,13 @@ function NavbarContent({ navigate, location }) {
       id: "profile-nav",
       navLink: "/profile",
     },
+    {
+      name: "Logout",
+      to: "logout",
+      className: "logout-nav",
+      id: "logout",
+      navLink: "/login",
+    },
   ];
 
   const notLoggedNavSmallScreen = [
@@ -216,6 +232,31 @@ function NavbarContent({ navigate, location }) {
   ];
 
   const handleItemClick = (item) => {
+    if (item.id === "logout") {
+      Swal.fire({
+        title: "Logout Confirmation",
+        text: "Are you sure you want to log out?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Logout",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("profile");
+          setOpen(false);
+          if (navigate) {
+            navigate("/login");
+          } else {
+            window.location.href = "/login";
+          }
+        }
+      });
+      return;
+    }
+
     const navigateRoutes = [
       "/team",
       "/register",
@@ -299,7 +340,7 @@ function NavbarContent({ navigate, location }) {
             {(localStorage.getItem("accessToken")
               ? loggedNavigationItems
               : notLoggedNavigationItems
-            ).map((item) => (
+            ).map((item) => item && (
               <li
                 key={item.name}
                 className={`${item.className} ${selectedItem === item.className ? "selected" : ""}`}

@@ -19,21 +19,48 @@ export default function WishlistModalContent({ onSelect }) {
         text: "You want to remove this mentor from wishlist",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, remove it!",
+        confirmButtonText: "YES",
+        cancelButtonText: "Cancel",
+        customClass: {
+          popup: 'custom-swal-popup',
+          title: 'custom-swal-title',
+          htmlContainer: 'custom-swal-text',
+          confirmButton: 'custom-swal-confirm-btn',
+          cancelButton: 'custom-swal-cancel-btn',
+        },
+        buttonsStyling: false
       });
       if (result.isConfirmed) {
         await deleteMentor(id);
         setMentors((m) => m.filter((mnt) => mnt.id !== id));
-        Swal.fire(
-          "Removed!",
-          "Mentor has been removed from wishlist.",
-          "success"
-        );
+        Swal.fire({
+          title: "Removed!",
+          text: "Mentor has been removed from wishlist.",
+          icon: "success",
+          confirmButtonText: "OK",
+          customClass: {
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            htmlContainer: 'custom-swal-text',
+            confirmButton: 'custom-swal-confirm-btn',
+          },
+          buttonsStyling: false
+        });
       }
     } catch {
-      Swal.fire("Error!", "Failed to remove mentor from wishlist.", "error");
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to remove mentor from wishlist.",
+        icon: "error",
+        confirmButtonText: "OK",
+        customClass: {
+          popup: 'custom-swal-popup',
+          title: 'custom-swal-title',
+          htmlContainer: 'custom-swal-text',
+          confirmButton: 'custom-swal-confirm-btn',
+        },
+        buttonsStyling: false
+      });
     }
   };
 
