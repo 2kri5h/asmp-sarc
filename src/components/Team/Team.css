@@ -78,11 +78,14 @@ html {
 
 /* Layout */
 .team-grid-single {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-items: center;
+  align-items: start;
+  gap: 30px;
+  max-width: 90vw;
   margin: 0 auto 50px;
+  padding: 0 20px;
 }
 
 .team-grid-core {
@@ -96,6 +99,8 @@ html {
 
 /* Team member card */
 .team-member {
+  width: 100%;
+  max-width: 360px;
   text-align: center;
   padding: 20px 10px;
 }
