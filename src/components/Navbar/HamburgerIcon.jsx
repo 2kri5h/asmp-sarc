@@ -10,12 +10,11 @@ const Checkbox = ({ isOpen, toggleOpen }) => {
           checked={isOpen}
           onChange={toggleOpen}
         />
-        <svg viewBox="0 0 32 32">
-          <path
-            className="line line-top-bottom"
-            d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-          />
-          <path className="line" d="M7 16 27 16" />
+
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path className="line line-top" d="M7 10 H25" />
+          <path className="line line-middle" d="M7 16 H25" />
+          <path className="line line-bottom" d="M7 22 H25" />
         </svg>
       </label>
     </StyledWrapper>
@@ -23,7 +22,24 @@ const Checkbox = ({ isOpen, toggleOpen }) => {
 };
 
 const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
   .hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
     cursor: pointer;
   }
 
@@ -32,31 +48,54 @@ const StyledWrapper = styled.div`
   }
 
   .hamburger svg {
+    display: block;
+
+    width: 3em;
     height: 3em;
-    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
+    padding: 0;
+
+    overflow: visible;
   }
 
   .line {
     fill: none;
-    stroke: #121B3D;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke: #121b3d;
     stroke-width: 3;
-    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    stroke-linecap: round;
+
+    transition:
+      transform 300ms ease,
+      opacity 300ms ease;
+
+    transform-box: view-box;
+    transform-origin: center;
   }
 
-  .line-top-bottom {
-    stroke-dasharray: 12 63;
+  .hamburger input:checked + svg .line-top {
+    transform: translateY(6px) rotate(45deg);
   }
 
-  .hamburger input:checked + svg {
-    transform: rotate(-45deg);
+  .hamburger input:checked + svg .line-middle {
+    opacity: 0;
   }
 
-  .hamburger input:checked + svg .line-top-bottom {
-    stroke-dasharray: 20 300;
-    stroke-dashoffset: -32.42;
+  .hamburger input:checked + svg .line-bottom {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  @media (max-width: 600px) {
+    .hamburger svg {
+      width: 2.7em;
+      height: 2.7em;
+    }
+  }
+
+  @media (max-width: 490px) {
+    .hamburger svg {
+      width: 2.5em;
+      height: 2.5em;
+    }
   }
 `;
 
