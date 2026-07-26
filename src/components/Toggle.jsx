@@ -72,7 +72,7 @@ const MOCK_MENTORS = [
 const LEFT_CORE_FIELDS = [
   { id: "core_engineering", label: "Core Engineering" },
   { id: "research", label: "Research" },
-  { id: "software", label: "IT / Software" },
+  { id: "it", label: "IT / Software" },
   { id: "analytics", label: "Analytics" },
   { id: "civil_services", label: "Civil Services / Govt." }
 ];
@@ -132,7 +132,17 @@ const Toggle = () => {
     setActiveField("all");
   };
 
-  const displayMentors = (mentors && mentors.length > 0) ? mentors : MOCK_MENTORS;
+  const displayMentors = (() => {
+    let list = (mentors && mentors.length > 0) ? mentors : MOCK_MENTORS;
+    if (selectedCategory === "core") {
+      const coreIds = LEFT_CORE_FIELDS.map(f => f.id);
+      list = list.filter(m => coreIds.includes(m.pref || m.field));
+    } else if (selectedCategory === "noncore") {
+      const nonCoreIds = RIGHT_NONCORE_FIELDS.map(f => f.id);
+      list = list.filter(m => nonCoreIds.includes(m.pref || m.field));
+    }
+    return list;
+  })();
 
   return (
     <>
