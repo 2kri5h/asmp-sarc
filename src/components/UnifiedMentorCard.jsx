@@ -5,7 +5,7 @@ import axios from "axios";
 import UseAddToWishlist from "../hooks/useAddToWishlist";
 import UseDeleteFromWishlist from "../hooks/useDeleteFromWishlist";
 import UseFetchWishlist from "../hooks/useFetchWishlist";
-import batmanLogoImg from "../Images/Batman.png";
+import batmanLogoSvg from "../assets/images/Batman-Logo-2018 1.svg";
 import companyNameSvg from "../assets/images/Company Name.svg";
 import subtractSvg from "../assets/images/Subtract.svg";
 import rectangle47Svg from "../assets/images/Rectangle 47.svg";
