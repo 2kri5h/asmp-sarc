@@ -1,0 +1,1821 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{% static 'img/asmp_logo.png' %}" sizes="16x16" type="image/png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link type='text/css' rel="stylesheet" href="{% static 'StyleSheet/home.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+
+  <title> ASMP | SARC | IIT Bombay</title>
+  <style>
+    * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      @media (max-width: 600px){      
+        .asmp_title {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .title img {
+          margin-left: 6%;
+          margin-top: 15% !important;
+          width: 75vw !important;
+        }
+
+        .main_body {
+          padding: 0;
+          margin: 0;
+        }
+        
+        .asmp_content {
+          padding-left: 20px !important;
+        }
+
+        .asmp_dist img {
+          width: 100vw !important;
+        }
+
+        .structure h2 {
+          font-size: 30px !important;
+        }
+
+        .asmp_row {
+          display: none !important;
+        }
+
+        .asmp_row_phone {
+          display: flex !important;
+          flex-direction: column;
+          margin-bottom: 60px;
+        }
+
+        .asmp_circle_phone {
+          width: 90%;
+          border-radius: 0%;
+          background-color: #000090;
+          display: flex !important;
+          font-weight: bold;
+          margin-left: 5%;
+          margin-right: 5%;
+          justify-content: center;
+          text-align: center;
+          align-items: center;
+          color: #fff;
+          font-size: 20px;
+        }
+
+        .asmp_box_phone {
+          background-color: skyblue;
+          margin-left: 5%;
+          margin-right: 5%;
+          padding: 10px;
+          width: 90%;
+          border-radius: 0px;
+          font-size: 20px;
+        }
+        
+        .asmp_dist h2 {
+          font-size: 30px !important;
+        }
+
+        .asmp_faqs h2 {
+          font-size: 30px !important;
+        }
+
+        .team_members {
+          display: flex;
+          flex-direction: column !important;      
+        }
+
+        .member-photo {
+          border-radius: 50%;
+          width: 170px !important;
+          height: 170px !important;
+          object-fit: cover;
+          margin-bottom: 10px;
+          margin-right: 0px !important;
+          margin-left: 0px !important;
+          margin-top: 10%;
+        }
+
+        .member-name {
+          margin-bottom: 5px;
+          font-size: 20px !important;
+          color: #fff
+        }
+
+        .member-details {
+          margin-bottom: 5px;
+          font-size: 16px !important;
+          color: #fff
+        }
+
+        .employee-container {
+          display: flex;
+          flex-direction: column !important;
+        }
+  
+        .navbar {
+          display: none !important;
+        }
+
+        .nav_link_phone {
+          background-color: white;
+          color: black;
+          padding: 10px 10px;
+          border-radius: 38px;
+          transition: all 0.5s ease-in-out;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 25px;
+        }
+
+        .nav__link_phone {
+          color: black;
+          transition: all 0.5s ease-in-out;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 20px;
+        }
+
+        .navbar_phone {
+          background-color: #0A1172;
+          display: flex !important;
+          align-items: center;
+          justify-content: space-between !important;
+          padding: 10px;
+          color: white;
+          position: relative;
+          position: fixed;
+          width: 100%;
+        }
+        
+        .navbar-menu_phone {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 0;
+            z-index: 1;
+            background-color: skyblue;
+            padding: 10px;
+            color: black;
+            width: 150px;
+        }
+
+        .navbar-item_phone {
+          margin-bottom: 5px;
+        }
+
+        /* Hamburger Styles */
+        .navbar-toggle {
+          display: inline-block;
+          width: 30px;
+          height: 20px;
+          cursor: pointer;
+        }
+
+        .navbar-toggle span {
+          display: block;
+          height: 2px;
+          background-color: white;
+          margin-bottom: 5px;
+        }
+      }
+
+      .main_body {
+        background-color: transparent;
+        background-image: url('c:\Users\ASUS\Pictures\asmp_bg.png');
+        padding-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+      }
+
+      .asmp_image {
+        padding-top: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0 20px;
+      }
+
+      .member-photo {
+        max-width: 100%;
+      }
+
+      .brochure_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .brochure-button {
+        border-radius: 15px;
+        padding: 10px 20px;
+        background-color: #007FFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px;
+        text-decoration: none;
+      }
+
+      .brochure-button:hover {
+        background-color: #191970;
+      }
+
+      .asmp_title h1 {
+        justify-content: center;
+        text-align: center
+      }
+
+      .asmp_title {
+        display: flex;
+        align-items: center;
+        /* vertically align content and image */
+      }
+
+      .asmp_content {
+        flex: 1;
+        /* take up remaining space */
+        padding: 30px;
+        color: white;
+        font-size: 20px;
+        text-align: justify;
+        padding-left: 70px;
+      }
+
+      .asmp_content h2 {
+        font-size: 40px;
+        color: #a8d8f0;
+        text-align: center;
+      }
+
+      .asmp_image {
+        flex: 1;
+        /* take up remaining space */
+        text-align: center;
+        /* horizontally center the image */
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .animate-charcter {
+        text-transform: uppercase;
+        background-image: linear-gradient(-225deg,#02055A 0%,#B0DBF1 29%,#02198B 67%,#000137 100%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 7s linear infinite;
+        display: inline-block;
+        font-size: 140px;
+        font-weight: 600;
+        margin-top: 20px
+      }
+
+      @keyframes textclip {
+        to {
+          background-position: 200% center;
+        }
+      }
+
+      .navbar {
+        display: flex;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1px 50px;
+        box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
+        width: 100vw;
+        position: fixed;
+        background-color: #0A1172;
+        transition: all 0.5s ease-in-out;
+        z-index: 200;
+      }
+
+      .logo img{
+        height: 60px !important;
+      }
+      
+      .logo h1 {
+        cursor: pointer;
+      }
+        
+      .nav__links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+        
+      .nav__link {
+        margin: 0 10px;
+        color: white;
+        padding: 15px 15px;
+        border-radius: 8px;
+        background: transparent;
+        transition: all 0.5s ease;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+        
+      .nav__link.active,
+      .nav__link:hover {
+        background: #a8d8f0;
+        color: black;
+        text-decoration: none;
+      }
+
+      .title img{
+        padding: 0.2rem; 
+        width: 40vw; 
+        height: auto; 
+        margin-top: 3%
+      }
+
+      .faq {
+        border: 1px solid skyblue;
+        background-color: skyblue;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 40px;
+        width: 80%;
+        border-radius: 10px;
+      }
+
+      .question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        color: black;
+      }
+
+      .answer {
+        display: none;
+        width: 100% !important; 
+      }
+
+      .answer.expanded {
+        font-size: 20px;
+        padding: 10px;
+        text-align: justify;
+        border-radius: 10px;
+        display: block;
+        margin-bottom: 0px;
+        background-color: skyblue;
+      }
+
+      .structure h2 {
+        color: #a8d8f0;
+        text-align: center;
+        margin-bottom: 5%;
+        font-size: 40px;
+      }
+
+      .asmp_dist h2 {
+        color: #a8d8f0;
+        text-align: center;
+        margin-bottom: 5%;
+        font-size: 40px;
+      }
+    
+      .asmp_faqs h2 {
+        color: #a8d8f0;
+        text-align: center;
+        margin-bottom: 5%;
+        font-size: 40px;
+      }
+
+      .asmp_row {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 60px;
+      }
+
+      .asmp_circle {
+        width: 225px;
+        height: 190px;
+        border-radius: 50%;
+        background-color: #000090;
+        display: flex;
+        font-weight: bold;
+        margin-left: 2%;
+        margin-right: 2%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        color: #fff;
+        font-size: 20px;
+      }
+
+      .asmp_box {
+        background-color: skyblue;
+        padding: 10px;
+        width: 100%;
+        border-radius: 38px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .structure {
+        padding: 5%;
+      }
+
+      .structure_phone {
+        display: none;
+      }
+
+      .asmp_row_phone {
+        display: none;
+      }
+
+      .asmp_circle_phone {
+        display: none;
+      }
+
+      /* Contact section */  
+      .team-members {
+        display: flex;
+        justify-content: center;
+      }
+           
+      .team_members h2 {
+        color: #a8d8f0;
+        text-align: center;
+        margin-bottom: 5%;
+        font-size: 40px;
+      }
+        
+      .member {
+        text-align: center;
+      }
+        
+      .member-photo {
+        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        margin-bottom: 10px;
+        margin-right: 100px;
+        margin-left: 100px;
+        margin-top: 10%;
+      }
+
+      .member-photo:hover {
+        box-shadow: 0 0 15px 8px #0a1172;
+      }
+        
+      .member-name {
+        margin-bottom: 5px;
+        font-size: 25px;
+        color: #fff
+      }
+        
+      .member-details{
+        margin-bottom: 5px;
+        font-size: 17px;
+        color: #fff
+      }
+
+      .social-media{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+        
+      .social-media a {
+        margin-right: 5px;
+        font-size: 25px;
+        color: white;
+      }
+        
+      .social-media a:hover {
+        color:rgb(63, 109, 224);
+      }
+
+      .navbar_phone {
+        display: none;
+      }
+           
+      .arrow-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 0px;
+        margin-right: 10px;
+        color: skyblue !important;
+      }
+
+      .testimonials {
+        margin-bottom: 5%;
+      }
+
+      .rectangle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+        width: 90%;
+        height: auto;
+        background-color: #87ceeb; /* Sky Blue background for the rectangle */
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .rectangle h1 {
+        font-size: 24px;
+        margin: 0;
+        padding: 5px;
+      }
+
+      .rectangle h3 {
+        font-size: 18px;
+        margin: 0;
+        padding: 5px;
+      }
+
+      .rectangle p {
+        font-size: 16px;
+        margin: 0;
+        padding: 5px;
+      }
+
+      .testimonials h2 {
+        font-size: 40px;
+        color: #a8d8f0;
+        text-align: center;
+      }
+
+      .asmp_image {
+        max-width: 100%;
+        height: auto;
+      }
+    
+      @media (max-width: 768px) {
+        .asmp_title {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      
+        .asmp_content {
+          text-align: center;
+        }
+      }
+
+      .employee-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+    .employee-card {
+      text-align: center;
+      margin-right: -5%;
+      margin-left: -5% ;
+    }
+
+    .employee-image {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%; /* To create a circular image */
+      object-fit: cover; /* To maintain aspect ratio */
+      border: 1px solid skyblue;
+      padding: 2% !important ;
+    }
+
+    .employee-name {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .employee-department {
+      color: white;
+    }
+
+    .carousel-inner img {
+      width: 100%;
+      height: 400px; /* Fixed height for all images */
+      object-fit: cover; /* This will maintain aspect ratio while filling the container */
+      border-radius: 15px;
+    }
+    
+    .carousel-inner .carousel-item {
+      transition: transform 0.5s ease-in-out;
+      height: 400px; /* Fixed height for carousel items */
+    }
+    
+    .carousel {
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 0 20px;
+    }
+    
+    .asmp_title {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .asmp_content {
+      flex: 1;
+      padding: 20px;
+    }
+    
+    .asmp_image {
+      flex: 1;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    
+    @media (max-width: 768px) {
+      .asmp_title {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .asmp_content {
+        text-align: center;
+      }
+    }
+
+    /* New Accordion FAQ Section */
+    .accordion-wrapper {
+      max-width: 90%;
+      min-width: 90%;
+      width: 90%;
+      margin: 10px auto;
+    }
+
+    .accordion-outer {
+      margin-bottom: 20px;
+      border-radius: 10px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .accordion-heading {
+      background: linear-gradient(to right, #0A1172,rgb(0, 77, 155));
+      border-radius: 10px 10px 0 0;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+      width: 100%;
+      font-size: 20px;
+      color: white;
+    }
+
+    .accordion-content {
+      padding: 15px;
+      background-color:transparent;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(13px);
+      display: none; /* Start hidden - will be shown by JS */
+      font-size: 18px;
+      border-radius: 0 0 10px 10px;
+      color: #a8d8f0;
+    }
+
+    .accordion-heading:after {
+      content: "+";
+      position: absolute;
+      right: 15px;
+      color: white;
+    }
+
+    .accordion-outer.is-open .accordion-heading:after {
+      content: "-";
+    }
+
+    .accordion-wrapper h2 {
+      font-size: 40px;
+      color: #a8d8f0;
+      text-align: center;
+      margin-bottom: 5%;
+    }
+
+    /* Hover accordion style */
+    .accordion-wrapper.on-hover .accordion-heading {
+      background-color: #e8f5e9;
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+    @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+
+    figure.snip1390 {
+      position: relative;
+      overflow: hidden;
+      margin: 10px;
+      min-width: 280px;
+      max-width: 350px;
+      width: 100%;
+      color: #000000;
+      text-align: center;
+      font-size: 16px;
+      border-radius: 10px;
+      background-color: #2C3447;
+      padding: 25px;
+      background-image: linear-gradient(-25deg, #0A1172 0%,rgb(0, 97, 193) 100%);
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    figure.snip1390 *,
+    figure.snip1390 *:before,
+    figure.snip1390 *:after {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-transition: all 0.35s ease;
+      transition: all 0.35s ease;
+    }
+
+    figure.snip1390 figcaption {
+      width: 100%;
+    }
+
+    figure.snip1390 h2,
+    figure.snip1390 h4,
+    figure.snip1390 blockquote {
+      margin: 0;
+    }
+
+    figure.snip1390 h2,
+    figure.snip1390 h4 {
+      font-weight: 300;
+    }
+
+    figure.snip1390 h2 {
+      color: #ffffff;
+    }
+
+    figure.snip1390 h4 {
+      color:rgb(217, 217, 217);
+    }
+
+    figure.snip1390 blockquote {
+      font-size: 1em;
+      padding: 35px 20px 30px 60px;
+      margin-top: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+      text-align: left;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    figure.snip1390 blockquote:before {
+      font-family: 'FontAwesome';
+      content: "\201C";
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.25;
+      font-style: normal;
+      top: 0px;
+      left: 10px;
+    }
+
+    figure.snip1390 .profile {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+      margin-bottom: 10px;
+      border: solid 5px #A6A57A;
+      object-fit: cover;
+    }
+
+    #testimonials-cards {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    #testimonials-cards > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    #testimonials-cards h2 {
+      font-size: 40px;
+      color: #a8d8f0;
+      text-align: center;
+      margin-bottom: 5%;
+    }
+
+    .social-container {
+      width: 100%;
+      text-align: center;
+      padding: 2rem 0;
+      background-color: rgb(10, 10, 26);
+    }
+  
+    .social-icons {
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+  
+    .social-icons li {
+      display: inline-block;
+      margin: 0.5em;
+      position: relative;
+      font-size: 1.2em;
+    }
+  
+    .social-icons i {
+      color: #fff;
+      position: absolute;
+      top: 21px;
+      left: 21px;
+      transition: all 265ms ease-out;
+    }
+  
+    .social-icons a {
+      display: inline-block;
+      position: relative;
+    }
+  
+    .social-icons a:before {
+      content: " ";
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      display: block;
+      background: linear-gradient(45deg, #00B5F5, #002A8F);
+      transition: all 265ms ease-out;
+    }
+  
+    .social-icons a:hover:before {
+      transform: scale(0);
+      transition: all 265ms ease-in;
+    }
+  
+    .social-icons a:hover i {
+      transform: scale(2.2);
+      color: #00B5F5;
+      background: -webkit-linear-gradient(45deg, #00B5F5, #002A8F);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 265ms ease-in;
+    }
+  
+    footer {
+      background-color:transparent;
+      padding-left: 0px;
+      color: #d7e2e1;
+    }
+  
+    .footer-bottom {
+      background-color:transparent;
+      color: #d7e2e1;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+  </style>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Field', 'Percentage'],
+          ['Finance', 10.9],
+          ['IT', 8.7],
+          ['Consulting', 14.3],
+          ['Research', 14],
+          ['PM', 7.5],
+          ['Analytics', 6.8],
+          ['Core', 16.2],
+          ['Others', 6.8],
+          ['Management', 14.7]
+        ]);
+
+        var options = {
+          title: '',
+          legend: 'none',
+          is3D: true,
+          pieSliceText: 'label',
+          pieSliceTextStyle: {
+            color: '#ffffff',
+            fontSize: 14,
+            bold: true
+          },
+          backgroundColor: 'transparent',
+          colors: [
+            '#0A1172',  // Dark blue
+            '#2C3447',  // Dark slate
+            '#007FFF',  // Bright blue
+            '#000090',  // Navy blue
+            '#1a1a1a',  // Dark gray
+            '#00BFFF',  // Sky blue
+            '#02055A',  // Deep blue
+            '#2C3447',  // Dark slate
+            '#007FFF'   // Bright blue
+          ],
+          tooltip: { 
+            trigger: 'focus',
+            text: 'percentage'
+          },
+          chartArea: { left: 0, top: 0, width: '100%', height: '100%' },
+          enableInteractivity: true
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+
+        // Make the chart responsive
+        window.addEventListener('resize', function() {
+          chart.draw(data, options);
+        });
+      }
+    </script>
+</head>
+
+<body style="font-family: 'spartan';" id="bodyd">
+  <div class="navbar">
+    <div class="logo">
+      <!-- <img src="{% static 'img/sarc_logo_white.png' %}" style="padding: 0.2rem; width: 7vw; height: auto;"> -->
+     
+     {% load static %}
+
+     <div id="three-canvas" style="
+  width: clamp(45px, 8vw, 80px);
+  height: clamp(45px, 8vw, 80px);
+  padding: 0.2rem;
+  flex-shrink: 0;
+  display: block;
+"></div>
+
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.180.0/build/three.module.js';
+
+const container = document.getElementById("three-canvas");
+
+let scene, camera, renderer, cube;
+
+function init(width, height) {
+  // Avoid re-initializing
+  if (renderer) return;
+
+  scene = new THREE.Scene();
+
+  camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  camera.position.z = 3;
+
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(width, height);
+  container.appendChild(renderer.domElement);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 2));
+  const light = new THREE.DirectionalLight(0xffffff, 2);
+  light.position.set(5, 5, 5);
+  scene.add(light);
+
+  const loader = new THREE.TextureLoader();
+  loader.load(
+    "{% static 'img/sarc_logo_white.png' %}",
+    (texture) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      cube = new THREE.Mesh(
+        new THREE.BoxGeometry(2.3, 2.3, 2.3),
+        new THREE.MeshStandardMaterial({ map: texture })
+      );
+      scene.add(cube);
+    }
+  );
+
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (cube) cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+
+// ResizeObserver waits until the element actually has real dimensions
+const ro = new ResizeObserver((entries) => {
+  for (const entry of entries) {
+    const { width, height } = entry.contentRect;
+    if (width === 0 || height === 0) return;
+
+    if (!renderer) {
+      // First time: initialize everything
+      init(width, height);
+    } else {
+      // After that: just resize
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+    }
+  }
+});
+
+ro.observe(container);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    
+    <div class="nav__links">
+      <a href="#about" class="nav__link">About</a>
+      <a href="#testimonials" class="nav__link">Testimonials</a>
+      <a href="#faqs" class="nav__link">FAQs</a>
+      <a href="#initiatives" class="nav__link">Initiatives</a>
+      <a href="#contact" class="nav__link">Contact</a>
+
+      {% if json_registration and json_registration.fields.token %}
+       <!-- Data exists in the context -->
+       <a href="mentorReg/{{json_registration.fields.token}}" class="nav__link">Register</a>
+       {% else %}
+       <a href="mentorReg" class="nav__link">Register</a>
+       <!-- Data does not exist in the context -->
+       {% endif %}
+    </div>
+  </div>
+
+  <nav class="navbar_phone">
+    <img style="width: 20%;" src="{% static 'img/sarc_l ogo_white.png' %}" >
+    <div class="register_phone"><a href="/mentorReg/{{json_registration.fields.token}}" class="nav_link_phone">Register</a></div>
+    <div class="navbar-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="navbar-menu_phone" id="menu">
+      <a style="text-decoration: none; color: black;" href="#about"><div class="navbar-item_phone">About</div></a>
+      <a style="text-decoration: none; color: black;" href="#testimonials"><div class="navbar-item_phone">Testimonials</div></a>
+      <a style="text-decoration: none; color: black;" href="#faqs"><div class="navbar-item_phone">FAQs</div></a>
+      {% comment %} <div class="navbar-item_phone"><a href="#testimonials" class="nav__link_phone">Testimonials</a></div> {% endcomment %}
+      <a style="text-decoration: none; color: black;" href="#contact"><div class="navbar-item_phone">Contact</div></a>
+    </div>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("menu");
+      if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "block";
+      } else {
+        menu.style.display = "none";
+      }
+    }
+  </script>
+
+  <div class="main_body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="title">
+            <img src="{% static 'img/title.png' %}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} <section id="about">
+      <div class="asmp_title">
+        <div class="asmp_content">
+          <h2>ABOUT ASMP</h2>
+          <p>Mentorship isn't just about providing mentees with career advice; it's also about providing students with a role model who can help them overcome obstacles and realise their complete potential.<br></br>
+            ASMP is an initiative designed to utilise the invaluable expertise and knowledge of our distinguished alumni to assist students. It facilitates the exchange of ideas and the acquisition of new insights regarding college life and post-graduation opportunities. <br></br>
+            ASMP provides students with the opportunity for one-on-one interaction with alumni, who serve as our required mentors, through the organization of some offline events which help to break the barriers between IIT Bombay generations over the years.
+          </p>
+        </div>
+        <div class="asmp_image">
+          <img src={% static 'img/asmp_bg1.png' %} alt="Image Description">
+        </div>
+      </div>
+    </section> {% endcomment %}
+
+    {% comment %} <section id="about">
+      <div class="asmp_title">
+        <div class="asmp_content">
+          <h2>ABOUT ASMP</h2>
+          <p>Mentorship isn't just about providing mentees with career advice; it's also about providing students with a role model who can help them overcome obstacles and realise their complete potential.<br><br>
+            ASMP is an initiative designed to utilise the invaluable expertise and knowledge of our distinguished alumni to assist students. It facilitates the exchange of ideas and the acquisition of new insights regarding college life and post-graduation opportunities. <br><br>
+            ASMP provides students with the opportunity for one-on-one interaction with alumni, who serve as our required mentors, through the organization of some offline events which help to break the barriers between IIT Bombay generations over the years.
+          </p>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide asmp_image" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/3.png' %}" class="d-block w-100" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </section> {% endcomment %}
+
+
+    <section id="about">
+      <div class="asmp_title">
+        <div class="asmp_content">
+          <!-- <h2>ABOUT ASMP</h2> -->
+           <!-- ------------------------------------------------------------------- -->
+
+<div class="text3d" data-text="ABOUT ASMP" style="height:140px; width:400px; display:block;"></div>
+
+          <!-- ----------------------------------------------------------------------- -->
+          <p>
+            Mentorship isn't just about providing mentees with career advice; it's also about providing students with a role model who can help them overcome obstacles and realise their complete potential.<br><br>
+            ASMP is an initiative designed to utilise the invaluable expertise and knowledge of our distinguished alumni to assist students. It facilitates the exchange of ideas and the acquisition of new insights regarding college life and post-graduation opportunities. <br><br>
+            ASMP provides students with the opportunity for one-on-one interaction with alumni, who serve as our required mentors, through the organization of some offline events which help to break the barriers between IIT Bombay generations over the years.
+          </p>
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide asmp_image" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/3.png' %}" class="d-block w-100" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/4.jpg' %}" class="d-block w-100" alt="Fourth slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/5.jpg' %}" class="d-block w-100" alt="Fifth slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'img/6.jpg' %}" class="d-block w-100" alt="Sixth slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="testimonials" style="margin-top: 50px;">
+        <!-- --------------------------------------------------------------------------- -->
+<div class="text3d" data-text="TESTIMONIALS" style="height:140px; width:100%; display:block;"></div>
+<!-- ------------------------------------------------------------------------------------- -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+          <figure class="snip1390">
+            <img src="/static/img/testimonial1.jpg" alt="Sameer Desai" class="profile" />
+            <figcaption>
+              <h2>Sameer Desai</h2>
+              <h4>IIT Bombay'1992</h4>
+              <blockquote>For nearly a decade, I've taken on the role of an ASMP mentor. What makes this experience truly remarkable is the opportunity it presents to connect with the vibrant minds of GenZ. The joy I derive from being a mentor stems from witnessing the transformative growth of my mentees. It's immensely fulfilling to play a part in their development, nurturing their talents, and observing the remarkable ways they shape their own futures.</blockquote>
+            </figcaption>
+          </figure>
+
+          <figure class="snip1390">
+            <img src="/static/img/testimonial2.jpg" alt="Rajat Chaturvedi" class="profile" />
+            <figcaption>
+              <h2>Rajat Chaturvedi</h2>
+              <h4>IIT Bombay'2018</h4>
+              <blockquote>I was thrilled to receive the ASMP Program mail, eager to reconnect with my alma mater and give back to the institute that shaped my path. Fortunately, the experience has exceeded my expectations. Some mentorships have evolved into lasting friendships, extending beyond the program's end. After two successful years, I intend to continue mentoring for many more to come.</blockquote>
+            </figcaption>
+          </figure>
+
+          <figure class="snip1390">
+            <img src="/static/img/testimonial3.jpg" alt="Vishram Bapat" class="profile" />
+            <figcaption>
+              <h2>Vishram Bapat</h2>
+              <h4>IIT Bombay'1976</h4>
+              <blockquote>I have been part of the ASMP program for over 3 years and have enjoyed every moment of this initiative.
+                It is true that mentoring is a two way street. There is a lot that I also learn from these motivated youth. My objective is to elevate our association from mentee to friend, ideally best friend. This way the mentee becomes comfortable to discuss any issue, even personal, which comes in way of work. I am happy that we have achieved this target in most cases.</blockquote>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+<!-- ----------------------------------------------------------------------- -->
+
+    <div class="asmp_dist">
+      <!-- <h2> DISTRIBUTION OF MENTORS </h2> -->
+<div class="text3d" data-text="DISTRIBUTION OF MENTORS" style="height:120px; width:900px; display:block;"></div>
+
+      {% comment %} <img src="{% static 'img/asmp_design.jpg' %}" style="padding: 0.2rem; width: 40vw; height: auto; border: 5px solid #0a1172"> {% endcomment %}
+      <div id="piechart" style="width: 100%; height: 500px; max-width: 900px; margin: 0 auto;"></div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="accordion-wrapper set1" id="faqs">
+      <!-- <h2>FAQs</h2> -->
+
+      <!-------------------------------------------------------------------  -->
+
+    <div class="text3d" data-text="FAQs" style="height:130px; width:100%; display:block;"></div>
+
+      <div class="accordion-outer is-open">
+        <div class="accordion-heading">Why should I become an ASMP mentor?</div>
+        <div class="accordion-content" style="display: block;">
+          <p>
+            Bob Proctor rightly said that a mentor is someone who sees more talent and ability within you, than you see in yourself, and helps bring it out of you.<br></br>
+            The primary objective of this program is to offer students a long-lasting source of inspiration and guidance—an exemplary figure who can serve as a beacon of hope during challenging times. The mentors have personally experienced and overcome the hardships and obstacles that students are currently facing or will encounter in their future journeys and are, thus, the best people to look up to.<br></br>
+            Your invaluable wealth of knowledge, combined with both your triumphs and setbacks, is essential in assisting students with understanding and resolving various career-related matters.<br></br>
+            Furthermore, this program presents an opportunity to actively engage with the curiosity and enthusiasm of young minds, fostering meaningful mentor-student relationships that bring both personal and professional fulfillment.<br></br>
+          </p>
+        </div>
+      </div>
+      <div class="accordion-outer">
+        <div class="accordion-heading">How can I create an impact in my mentee's life through ASMP?</div>
+        <div class="accordion-content">
+          <p>
+            The program offers a platform for individual interaction with alumni from our institute, aiding in the resolution of diverse challenges faced by students during their campus journey and beyond.
+            It presents a remarkable chance for students to enhance their interpersonal abilities and forge stronger connections with the esteemed alumni of IIT Bombay.
+            Through this opportunity, mentees can gain valuable insights into their mentors' academic experiences at the institute, thus enriching their own educational journey.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-outer">
+        <div class="accordion-heading">What are the responsibilities as an ASMP Mentor?</div>
+        <div class="accordion-content">
+          <p>
+            <li>Establish connection with the mentee, the mentee's explicit goals and objectives for the relationship</li>
+            <li>Take the initiative in the relationship but allows the mentee to take responsibility for their growth, development, and career planning</li>
+            <li>Provide encouragement and assists the mentee in identifying professional development activities</li>
+            <li>Recognize and work through conflicts in caring ways, invites discussion on differences with the mentee.</li>
+          </p>
+        </div>
+      </div>
+      <div class="accordion-outer">
+        <div class="accordion-heading">Will my contact details be visible to others?</div>
+        <div class="accordion-content">
+          <p>
+            No, your contact details will only be shared with your assigned mentees. All personal information is handled with strict confidentiality by the ASMP team.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-outer">
+        <div class="accordion-heading">Is there a minimum time commitment required from mentors?</div>
+        <div class="accordion-content">
+          <p>
+            There's no fixed time requirement, the frequency of interactions is up to you and your mentee. However, consistency and availability are obviously appreciated from our end.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-outer">
+        <div class="accordion-heading">How are the mentor-mentee pairs assigned?</div>
+        <div class="accordion-content">
+          <p>
+            Pairings are thoughtfully made based on shared backgrounds, interests, and career goals to ensure meaningful and relevant guidance, while maintaining a smooth and respectful mentoring experience.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-outer">
+        <div class="accordion-heading">What if I become unavailable mid-program?</div>
+        <div class="accordion-content">
+          <p>
+            If you become unavailable, please inform us as early as possible so we can manage expectations with your mentee or arrange a backup mentor if necessary.
+          </p>
+        </div>
+      </div>
+    </div>    
+
+    <div id="initiatives" class="structure">
+      <!-- <h2> STRUCTURES AND INITIATIVES BY ASMP </h2> -->
+       <!-- ---------------------------------------------- -->
+        <div class="text3d" data-text="STRUCTURES AND INITIATIVES BY ASMP" style="height:150px; width:100%; display:block;"></div>
+
+
+      <div class="asmp_row">
+        <div class="asmp_circle">Allocation of Mentees</div>
+        <div class="asmp_box">
+          Alumni mentors have freedom to choose the number of mentees.
+          Allocation is done on the basis of aligned interests of the mentor and mentee in their career fields.
+          Alumni and students decide on preset goals, including a mode and frequency of communication as per convenience to make the most out of the program.
+        </div>
+      </div>
+
+      <div class="asmp_row">
+        <div class="asmp_box">
+          Break the Ice is the flagship event of the Alumni Student Mentorship Program that is conducted during the Alumination.
+          The event focuses on bringing mentors and mentees involved in the regular ASMP phase together so that they caninteract with each other over lunch.
+          Besides lunch, a number of other informal activities are organized and a photo booth is also set up so as to create an atmosphere suited for an open and free interaction.
+        </div>
+        <div class="asmp_circle">Break the Ice</div>
+      </div>
+
+      <div class="asmp_row">
+        <div class="asmp_circle">Shadow Program </div>
+        <div class="asmp_box">
+          Students get the opportunity to visit alumni workplaces and gain insights into corporate life.
+          The program involves discussions with alumni, introductions to co-workers, and observations of work methodologies.
+          Past visits have included companies like the Bombay Stock Exchange (BSE), National Stock Exchange (NSE), and Hindustan Unilever Limited (HUL).</div>
+      </div>
+
+      <div class="asmp_row">
+        <div class="asmp_box">
+          Group mentoring is a networking and learning opportunity where students can connect with successful alumni and fellow students who share similar interests.
+          In these sessions, experienced alumni from various fields such as finance, consulting, IT, analytics, and product management interact with small groups of 4-5 students in an offline format.
+          It's a chance to gain insights, ask questions, and receive guidance in a focused and personalized setting, allowing the students to explore specific career options and expand their professional network.
+        </div>
+        <div class="asmp_circle">Group Mentoring </div>
+      </div>
+
+      <div class="asmp_row">
+        <div class="asmp_circle">Nail the Prep</div>
+        <div class="asmp_box">
+          SARC provides an opportunity to all third year students to be a part of mock internship interview program - Nail The Prep, which is planned to engage students in mock interviews with our highly esteemed alumni.
+          NTP generally happens in July, wherein our alumni with the experience in different fields like Finance, consult, PM, IT, software etc. take mock interviews of students who are targeting internships.
+          NTP also involves a QnA session named as Ask The Alum (ATA) to clarify students' doubts about internship
+          season.
+        </div>
+      </div>
+
+      <div class="asmp_row">
+        <div class="asmp_box">
+          Two alumni, one from each career field, contribute to assisting the students in
+          determining which path to pursue.
+          This opportunity provides an environment for open discussion about the required skills, work type, and future perspective of both jobs.
+          This brainstorming session is conducted in batches of limited number of students.
+        </div>
+        <div class="asmp_circle">Transverse Mentoring</div>
+      </div>
+    </div>
+
+
+    <div class="asmp_row_phone">
+      <div class="asmp_circle_phone">Allocation of Mentees</div>
+      <div class="asmp_box_phone">
+        Alumni mentors have freedom to choose the number of mentees. 
+        Allocation is done on the basis of aligned interests of the mentor and mentee in their career fields. 
+        Alumni and students decide on preset goals, including a mode and frequency of communication as per convenience to make the most out of the program.
+      </div>
+    </div>
+
+    <div class="asmp_row_phone">
+      <div class="asmp_circle_phone">Break the Ice</div>
+      <div class="asmp_box_phone">
+        Break the Ice is the flagship event of the Alumni Student Mentorship Program that is conducted during the Alumination. 
+        The event focuses on bringing mentors and mentees involved in the regular ASMP phase together so that they can interact with each other over lunch . 
+        Besides lunch, a number of other informal activities are organized and a photo booth is also set up so as to create an atmosphere suited for an open and free interaction.
+      </div>  
+    </div>
+
+    <div class="asmp_row_phone">
+      <div class="asmp_circle_phone">Shadow Program </div>
+      <div class="asmp_box_phone">
+        Students get the opportunity to visit alumni workplaces and gain insights into corporate life. 
+        The program involves discussions with alumni, introductions to co-workers, and observations of work methodologies. 
+        Past visits have included companies like the Bombay Stock Exchange (BSE), National Stock Exchange (NSE), and Hindustan Unilever Limited (HUL).
+      </div>
+    </div>
+
+    <div class="asmp_row_phone">
+      <div class="asmp_circle_phone">Group Mentoring </div>
+      <div class="asmp_box_phone">
+        Group mentoring is a networking and learning opportunity where students can connect with successful alumni and fellow students who share similar interests. 
+        In these sessions, experienced alumni from various fields such as finance, consulting, IT, analytics, and product management interact with small groups of 4-5 students in an offline format. 
+        It's a chance to gain insights, ask questions, and receive guidance in a focused and personalized setting, allowing the students to explore specific career options and expand their professional network.
+      </div>
+    </div>
+
+    <div class="asmp_row_phone">
+      <div class="asmp_circle_phone">Nail the Prep</div>
+      <div class="asmp_box_phone">
+        SARC provides an opportunity to all third year students to be a part of mock internship interview program - Nail The Prep, which is planned to engage students in mock interviews with our highly esteemed alumni. 
+        NTP generally happens in July, wherein our alumni with the experience in different fields like Finance, consult, PM, IT, software etc. take mock interviews of students who are targeting internships. 
+        NTP also involves a QnA session named as Ask The Alum (ATA) to clarify students' doubts about internship season.
+      </div>
+    </div>
+
+    <div class="asmp_row_phone">
+      <div class="asmp_circle_phone">Transverse Mentoring</div>
+      <div class="asmp_box_phone">
+        Two alumni, one from each career field, contribute to assisting the students in determining which path to pursue. 
+        This opportunity provides an environment for open discussion about the required skills, work type, and future perspective of both jobs. 
+        This brainstorming session is conducted in batches of limited number of students. 
+      </div>
+    </div>
+
+    <section id="contact">
+      <div class="team_members">
+        <!-- <h2> CONTACT US </h2> -->
+         <!-- ------------------------------------------------------------------- -->
+          <div class="text3d" data-text="CONTACT US" style="height:120px; width:100%; display:block;"></div>
+<!-- ---------------------------------------------------------------------- -->
+        <div class="team-members" style="margin-bottom: 5%;">
+          <div class="member">
+            <img src="{% static 'img/aadit.jpg' %}" alt="Team Member 1" class="member-photo">
+            <h3 class="member-name">Aadit Sule </h3>
+            <p class="member-details">SARC Core Team Member, ASMP</p>
+            <p class="member-details">Contact Number - +91 8459539918</p>
+            <p class="member-details">Email: aadit.sarc@gmail.com</p>
+            <div class="social-media">
+              <a href="https://www.facebook.com/profile.php?id=61560310545425&mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/aadit-sule?" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/aaadit_s?igsh=bWZzYTN1MTBmOXZz" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="member">
+            <img src="{% static 'img/aastha.jpg' %}" alt="Team Member 2" class="member-photo">
+            <h3 class="member-name">Aastha Maliwal</h3>
+            <p class="member-details">SARC Core Team Member, ASMP</p>
+            <p class="member-details">Contact Number: +91 9403521022</p>
+            <p class="member-details">Email: aastham.sarc@gmail.com</p>
+            <div class="social-media">
+              <a href="https://www.facebook.com/profile.php?id=61560205817967" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.linkedin.com/in/aastha-maliwal-2ba2b0287/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/aasthamaliwal/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="employee-container">
+        <div class="employee-card">
+          <img src="{% static 'img/jasnoor.jpg' %}" alt="Employee 1" class="employee-image">
+          <div class="employee-name">Jasnoor Kaur</div>
+          <div class="employee-department">+91 9814972319</div>
+        </div>
+
+        <div class="employee-card">
+          <img src="{% static 'img/manas.jpg' %}" alt="Employee 2" class="employee-image">
+          <div class="employee-name">Manas Gupta</div>
+          <div class="employee-department">+91 9351102913</div>
+        </div>
+
+        <div class="employee-card">
+          <img src="{% static 'img/ridham.jpg' %}" alt="Employee 3" class="employee-image">
+          <div class="employee-name">Ridham Saxena</div>
+          <div class="employee-department">+91 9425601681</div>
+        </div>
+
+        <div class="employee-card">
+          <img src="{% static 'img/srishti.jpg' %}" alt="Employee 4" class="employee-image">
+          <div class="employee-name">Srishti Poddar</div>
+          <div class="employee-department">+91 6359263317</div>
+        </div>
+
+        <div class="employee-card">
+          <img src={% static 'img/vaibhav.jpg' %} alt="Employee 5" class="employee-image">
+          <div class="employee-name">Vaibhav Kumar</div>
+          <div class="employee-department">+91 9352722250</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {% comment %} <footer style="background-color:#202020; padding-left: 0px;">
+    <div class="footer_container">
+      <!-- Section: Social media -->
+      <section style="text-align: center;" class="p-4">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/SARC.IITB" role="button"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/sarc_iitb/" role="button"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/user/SARCIIT" role="button"><i style="margin-left:-1px;" class="fab fa-youtube"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/company/student-alumni-relations-cell/" role="button"><i class="fab fa-linkedin-in"></i></a>
+      </section>
+    </div>
+    
+    <div class="p-3" style="background-color: rgba(0, 0, 0, 0); color:#d7e2e1; text-align:center;">
+      © 2024 Made with 💙 by
+      <span style="color:#d7e2e1;">SARC</span>
+    </div>
+  </footer> {% endcomment %}
+
+  <footer>
+    <div class="social-container">
+      <ul class="social-icons">
+        <li><a href="https://www.instagram.com/sarc_iitb/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://www.youtube.com/user/SARCIIT" target="_blank"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="https://www.facebook.com/SARC.IITB" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/student-alumni-relations-cell/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+  
+    <div class="footer-bottom">
+      © 2025 Made with 💙 by <span style="color:#d7e2e1;">SARC</span>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  {% comment %}
+  <script>
+    fetch('/Mentor-' + '1d87612e')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  </script> {% endcomment %}
+
+  <script>document.addEventListener('DOMContentLoaded', function () {
+      var questions = document.getElementsByClassName('question');
+
+      Array.prototype.forEach.call(questions, function (question) {
+        question.addEventListener('click', function () {
+          var answer = this.nextElementSibling;
+          answer.classList.toggle('expanded');
+        });
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      // For the click-based accordions, the first one stays open
+      $(".accordion-wrapper:not(.on-hover)").each(function () {
+        $(this).find(".accordion-outer:first").addClass("is-open");
+        $(this).find(".accordion-content:first").show();
+      });
+
+      // Click event for accordions without "on-hover" class
+      $(".accordion-wrapper:not(.on-hover) .accordion-heading").click(function () {
+        var $accordionContent = $(this).next(".accordion-content");
+        var $accordionOuter = $(this).closest(".accordion-outer");
+        var $parentWrapper = $(this).closest(".accordion-wrapper");
+
+        // Slide up all other accordions IN THIS WRAPPER and remove the 'is-open' class
+        $parentWrapper.find(".accordion-content").not($accordionContent).slideUp();
+        $parentWrapper
+          .find(".accordion-outer")
+          .not($accordionOuter)
+          .removeClass("is-open");
+
+        // Toggle the clicked accordion
+        if ($accordionContent.is(":visible")) {
+          $accordionContent.slideUp();
+          $accordionOuter.removeClass("is-open");
+        } else {
+          $accordionContent.slideDown();
+          $accordionOuter.addClass("is-open");
+        }
+      });
+    });
+  </script>
+
+</body>
+
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.179.1/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.179.1/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+
+THREE.Cache.enabled = true;
+
+const loader = new FontLoader();
+loader.load(
+  'https://unpkg.com/three@0.179.1/examples/fonts/optimer_bold.typeface.json',
+  function(font) {
+    document.querySelectorAll('.text3d').forEach(container => {
+      init3DText(container, container.dataset.text, font);
+    });
+  }
+);
+
+function init3DText(container, text, font) {
+  const W = container.offsetWidth;
+  const H = container.offsetHeight;
+
+  const camera = new THREE.PerspectiveCamera(30, W / H, 1, 1500);
+  camera.position.set(0, 400, 700);
+  const cameraTarget = new THREE.Vector3(0, 150, 0);
+
+  const scene = new THREE.Scene();
+  scene.background = null;
+  scene.fog = new THREE.Fog(0x000000, 250, 1400);
+
+  // Lights matching site's blue/teal theme
+  const dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  dirLight.position.set(0, 0, 1).normalize();
+  scene.add(dirLight);
+
+  const dirLight2 = new THREE.DirectionalLight(0xa8d8f0, 2); // sky blue light
+  dirLight2.position.set(0, 30, 10).normalize();
+  scene.add(dirLight2);
+
+  const pointLight1 = new THREE.PointLight(0x007fff, 6, 0, 0); // site's blue
+  pointLight1.position.set(-200, 100, 90);
+  scene.add(pointLight1);
+
+  const pointLight2 = new THREE.PointLight(0xa8d8f0, 6, 0, 0); // site's sky blue
+  pointLight2.position.set(200, 100, 90);
+  scene.add(pointLight2);
+
+  // Two materials — front face sky blue, sides darker blue (matches site colors)
+  const materials = [
+    new THREE.MeshPhongMaterial({
+      color: 0xa8d8f0,       // site's #a8d8f0 sky blue — front face
+      emissive: 0x0a1172,    // site's #0a1172 dark blue inner glow
+      specular: 0x007fff,    // site's #007fff bright blue shine
+      shininess: 150,
+      flatShading: true
+    }),
+    new THREE.MeshPhongMaterial({
+      color: 0x007fff,       // site's #007fff — side face
+      emissive: 0x02055a,
+      shininess: 100
+    })
+  ];
+
+  const group = new THREE.Group();
+  group.position.y = 100;
+  scene.add(group);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true ,alpha:true});
+  renderer.setClearColor(0x000000, 0);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(W, H);
+  container.appendChild(renderer.domElement);
+
+  const textGeo = new TextGeometry(text, {
+    font: font,
+    size: 70,
+    depth: 20,
+    curveSegments: 4,
+    bevelThickness: 2,
+    bevelSize: 1.5,
+    bevelEnabled: true
+  });
+
+  textGeo.computeBoundingBox();
+  const centerOffset = -0.5 * (textGeo.boundingBox.max.x - textGeo.boundingBox.min.x);
+
+  const textMesh = new THREE.Mesh(textGeo, materials);
+  textMesh.position.x = centerOffset;
+  textMesh.position.y = 30;
+  textMesh.rotation.y = Math.PI * 2;
+  group.add(textMesh);
+
+  let targetRotation = 0;
+  let targetRotationOnPointerDown = 0;
+  let pointerXOnPointerDown = 0;
+  const halfW = W / 2;
+
+  container.style.touchAction = 'none';
+  container.addEventListener('pointerdown', (e) => {
+    if (!e.isPrimary) return;
+    pointerXOnPointerDown = e.clientX - halfW;
+    targetRotationOnPointerDown = targetRotation;
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
+  });
+
+  function onMove(e) {
+    if (!e.isPrimary) return;
+    targetRotation = targetRotationOnPointerDown + (e.clientX - halfW - pointerXOnPointerDown) * 0.02;
+  }
+
+  function onUp(e) {
+    if (!e.isPrimary) return;
+    document.removeEventListener('pointermove', onMove);
+    document.removeEventListener('pointerup', onUp);
+  }
+
+  renderer.setAnimationLoop(() => {
+    group.rotation.y += (targetRotation - group.rotation.y) * 0.05;
+    camera.lookAt(cameraTarget);
+    renderer.render(scene, camera);
+  });
+
+  window.addEventListener('resize', () => {
+    const W2 = container.offsetWidth;
+    camera.aspect = W2 / H;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W2, H);
+  });
+}
+</script>
+
+<!-- --------------------------------------------- -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+
+  <!-- Step 2: Vanta NET effect -->
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+
+  <!-- Step 3: Initialize -->
+  <script>
+    VANTA.NET({
+      el: "#bodyd",        // target element
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 10,
+      minWidth: 10,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x3fffe4,        // net/dot color (hex as number)
+      backgroundColor: 0x0a0a1a  // background color
+    })
+  </script>
+
+
+
+</html>
