@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import Swal from "sweetalert2";
+import { API_BASE_URL } from "../apiConfig";
 
 const UseLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -70,7 +71,7 @@ const UseLogin = () => {
       const csrfToken = csrfTokenMatch ? csrfTokenMatch[1] : "DUMMY_CSRF_TOKEN";
 
       const response = await fetch(
-        "https://asmp.sarc-iitb.org/api/authentication/login/",
+        `${API_BASE_URL}/api/authentication/login/`,
         {
           method: "POST",
           headers: {

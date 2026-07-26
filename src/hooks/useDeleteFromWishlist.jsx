@@ -3,6 +3,8 @@ import { json } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+import { API_BASE_URL } from "../apiConfig";
+
 const UseDeleteFromWishlist = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -32,7 +34,7 @@ const UseDeleteFromWishlist = () => {
       const csrfToken = csrfTokenMatch ? csrfTokenMatch[1] : "DUMMY_CSRF_TOKEN";
 
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/registration/wishlist/`,
+        `${API_BASE_URL}/api/registration/wishlist/`,
         userData,
         {
           headers: {
