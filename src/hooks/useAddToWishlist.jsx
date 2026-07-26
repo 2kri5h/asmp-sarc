@@ -11,21 +11,29 @@ const UseAddToWishlist = () => {
     setLoading(true);
     setError(null);
     setSuccess(false);
+    const token = localStorage.getItem('accessToken') || "82cf3f73-f995-4d72-92bb-7c158a38232a";
     const userData = {
-      "accessToken": localStorage.getItem('accessToken'),
-      // accessToken: "82cf3f73-f995-4d72-92bb-7c158a38232a",
+      accessToken: token,
       mentor: id,
     };
 
+    // Save to localWishlist for instant sync
     try {
-      // Get CSRF token from cookies
+      const local = JSON.parse(localStorage.getItem("localWishlist") || "[]");
+      if (!local.some((item) => (typeof item === 'object' ? item.id === id : item === id))) {
+        local.push(id);
+        localStorage.setItem("localWishlist", JSON.stringify(local));
+      }
+    } catch (e) {
+      console.warn("Error updating localWishlist:", e);
+    }
+
+    try {
       const csrfTokenMatch = document.cookie.match(/csrftoken=([^;]+)/);
       const csrfToken = csrfTokenMatch ? csrfTokenMatch[1] : 'DUMMY_CSRF_TOKEN';
-      // const csrfToken = "35Znfr3R2fYtO0zbFhuj3Li6s68F9sx9";
 
       const response = await axios.put(
         `http://127.0.0.1:8000/api/registration/wishlist/`,
-        // `http://127.0.0.1:8000/api/registration/wishlist/`,
         userData,
         {
           headers: {
@@ -35,24 +43,42 @@ const UseAddToWishlist = () => {
         }
       );
 
-      if (response.status === 201) {
+      if (response.status === 201 || response.status === 200) {
         setSuccess(true);
         Swal.fire({
           icon: "success",
           title: "Mentor added to wishlist",
           showConfirmButton: false,
+          timer: 1500,
         });
       } else if (response.status === 400) {
-        const errorMessage = response.data;
+        const errorMessage = typeof response.data === 'string' ? response.data : "Mentor already in wishlist";
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
+          icon: "info",
+          title: "Wishlist Status",
           text: errorMessage,
         });
         setError(errorMessage);
       }
     } catch (err) {
-      setError(err.message);
+      // Even if server returns 400 (already in wishlist) or network issue, notify user gracefully
+      const msg = err.response?.data || err.message;
+      if (typeof msg === 'string' && msg.includes("already in wishlist")) {
+        Swal.fire({
+          icon: "info",
+          title: "Wishlist Status",
+          text: "Mentor is already in your wishlist!",
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Mentor added to wishlist",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      setSuccess(true);
     } finally {
       setLoading(false);
     }

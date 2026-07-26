@@ -15,12 +15,10 @@ const UseFetchWishlist = () => {
     setSuccess(false);
 
     try {
-      // const accessToken = "82cf3f73-f995-4d72-92bb-7c158a38232a";
-      const accessToken = localStorage.getItem("accessToken");
+      const accessToken = localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a";
 
       const response = await axios.get(
         `http://127.0.0.1:8000/api/registration/wishlist/`,
-        // `http://127.0.0.1:8000/api/registration/wishlist/`,
         {
           params: {
             accessToken: accessToken,
@@ -31,21 +29,52 @@ const UseFetchWishlist = () => {
         }
       );
 
-      if (response.status === 200) {
-        setSuccess(true);
-        setMentors(response.data);
-        // console.log("response.data= ", response.data)
-      } else {
-        setError("Error fetching wishlist");
+      let fetchedMentors = [];
+      if (response.status === 200 && Array.isArray(response.data)) {
+        fetchedMentors = response.data.map(m => ({
+          ...m,
+          name: m.fullname || m.name,
+        }));
       }
+
+      // Merge localWishlist if present
+      let localWishlist = [];
+      try {
+        localWishlist = JSON.parse(localStorage.getItem("localWishlist") || "[]");
+      } catch (e) {
+        localWishlist = [];
+      }
+
+      if (localWishlist.length > 0) {
+        // Fetch all mentors from backend if needed to resolve localWishlist IDs
+        try {
+          const allRes = await axios.post(`http://127.0.0.1:8000/api/mentors/all/`, { accessToken });
+          if (allRes.status === 200 && Array.isArray(allRes.data)) {
+            const allMentors = allRes.data.map(m => ({ ...m, name: m.fullname || m.name }));
+            const localObjects = allMentors.filter(m => localWishlist.includes(m.id));
+            
+            // Combine while preventing duplicates
+            const combinedMap = new Map();
+            fetchedMentors.forEach(m => combinedMap.set(m.id, m));
+            localObjects.forEach(m => combinedMap.set(m.id, m));
+            fetchedMentors = Array.from(combinedMap.values());
+          }
+        } catch (e) {
+          console.warn("Could not fetch all mentors for local merge:", e);
+        }
+      }
+
+      setSuccess(true);
+      setMentors(fetchedMentors);
     } catch (err) {
+      console.warn("Error fetching wishlist API, checking localWishlist:", err);
       setError(err.message);
     } finally {
       setLoading(false);
     }
   }, []);
 
-  return { fetchMentors, loading, error, success, mentors };
+  return { fetchMentors, loading, error, success, mentors, setMentors };
 };
 
 export default UseFetchWishlist;

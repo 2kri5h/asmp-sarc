@@ -85,11 +85,20 @@ const UnifiedMentorCard = ({
   useEffect(() => {
     let isMounted = true;
     const checkWishlist = async () => {
-      const accessToken = localStorage.getItem("accessToken");
-      if (!accessToken) return;
+      const accessToken = localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a";
+      let mentorInWishlist = false;
+
+      // First check localWishlist for instant UI response
+      try {
+        const local = JSON.parse(localStorage.getItem("localWishlist") || "[]");
+        if (local.includes(mentor.id)) {
+          mentorInWishlist = true;
+        }
+      } catch (e) {}
+
       try {
         const response = await axios.get(
-          `https://asmp.sarc-iitb.org/api/registration/wishlist/`,
+          `http://127.0.0.1:8000/api/registration/wishlist/`,
           {
             params: { accessToken },
             headers: { "Content-Type": "application/json" }
@@ -97,11 +106,16 @@ const UnifiedMentorCard = ({
         );
         if (response.status === 200 && isMounted) {
           const list = response.data || [];
-          const mentorInWishlist = list.some((item) => item.id === mentor.id);
-          setIsInWishlist(mentorInWishlist);
+          if (list.some((item) => item.id === mentor.id)) {
+            mentorInWishlist = true;
+          }
         }
       } catch (err) {
-        console.error("Error checking wishlist status:", err);
+        console.warn("Error checking API wishlist status:", err);
+      }
+
+      if (isMounted) {
+        setIsInWishlist(mentorInWishlist);
       }
     };
 

@@ -52,13 +52,10 @@ export default function Wishlist(props) {
   const { deleteMentor } = UseDeleteFromWishlist();
 
   useEffect(() => {
-    const checkMentors = async () => {
-      await fetchMentors();
-    };
-    checkMentors();
+    fetchMentors();
   }, [fetchMentors]);
 
-  const displayMentors = (mentors && mentors.length > 0) ? mentors : MOCK_WISHLIST;
+  const displayMentors = Array.isArray(mentors) ? mentors : [];
 
   async function handleDeleteMentor(id) {
     Swal.fire({

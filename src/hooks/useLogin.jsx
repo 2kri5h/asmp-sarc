@@ -43,7 +43,7 @@ const UseLogin = () => {
 
   const performMockLogin = (email) => {
     const userEmail = email || "testid123@iitb.ac.in";
-    localStorage.setItem("accessToken", "mock-access-token-12345");
+    localStorage.setItem("accessToken", "82cf3f73-f995-4d72-92bb-7c158a38232a");
     localStorage.setItem("userEmail", userEmail);
     setSuccess(true);
     showSuccessToast();

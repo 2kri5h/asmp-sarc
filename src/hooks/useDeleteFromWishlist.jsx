@@ -12,46 +12,49 @@ const UseDeleteFromWishlist = () => {
     setLoading(true);
     setError(null);
     setSuccess(false);
+    const token = localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a";
     const userData = {
-      accessToken: localStorage.getItem("accessToken"),
-      // "accessToken" : "82cf3f73-f995-4d72-92bb-7c158a38232a",
+      accessToken: token,
       mentor: id,
     };
 
+    // Remove from localWishlist
     try {
-      // Get CSRF token from cookies
+      const local = JSON.parse(localStorage.getItem("localWishlist") || "[]");
+      const updated = local.filter((item) => (typeof item === 'object' ? item.id !== id : item !== id));
+      localStorage.setItem("localWishlist", JSON.stringify(updated));
+    } catch (e) {
+      console.warn("Error cleaning localWishlist:", e);
+    }
+
+    try {
       const csrfTokenMatch = document.cookie.match(/csrftoken=([^;]+)/);
       const csrfToken = csrfTokenMatch ? csrfTokenMatch[1] : "DUMMY_CSRF_TOKEN";
-      // const csrfToken = "35Znfr3R2fYtO0zbFhuj3Li6s68F9sx9"
 
       const response = await axios.post(
         `http://127.0.0.1:8000/api/registration/wishlist/`,
-        // `http://127.0.0.1:8000/api/registration/wishlist/`,
         userData,
         {
           headers: {
             "Content-Type": "application/json",
-            // Include CSRF token in headers
             "X-CSRFToken": csrfToken,
           },
         }
       );
 
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 204) {
         setSuccess(true);
         Swal.fire({
           icon: "success",
           title: "Mentor Removed from wishlist",
           showConfirmButton: false,
-          timer: 1500, // Auto close after 1.5 seconds
-        }).then(() => {
-          window.location.reload(); // Refresh the page immediately after the alert is closed or timer expires
+          timer: 1500,
         });
       } else {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: response.data,
+          text: response.data || "Could not remove mentor",
         });
         setError(response.data);
       }
