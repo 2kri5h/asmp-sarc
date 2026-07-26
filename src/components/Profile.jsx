@@ -77,7 +77,17 @@ export default function Profile(props) {
     expectations: "",
   });
 
-  const [preferences, setPreferences] = useState([null, null, null, null, null]);
+  const [preferences, setPreferences] = useState(() => {
+    // Restore draft preferences from localStorage on mount
+    try {
+      const saved = localStorage.getItem("draftPreferences");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length === 5) return parsed;
+      }
+    } catch (e) {}
+    return [null, null, null, null, null];
+  });
   const [showWishlist, setShowWishlist] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
@@ -105,13 +115,22 @@ export default function Profile(props) {
       });
 
       if (fetchedProfile.preferences && Array.isArray(fetchedProfile.preferences)) {
-        const loadedPrefs = [...preferences];
-        fetchedProfile.preferences.forEach((pref, index) => {
-          if (index < 5) {
-            loadedPrefs[index] = pref.mentor || null;
-          }
-        });
-        setPreferences(loadedPrefs);
+        // Only load from backend if no draft already saved locally
+        const hasDraft = (() => {
+          try {
+            const saved = localStorage.getItem("draftPreferences");
+            return saved && JSON.parse(saved).some((p) => p !== null);
+          } catch { return false; }
+        })();
+        if (!hasDraft) {
+          const loadedPrefs = [null, null, null, null, null];
+          fetchedProfile.preferences.forEach((pref, index) => {
+            if (index < 5) {
+              loadedPrefs[index] = pref.mentor || null;
+            }
+          });
+          setPreferences(loadedPrefs);
+        }
       }
 
       if (fetchedProfile.is_registered) {
@@ -119,6 +138,18 @@ export default function Profile(props) {
       }
     }
   }, [fetchedProfile]);
+
+  // Persist draft preferences to localStorage whenever they change
+  useEffect(() => {
+    if (!isRegistered) {
+      localStorage.setItem("draftPreferences", JSON.stringify(preferences));
+    }
+  }, [preferences, isRegistered]);
+
+  // Derive already-selected mentor IDs for the modal
+  const selectedMentorIds = preferences
+    .filter((p) => p !== null)
+    .map((p) => p.id);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -183,6 +214,7 @@ export default function Profile(props) {
 
       await registerMentors(selectedMentors);
       setIsRegistered(true);
+      localStorage.removeItem("draftPreferences"); // Clear draft on successful registration
 
       Swal.fire({
         title: "Success!",
@@ -440,6 +472,7 @@ export default function Profile(props) {
             setActiveCard(null);
           }}
           onSelect={handleMentorSelect}
+          selectedMentorIds={selectedMentorIds}
         />
       )}
     </>

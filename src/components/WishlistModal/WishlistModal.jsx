@@ -1,7 +1,7 @@
 import React from "react";
 import WishlistModalContent from "./WishlistModalContent";
 
-export default function WishlistModal({ onClose, onSelect }) {
+export default function WishlistModal({ onClose, onSelect, selectedMentorIds = [] }) {
   return (
     <div
       className="fixed inset-0 bg-[#0c121d] bg-opacity-85 backdrop-blur-[2px] flex justify-center items-center z-50 p-2"
@@ -20,7 +20,7 @@ export default function WishlistModal({ onClose, onSelect }) {
         >
           ×
         </button>
-        <WishlistModalContent onSelect={onSelect} />
+        <WishlistModalContent onSelect={onSelect} selectedMentorIds={selectedMentorIds} />
       </div>
     </div>
   );

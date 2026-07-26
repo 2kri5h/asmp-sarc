@@ -4,7 +4,7 @@ import UseDeleteFromWishlist from "../../hooks/useDeleteFromWishlist";
 import Swal from "sweetalert2";
 import UnifiedMentorCard from "../UnifiedMentorCard";
 
-export default function WishlistModalContent({ onSelect }) {
+export default function WishlistModalContent({ onSelect, selectedMentorIds = [] }) {
   const { fetchMentors, loading, error, mentors, setMentors } = UseFetchWishlist();
   const { deleteMentor } = UseDeleteFromWishlist();
 
@@ -100,19 +100,23 @@ export default function WishlistModalContent({ onSelect }) {
           padding: "10px 0 30px 0",
         }}
       >
-        {mentors.map((mentor) => (
-          <UnifiedMentorCard
-            key={mentor.id}
-            mentor={mentor}
-            mentors={mentors}
-            setMentors={setMentors}
-            mode="selection"
-            onSelect={onSelect}
-            onDelete={handleDelete}
-            showAddButton={false}
-            showRemoveButton={true}
-          />
-        ))}
+        {mentors.map((mentor) => {
+          const isAlreadySelected = selectedMentorIds.includes(mentor.id);
+          return (
+            <UnifiedMentorCard
+              key={mentor.id}
+              mentor={mentor}
+              mentors={mentors}
+              setMentors={setMentors}
+              mode="selection"
+              onSelect={isAlreadySelected ? undefined : onSelect}
+              onDelete={handleDelete}
+              showAddButton={false}
+              showRemoveButton={true}
+              isAlreadySelected={isAlreadySelected}
+            />
+          );
+        })}
       </div>
     </div>
   );

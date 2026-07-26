@@ -74,7 +74,8 @@ const UnifiedMentorCard = ({
   showAddButton = true,
   showRemoveButton = false,
   isRegistered = false,
-  preferenceIndex = null
+  preferenceIndex = null,
+  isAlreadySelected = false,
 }) => {
   const [clicked, setClicked] = useState(false);
   const [isInWishlist, setIsInWishlist] = useState(false);
@@ -286,8 +287,13 @@ const UnifiedMentorCard = ({
 
             {/* Vertical Stacked Buttons */}
             <div className="selection-card-buttons">
-              <button className="selection-btn select-action-btn" onClick={handleSelect}>
-                SELECT
+              <button
+                className={`selection-btn select-action-btn${isAlreadySelected ? " already-selected-btn" : ""}`}
+                onClick={isAlreadySelected ? undefined : handleSelect}
+                disabled={isAlreadySelected}
+                style={isAlreadySelected ? { background: "#2a6e3f", cursor: "default", opacity: 1 } : {}}
+              >
+                {isAlreadySelected ? "SELECTED ✓" : "SELECT"}
               </button>
               <button className="selection-btn remove-action-btn" onClick={handleDelete}>
                 Remove
