@@ -20,7 +20,7 @@ export default function WishlistModalContent({ onSelect, selectedMentorIds = [] 
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "YES",
-        cancelButtonText: "Cancel",
+        cancelButtonText: "CANCEL",
         customClass: {
           popup: 'custom-swal-popup',
           title: 'custom-swal-title',

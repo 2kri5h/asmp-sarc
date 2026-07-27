@@ -56,44 +56,33 @@ body .swal2-container .swal2-actions {
   margin-top: 15px !important;
 }
 
-body .swal2-container .swal2-confirm {
+body .swal2-container .swal2-confirm,
+body .swal2-container .swal2-cancel,
+body .swal2-container .custom-swal-confirm-btn,
+body .swal2-container .custom-swal-cancel-btn {
   background: #A4B4B8 !important;
   color: #000000 !important;
-  border: none !important;
-  border-radius: 8px !important;
-  padding: 12px 28px !important;
+  border: 2px solid #000000 !important;
+  outline: 2px solid #FFFFFF !important;
+  outline-offset: 2px !important;
+  border-radius: 10px !important;
+  padding: 10px 28px !important;
   font-family: 'Oxanium', sans-serif !important;
   font-weight: 800 !important;
   font-size: 18px !important;
   text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
   cursor: pointer !important;
   margin: 0 10px !important;
   transition: all 0.2s ease !important;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
-body .swal2-container .swal2-confirm:hover {
-  background: #A4B4B8 !important;
-  transform: scale(1.05) !important;
-}
-
-body .swal2-container .swal2-cancel {
-  background: #A4B4B8 !important;
-  color: #FFFFFF !important;
-  border: none !important;
-  border-radius: 8px !important;
-  padding: 12px 28px !important;
-  font-family: 'Oxanium', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 18px !important;
-  cursor: pointer !important;
-  margin: 0 10px !important;
-  transition: all 0.2s ease !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-}
-
-body .swal2-container .swal2-cancel:hover {
-  background: #A4B4B8 !important;
+body .swal2-container .swal2-confirm:hover,
+body .swal2-container .swal2-cancel:hover,
+body .swal2-container .custom-swal-confirm-btn:hover,
+body .swal2-container .custom-swal-cancel-btn:hover {
+  background: #B4C4C8 !important;
   transform: scale(1.05) !important;
 }
 
