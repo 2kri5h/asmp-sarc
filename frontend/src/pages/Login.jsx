@@ -194,21 +194,9 @@ function Login() {
         >
           {hover ? "":"login"}
         </button>
-        <div
-          style={{
-            color: "rgba(255,255,255,0.8)",
-            fontSize: "medium",
-          }}
-          id="registerlink"
-        >
+        <div id="registerlink">
           New User?{" "}
-          <a
-            href="/register"
-            style={{
-              color: "white", // hot pink
-              textDecoration: "underline"
-            }}
-          >
+          <a href="/register">
             Register here
           </a>
         </div>
