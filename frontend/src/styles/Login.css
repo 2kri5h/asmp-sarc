@@ -366,35 +366,36 @@
     position: relative;
     z-index: 10;
     margin-top: 20px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 17px;
+    font-family: 'Oxanium', 'Space Grotesk', sans-serif;
+    font-size: 24px;
     font-weight: 500;
-    color: #E2E8F0;
+    color: #FFFFFF;
     text-align: center;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 10px 24px;
-    border-radius: 30px;
-    border: 1px solid rgba(200, 168, 64, 0.5);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
     transition: all 0.3s ease;
 }
 
 #registerlink:hover {
-    border-color: #C8A840;
-    box-shadow: 0 4px 20px rgba(200, 168, 64, 0.3);
-    background: rgba(15, 23, 42, 0.9);
+    border: none;
+    box-shadow: none;
+    background: transparent;
 }
 
 #registerlink a {
-    color: #C8A840 !important;
-    font-weight: 700;
+    color: #FFFFFF !important;
+    font-family: 'Oxanium', 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
     text-decoration: underline;
-    margin-left: 5px;
-    transition: color 0.2s ease;
+    margin-left: 6px;
+    transition: opacity 0.2s ease;
 }
 
 #registerlink a:hover {
-    color: #F3E5AB !important;
+    color: #FFFFFF !important;
+    opacity: 0.85;
 }

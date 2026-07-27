@@ -195,9 +195,9 @@ function Login() {
           {hover ? "":"login"}
         </button>
         <div id="registerlink">
-          New User?{" "}
+          New Here?{" "}
           <a href="/register">
-            Register here
+            REGISTER
           </a>
         </div>
       </div>
