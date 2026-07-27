@@ -322,7 +322,7 @@ function Register() {
 
           <input
             type="text"
-            placeholder="LDAP ID"
+            placeholder="LDAP ID (rollnumber@iitb.ac.in)"
             value={emailId}
             onChange={handleEmailIdChange}
             className="input-field"
