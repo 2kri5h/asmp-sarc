@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend
+      context: ./frontend/backend
       dockerfile: Dockerfile
     container_name: asmp_backend
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
@@ -16,7 +16,7 @@ services:
 
   frontend:
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: asmp_frontend
     ports:
