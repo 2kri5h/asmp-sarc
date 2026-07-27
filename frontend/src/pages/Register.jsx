@@ -248,9 +248,14 @@ function Register() {
       return;
     }
 
+    let cleanLdap = emailId.trim().toLowerCase();
+    if (cleanLdap && !cleanLdap.endsWith("@iitb.ac.in")) {
+      cleanLdap = cleanLdap + "@iitb.ac.in";
+    }
+
     const userData = {
       fullname: name.trim(),
-      ldap: emailId.trim().toLowerCase() + "@iitb.ac.in",
+      ldap: cleanLdap,
       roll: rollNumber.trim(),
       dept: department.trim(),
       degree: degree.trim(),

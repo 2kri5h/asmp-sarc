@@ -12,7 +12,14 @@ import os
 
 class CreateUserAPIView(APIView):
     def post(self, request, format=None):
-        serializer = UserSerializer(data=request.data)
+        data = request.data.copy()
+        if 'ldap' in data and data['ldap']:
+            ldap_input = str(data['ldap']).strip().lower()
+            if not ldap_input.endswith('@iitb.ac.in'):
+                ldap_input += '@iitb.ac.in'
+            data['ldap'] = ldap_input
+
+        serializer = UserSerializer(data=data)
         if serializer.is_valid():
             user = serializer.save()
             user.is_active = True
@@ -25,7 +32,10 @@ class CreateUserAPIView(APIView):
             print("User created successfully")
             print("Token: ", token)
             
-            send_sso_mail(name=user.fullname, emailid=user.ldap, token=token.token)
+            try:
+                send_sso_mail(name=user.fullname, emailid=user.ldap, token=token.token)
+            except Exception as e:
+                print(f"Error calling send_sso_mail: {e}")
             
             response_data = serializer.data.copy()
             response_data.pop('password', None)
@@ -54,7 +64,10 @@ class TokenVerification(APIView):
 class Login(APIView):
     def post(self, request, format=None):
         try:
-            user = User.objects.get(ldap=request.data['ldap'])
+            ldap_input = str(request.data.get('ldap', '')).strip().lower()
+            if ldap_input and not ldap_input.endswith('@iitb.ac.in'):
+                ldap_input += '@iitb.ac.in'
+            user = User.objects.get(ldap=ldap_input)
             if user.is_active == False:
                 return Response({"error": "User not verified, please verify your account from your email"}, status=status.HTTP_401_UNAUTHORIZED)
             if user.password == request.data['password']:

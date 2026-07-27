@@ -85,7 +85,7 @@ function Login() {
 
   const handleLogin = () => {
     // Validate LDAP ID format
-    const trimmedEmail = emailId.trim();
+    let trimmedEmail = emailId.trim().toLowerCase();
     
     if (!trimmedEmail) {
       Swal.fire({
@@ -98,24 +98,12 @@ function Login() {
       return;
     }
     
-    if (!trimmedEmail.includes("@iitb.ac.in")) {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid LDAP ID Format",
-        html: `
-          <div style="text-align: left; padding: 10px;">
-            <p style="margin-top: 15px; color: #D9CDB3;">Please add "@iitb.ac.in" to your LDAP ID and try again.</p>
-          </div>
-        `,
-        confirmButtonColor: "#D9CDB3",
-        confirmButtonText: "I understand",
-        width: "500px",
-      });
-      return;
+    if (!trimmedEmail.endsWith("@iitb.ac.in")) {
+      trimmedEmail = trimmedEmail + "@iitb.ac.in";
     }
     
     // Additional validation: check if it's just "@iitb.ac.in" without username
-    if (trimmedEmail === "@iitb.ac.in" || trimmedEmail.startsWith("@")) {
+    if (trimmedEmail === "@iitb.ac.in") {
       Swal.fire({
         icon: "error",
         title: "Invalid LDAP ID",
@@ -127,7 +115,7 @@ function Login() {
     }
 
     const userData = {
-      ldap: trimmedEmail.toLowerCase(),
+      ldap: trimmedEmail,
       password: password.trim(),
     };
 
