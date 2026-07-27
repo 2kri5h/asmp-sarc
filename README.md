@@ -1,8 +1,51 @@
-# React + Vite
+# ASMP - Alumni Student Mentorship Program
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains both the **Frontend** and **Backend** services for the ASMP project.
 
-Currently, two official plugins are available:
+## Repository Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+.
+├── frontend/             # Vite + React Frontend Application
+│   ├── src/
+│   │   ├── assets/       # Consolidated static assets (images, fonts, videos)
+│   │   ├── components/   # Structured, modular React components
+│   │   ├── pages/        # Page views (Login, Register, Research)
+│   │   ├── hooks/        # Custom React hooks
+│   │   ├── data/         # Mock data & metadata
+│   │   └── styles/       # CSS/SCSS stylesheets
+│   ├── public/           # Public static files
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+├── backend/              # Django REST API Backend
+│   ├── manage.py
+│   ├── pyproject.toml
+│   └── requirements.txt
+└── docker-compose.yml    # Docker environment orchestration
+```
+
+## Getting Started
+
+### Frontend Development
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Backend Development
+
+```bash
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000
+```
+
+### Running with Docker Compose
+
+```bash
+docker-compose up --build
+```

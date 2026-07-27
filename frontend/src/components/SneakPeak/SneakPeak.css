@@ -1,0 +1,458 @@
+/* Allow scrolling, hide scrollbar visually */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: auto;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
+}
+
+/* Chrome, Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Full page container — background now applied inline from Sneakpeak.jsx via `sneakBg` import */
+.sneakpeak-container {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 220px 90px 0 90px;
+  /* margin-bottom: 100px; */
+  background-color: #0a0c10;
+  background-size: cover;
+  background-position: top center;
+  /* color: rgb(222, 22, 22); */
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Scrollable row of cards */
+.scroll-wrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 80px;
+  padding: 100px 60px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar (Chrome/Safari) */
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mentor card design — muted, light glass panel matching the mockup */
+.mentor-card {
+  flex: 0 0 auto;
+  width: 360px;
+  height: 400px;
+  background-color: #A4B4B8;
+  border: none; /* or use a solid border below */
+  border-radius: 28px;
+  opacity: 0.85;
+  box-shadow:
+    0 0 0 2px #A4B4B8,
+    0 12px 30px rgba(0,0,0,0.4);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 28px;
+  padding: 28px 24px;
+  scroll-snap-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.mentor-card:hover {
+  border: 7px solid #1a3d51b1;
+}
+
+/* Text inside card — bold, dark tones matching the mockup */
+.mentor-card h4,
+.mentor-card h5,
+.mentor-card p {
+  margin: 8px 0;
+  color: #1a1c24;
+}
+
+
+
+
+/* Title section styling */
+@font-face {
+  font-family: "Exima Geometric";
+  src: url("../../assets/fonts/Exima Geometric.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "BatmanForeverAlternate";
+  src: url("./batmfa__.ttf") format("truetype");
+  font-weight: normal;
+  /* color: #324046; */
+}
+
+.title-section {
+  margin-bottom: 10px;
+  
+}
+
+
+.position-title {
+  margin-bottom: 4px !important;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: "Exima Geometric", sans-serif;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: #010101 !important;
+}
+
+.company-name {
+  margin: 0 !important;
+  font-size: 20px;
+  padding-top: 8px;
+  font-family: "BatmanForeverAlternate", sans-serif;
+  color: #324046 !important;
+  
+  opacity: 0.9;
+}
+
+.mentor-card p {
+  font-family: "Oxanium", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #0a0a0afe;
+  /* line-height: 1.2; */
+  
+}
+/* Button — darker muted slate pill with a bordered circular arrow, matching the mockup */
+.cssbuttons-io-button {
+  background:#3B4854;
+  color: #A4B4B8;
+  font-family: "Oxanium", sans-serif;
+  padding: 0.35em 3.3em 0.35em 1.2em;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 2.6em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.cssbuttons-io-button .icon {
+  background: transparent;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  border: 1.5px solid #f0f0f2;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(4, 5, 87, 0.762);
+} 
+
+/* .cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+  background: rgba(255, 255, 255, 0.12);
+} */
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #f0f0f2;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.2em);
+}
+
+.btn-wrapper {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+.btn-wrapper a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Arrow styles */
+.arrow {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 46px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.arrow:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+/* Responsive */
+/* ===========================
+   LARGE TABLETS (1024px)
+=========================== */
+@media screen and (max-width: 1024px) {
+
+  .sneakpeak-container{
+    padding: 160px 40px 40px;
+  }
+
+  .scroll-wrapper{
+    gap: 45px;
+    padding: 60px 20px;
+  }
+
+  .mentor-card{
+    width: 320px;
+    height: 420px;
+    padding: 24px 20px;
+  }
+
+  .mentor-card p{
+    font-size: 1.1rem;
+  }
+
+  .position-title{
+    font-size: 1.1rem;
+  }
+
+  .company-name{
+    font-size: 1.2rem;
+  }
+
+  .cssbuttons-io-button{
+    font-size: 1.1rem;
+  }
+
+  .arrow{
+    width: 45px;
+    height: 45px;
+    line-height: 41px;
+    font-size: 2rem;
+  }
+
+}
+
+/* ===========================
+   TABLETS (768px)
+=========================== */
+@media screen and (max-width: 768px) {
+
+  .sneakpeak-container{
+    padding: 140px 25px 30px;
+  }
+
+  .scroll-wrapper{
+    gap: 30px;
+    padding: 40px 10px;
+  }
+
+  .mentor-card{
+    width: 280px;
+    height: 380px;
+    border-radius: 22px;
+    padding: 20px;
+  }
+
+  .mentor-card p{
+    font-size: 1rem;
+  }
+
+  .position-title{
+    font-size: 1rem;
+  }
+
+  .company-name{
+    font-size: 0.95rem;
+  }
+
+  .cssbuttons-io-button{
+    font-size: 1rem;
+    height: 2.5em;
+  }
+
+  .cssbuttons-io-button .icon{
+    width: 1.8em;
+    height: 1.8em;
+  }
+
+  .arrow{
+    width: 42px;
+    height: 42px;
+    line-height: 38px;
+    font-size: 1.8rem;
+  }
+
+}
+
+/* ===========================
+   MOBILE (600px)
+=========================== */
+@media screen and (max-width: 600px) {
+
+  .sneakpeak-container{
+    padding: 110px 15px 20px;
+    overflow-x: hidden;
+  }
+
+  .scroll-wrapper{
+    gap: 20px;
+    padding: 20px 5px;
+    scroll-padding: 15px;
+  }
+
+  .mentor-card{
+    width: calc(100vw - 40px);
+    max-width: 340px;
+    height: auto;
+    min-height: 340px;
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .mentor-card p{
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .position-title{
+    font-size: 1rem;
+  }
+
+  .company-name{
+    font-size: 1.2rem;
+    padding-top: 8px;
+  }
+
+  .btn-wrapper{
+    margin-top: 20px;
+  }
+
+  .cssbuttons-io-button{
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.8em 3em 0.8em 1em;
+  }
+
+  .cssbuttons-io-button .icon{
+    width: 1.8em;
+    height: 1.8em;
+  }
+
+  .arrow{
+    width: 38px;
+    height: 38px;
+    line-height: 34px;
+    font-size: 1.5rem;
+  }
+
+  .arrow.left{
+    left: 5px;
+  }
+
+  .arrow.right{
+    right: 5px;
+  }
+
+}
+
+/* ===========================
+   SMALL PHONES (400px)
+=========================== */
+@media screen and (max-width: 400px) {
+
+  .sneakpeak-container{
+    padding: 95px 10px 20px;
+  }
+
+  .mentor-card{
+    width: calc(100vw - 20px);
+    padding: 18px 14px;
+  }
+
+  .mentor-card p{
+    font-size: 0.9rem;
+  }
+
+  .position-title{
+    font-size: 0.95rem;
+  }
+
+  .company-name{
+    font-size: 1rem;
+  }
+
+  .cssbuttons-io-button{
+    font-size: 0.9rem;
+  }
+
+  .arrow{
+    width: 34px;
+    height: 34px;
+    line-height: 30px;
+    font-size: 1.3rem;
+  }
+
+}
