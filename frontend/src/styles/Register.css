@@ -123,6 +123,45 @@ html {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* LDAP Container with Domain Badge */
+.ldap-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 578px;
+  max-width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.ldap-container .ldap-input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.ldap-domain-badge {
+  height: 58px;
+  padding: 0 22px;
+  background: rgba(164, 180, 184, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Space Grotesk', serif;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
 /* Prevent Chrome autofill white/blue background */
 .input-field:-webkit-autofill,
 .input-field:-webkit-autofill:hover,

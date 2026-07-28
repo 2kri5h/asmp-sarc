@@ -85,9 +85,9 @@ function Login() {
 
   const handleLogin = () => {
     // Validate LDAP ID format
-    let trimmedEmail = emailId.trim().toLowerCase();
+    let rawEmail = emailId.trim().toLowerCase();
     
-    if (!trimmedEmail) {
+    if (!rawEmail) {
       Swal.fire({
         icon: "error",
         title: "LDAP ID Required",
@@ -98,24 +98,14 @@ function Login() {
       return;
     }
     
-    if (!trimmedEmail.endsWith("@iitb.ac.in")) {
-      trimmedEmail = trimmedEmail + "@iitb.ac.in";
+    if (rawEmail.endsWith("@iitb.ac.in")) {
+      rawEmail = rawEmail.slice(0, -11);
     }
     
-    // Additional validation: check if it's just "@iitb.ac.in" without username
-    if (trimmedEmail === "@iitb.ac.in") {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid LDAP ID",
-        text: "Please enter your complete LDAP ID including your username/roll number before @iitb.ac.in",
-        confirmButtonColor: "#D9CDB3",
-        confirmButtonText: "Got it!",
-      });
-      return;
-    }
+    const finalLdap = rawEmail + "@iitb.ac.in";
 
     const userData = {
-      ldap: trimmedEmail,
+      ldap: finalLdap,
       password: password.trim(),
     };
 
@@ -140,13 +130,16 @@ function Login() {
         <div className="image-containerr">
           <img src={logo} alt="Logo" className="logoo" />
         </div>
-        <input
-          type="text"
-          placeholder="LDAP ID (rollnumber@iitb.ac.in)"
-          value={emailId}
-          onChange={handleEmailIdChange}
-          className={inputStyle.join(" ")}
-        />
+        <div className="ldap-container">
+          <input
+            type="text"
+            placeholder="LDAP ID"
+            value={emailId}
+            onChange={handleEmailIdChange}
+            className="input2 ldap-input"
+          />
+          <div className="ldap-domain-badge">@iitb.ac.in</div>
+        </div>
         <div className="password-input-container">
           <input
             type={showPassword ? "text" : "password"}

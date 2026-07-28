@@ -249,13 +249,14 @@ function Register() {
     }
 
     let cleanLdap = emailId.trim().toLowerCase();
-    if (cleanLdap && !cleanLdap.endsWith("@iitb.ac.in")) {
-      cleanLdap = cleanLdap + "@iitb.ac.in";
+    if (cleanLdap.endsWith("@iitb.ac.in")) {
+      cleanLdap = cleanLdap.slice(0, -11);
     }
+    const finalLdap = cleanLdap ? cleanLdap + "@iitb.ac.in" : "";
 
     const userData = {
       fullname: name.trim(),
-      ldap: cleanLdap,
+      ldap: finalLdap,
       roll: rollNumber.trim(),
       dept: department.trim(),
       degree: degree.trim(),
@@ -325,13 +326,16 @@ function Register() {
             className="input-field"
           />
 
-          <input
-            type="text"
-            placeholder="LDAP ID (rollnumber@iitb.ac.in)"
-            value={emailId}
-            onChange={handleEmailIdChange}
-            className="input-field"
-          />
+          <div className="ldap-container">
+            <input
+              type="text"
+              placeholder="LDAP ID"
+              value={emailId}
+              onChange={handleEmailIdChange}
+              className="input-field ldap-input"
+            />
+            <div className="ldap-domain-badge">@iitb.ac.in</div>
+          </div>
 
           <input
             type="text"

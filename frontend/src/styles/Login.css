@@ -22,7 +22,7 @@
     height: 1292px;
     left: 50%;
     transform: translateX(-50%) translateX(36.5px);
-    top: -120px;
+    top: -110px;
     z-index: 0;
     pointer-events: none;
 
@@ -30,7 +30,7 @@
 
 .login-page .register-bg-img {
     position: absolute;
-    top: -8px;
+    top: -30px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -42,7 +42,7 @@
     position: absolute;
     width: 480px;
     height: 853px;
-    left: 885px;
+    left: 900px;
     /* Figma offset: 448px - (-433px) */
     top: -105px;
     /* Figma offset */
@@ -58,7 +58,7 @@
     width: 485px;
     max-width: 90vw;
     height: 143px;
-    margin-top: 110px;
+    margin-top: 225px;
     margin-bottom: 30px;
     z-index: 2;
 }
@@ -77,7 +77,7 @@
 }
 
 .input2 {
-    font-family: 'Space Grotesk';
+    font-family: 'Space Grotesk', serif;
     width: 578px;
     max-width: 100%;
     height: 58px;
@@ -86,7 +86,8 @@
     font-size: 22px;
     background-color: rgba(164, 180, 184, 0.45);
     backdrop-filter: blur(8px);
-    color: #000000;
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
     padding: 0 20px;
     margin-bottom: 10px;
     box-sizing: border-box;
@@ -99,13 +100,53 @@
     outline: none;
 }
 
+/* LDAP Container with Domain Badge */
+.ldap-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 578px;
+    max-width: 100%;
+    margin-bottom: 10px;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.ldap-container .ldap-input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+
+.ldap-domain-badge {
+    height: 58px;
+    padding: 0 22px;
+    background: rgba(164, 180, 184, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Space Grotesk', serif;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    user-select: none;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
 /* Prevent Chrome autofill white/blue background */
 .input2:-webkit-autofill,
 .input2:-webkit-autofill:hover,
 .input2:-webkit-autofill:focus,
 .input2:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 1000px rgba(164, 180, 184, 0.45) inset !important;
-    -webkit-text-fill-color: #000000 !important;
+    -webkit-text-fill-color: #ffffff !important;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -115,8 +156,7 @@
 }
 
 .input2::placeholder {
-    color: #000000;
-    opacity: 0.65;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Password Input Container */
