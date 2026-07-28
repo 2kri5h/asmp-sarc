@@ -35,6 +35,15 @@ import image30 from "../../assets/images/Suhani.jpg";
 
 import CursorAnimation from "../Cursor/CursorAnimation";
 
+const getWhatsAppLink = (phone) => {
+  if (!phone) return null;
+
+  const digits = phone.replace(/\D/g, "");
+  if (!digits) return null;
+
+  return `https://wa.me/${digits}`;
+};
+
 const Team = () => {
   const teamData = {
     overallCoordinator:[
@@ -243,7 +252,7 @@ const Team = () => {
       ></div>
       <div className="name">{member.name}</div>
 
-      {(member.instagram || member.linkedin) && (
+      {(member.instagram || member.linkedin || member.phone) && (
         <div className="social-links">
           {member.instagram && (
             <a
@@ -259,27 +268,26 @@ const Team = () => {
               <img src={linkedinIcon} alt="LinkedIn" className="icon" />
             </a>
           )}
-        </div>
-      )}
-
-      {member.phone && (
-        <div
-          className="phone-number"
-          style={{
-            marginTop: "8px",
-            color: "white",
-            fontSize: "0.9rem",
-            padding: "4px 8px",
-            borderRadius: "6px",
-            backgroundColor: "rgba(255, 255, 255, 0.15)", // translucent white bg
-            backdropFilter: "blur(5px)", // blurry glass effect
-            WebkitBackdropFilter: "blur(5px)", // for Safari
-            display: "inline-block",
-            fontWeight: "600",
-          }}
-          title={`Call ${member.name}`}
-        >
-          📞 {member.phone}
+          {member.phone && (
+            <a
+              href={getWhatsAppLink(member.phone)}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Message ${member.name} on WhatsApp`}
+              className="whatsapp-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="icon whatsapp-icon"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12.04 2.5A9.54 9.54 0 0 0 2.5 12.04c0 1.68.44 3.32 1.28 4.76L2.5 21.5l4.77-1.27a9.53 9.53 0 0 0 4.77 1.27h.01a9.54 9.54 0 0 0 9.54-9.54A9.54 9.54 0 0 0 12.04 2.5Zm0 17.35a7.8 7.8 0 0 1-3.97-1.1l-.28-.17-2.83.75.76-2.76-.18-.29a7.8 7.8 0 1 1 6.5 3.57Zm4.38-5.83c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.63.77-.77.93-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.38-.41-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.15 1.53.09.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z"
+                />
+              </svg>
+            </a>
+          )}
         </div>
       )}
     </div>
