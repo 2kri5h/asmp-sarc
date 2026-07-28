@@ -9,7 +9,6 @@ import img1 from '/testimonials/image1.jpg'
 import img2 from '/testimonials/image2.jpg'
 import img3 from '/testimonials/image3.jpg'
 import img4 from '/testimonials/image4.jpg'
-import testimonialBg from "../../assets/Testimonial.png";
 
 const testimonials = [
   {
@@ -54,38 +53,36 @@ const TestimonialSlider = () => {
   }, []);
 
   return (
-  <div
-    ref={testimonialRef}
-    id="testimonials"
-    style={{
-      backgroundImage: `url(${testimonialBg})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      width: "100%",
-      minHeight: "100vh",
-      padding: "80px 0",
-    }}
-  >
-    <div className="testimonials-panel">
-      <div
-        className="testimonialHeading"
-        id="TestimoinalHeading"
-        style={{
-          marginTop: "2%",
-          fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
-          fontWeight: "700",
-          lineHeight: "1.2",
-          textAlign: "center",
-          marginLeft: "5%",
-          marginRight: "5%",
-          color: "#fff",
-        }}
-      >
-        TESTIMONIALS
-      </div>
-
-      <div className="slider-container">
+    <div
+      ref={testimonialRef}
+      id="testimonials"
+      style={{
+        background: "transparent",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        width: "100%",
+      }}
+    >
+      <div className="testimonials-panel">
+        <div
+          className="testimonialHeading"
+          id="TestimoinalHeading"
+          style={{
+            marginTop: "2%",
+            fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+            fontWeight: "700",
+            lineHeight: "1.2",
+            textAlign: "center",
+            marginLeft: "5%",
+            marginRight: "5%",
+            color: "rgba(255, 255, 255, 1)",
+          }}
+        >
+          TESTIMONIALS
+        </div>
+        <div className="slider-container">
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={30}
@@ -94,6 +91,7 @@ const TestimonialSlider = () => {
           pagination={{ clickable: true }}
           loop={true}
           centeredSlides={true}
+          onImagesReady={(swiper) => swiper.update()}
           breakpoints={{
             1300: { slidesPerView: 3, spaceBetween: 50 },
             1024: { slidesPerView: 3, spaceBetween: 40 },
@@ -112,28 +110,20 @@ const TestimonialSlider = () => {
                     className="avatar-img"
                   />
                 </div>
-
-                <div
-                  className="name-heading"
-                  id="TestimonialHeading"
-                >
+                <div className="name-heading" id="TestimonialHeading">
                   {testimonial.name}
                 </div>
-
-                <div
-                  className="testimonal-content"
-                  id="TestimonialContent"
-                >
+                <div className="testimonal-content" id="TestimonialContent">
                   {testimonial.feedback}
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default TestimonialSlider;

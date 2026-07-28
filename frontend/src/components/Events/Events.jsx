@@ -27,14 +27,14 @@ const EventImages = () => {
       title: 'Nail The Prep',
       imgSrc: '/events/ntp.jpg',
       description:
-        'SARC provides an opportunity to all third year students to be a part of mock internship interview program - Nail The Prep, which is planned to engage students in mock interviews with our highly esteemed alumni. NTP generally happens in July, wherein our alumni with the experience in different fields like Finance, consult, PM, IT, software etc. take mock interviews of students who are targeting internships. NTP also involves a QnA session named as Ask The Alum (ATA) to clarify students’ doubts about internship season.',
+        "SARC provides an opportunity to all third year students to be a part of mock internship interview program - Nail The Prep, which is planned to engage students in mock interviews with our highly esteemed alumni. NTP generally happens in July, wherein our alumni with the experience in different fields like Finance, consult, PM, IT, software etc. take mock interviews of students who are targeting internships. NTP also involves a QnA session named as Ask The Alum (ATA) to clarify students' doubts about internship season.",
     },
     {
       id: 4,
       title: 'Group Mentoring',
       imgSrc: '/events/groupmentoring.jpg',
       description:
-        'Group mentoring is a networking and learning opportunity where students can connect with successful alumni and fellow students who share similar interests. In these sessions, experienced alumni from various fields such as finance, consulting, IT, analytics, and product management interact with small groups of 4-5 students in an offline format. It’s a chance to gain insights, ask questions, and receive guidance in a focused and personalized setting, allowing the students to explore specific career options and expand their professional network.',
+        "Group mentoring is a networking and learning opportunity where students can connect with successful alumni and fellow students who share similar interests. In these sessions, experienced alumni from various fields such as finance, consulting, IT, analytics, and product management interact with small groups of 4-5 students in an offline format. It's a chance to gain insights, ask questions, and receive guidance in a focused and personalized setting, allowing the students to explore specific career options and expand their professional network.",
     },
   ];
 
