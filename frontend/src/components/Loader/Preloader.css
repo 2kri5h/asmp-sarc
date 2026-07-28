@@ -1,0 +1,15 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  transform-origin: var(--tear-x, 50%) var(--tear-y, 50%);
+  will-change: transform, opacity;
+}
+
+.preloader-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
