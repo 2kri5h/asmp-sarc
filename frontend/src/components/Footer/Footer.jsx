@@ -9,11 +9,7 @@ const Footer = () => {
             {/* <p>Made with ❤️ by SARC</p> */}
             <div className="heart">
                 <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-                    <p style={{ margin: '0' }} className="Footerfont">Made with </p>
-                    <span style={{ position: "relative", display: "inline-block", width: "1.5rem" }}>
-                        <p className="heartbeat" style={{ margin: '0 5px', position: 'relative' }}>❤️</p>
-                        <p className="heartecho" style={{ margin: '0 5px' }}>❤️</p>
-                    </span>
+                    <p style={{ margin: '0' }} className="Footerfont">Made with love</p>
                     <p style={{ margin: '0'}} className="Footerfont"> &nbsp;&nbsp;by SARC</p>
                 </div>
             </div>
