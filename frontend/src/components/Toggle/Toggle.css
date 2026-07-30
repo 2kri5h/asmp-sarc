@@ -167,11 +167,11 @@
   background: #121F2F;
   border: 2px solid #FCFDF6;
   border-radius: 16px;
-  font-family: 'Ek Mukta', sans-serif;
+  font-family: 'BatmanForeverAlternate', sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 30px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -181,6 +181,8 @@
   transition: all 0.25s ease;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
   user-select: none;
+  letter-spacing: 0.03em;
+  padding: 0 8px;
 }
 
 .filter-rectangle-btn:hover {
@@ -272,8 +274,8 @@
 
   .filter-rectangle-btn {
     height: 48px;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 18px;
     border-radius: 12px;
   }
 
@@ -327,11 +329,12 @@
   }
 
   .filter-rectangle-btn {
-    height: 36px;
-    font-size: 12px;
-    line-height: 15px;
+    height: 38px;
+    font-size: 9.5px;
+    line-height: 13px;
     border-radius: 10px;
     border-width: 1.5px;
+    padding: 0 4px;
   }
 
   .mentor-cards-grid {
@@ -356,9 +359,10 @@
   }
 
   .filter-rectangle-btn {
-    height: 32px;
-    font-size: 11px;
-    line-height: 14px;
+    height: 34px;
+    font-size: 8px;
+    line-height: 11px;
+    padding: 0 2px;
   }
 
   .mentor-cards-grid {
@@ -380,6 +384,13 @@
 
   .filter-column {
     max-width: 148px;
+  }
+
+  .filter-rectangle-btn {
+    height: 32px;
+    font-size: 7.2px;
+    line-height: 10px;
+    padding: 0 2px;
   }
 
   .mentor-cards-grid {
