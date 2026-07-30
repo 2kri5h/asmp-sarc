@@ -22,7 +22,6 @@ body::-webkit-scrollbar {
   min-height: 100vh;
   width: 100vw;
   padding: 220px 90px 0 90px;
-  /* margin-bottom: 100px; */
   background-color: #0a0c10;
   background-size: cover;
   background-position: top center;
@@ -70,6 +69,7 @@ body::-webkit-scrollbar {
   -webkit-backdrop-filter: none;
   border-radius: 28px;
   padding: 28px 24px;
+  margin-left: 20px;
   scroll-snap-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease;

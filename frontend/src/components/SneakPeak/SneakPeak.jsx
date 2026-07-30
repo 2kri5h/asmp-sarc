@@ -92,7 +92,7 @@ function Sneakpeak() {
             <motion.div
               className="mentor-card"
               key={i}
-              whileHover={{ scale: 1.2, rotateY: 5 }}
+              whileHover={{ scale: 1.1, rotateY: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="title-section">
