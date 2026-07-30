@@ -9,6 +9,9 @@ import batmanLogoSvg from "../../assets/images/Batman-Logo-2018 1.svg";
 import companyNameSvg from "../../assets/images/Company Name.svg";
 import subtractSvg from "../../assets/images/Subtract.svg";
 import rectangle47Svg from "../../assets/images/Rectangle 47.svg";
+import subtractCardSvg from "../../assets/Subtract.svg";
+import unionCardSvg from "../../assets/Union.svg";
+import ellipseSvg from "../../assets/Ellipse 7.svg";
 import { API_BASE_URL } from "../../apiConfig";
 
 const getDesignationStyle = (text) => {
@@ -34,11 +37,10 @@ const getCompanyStyle = (text) => {
 const getCircleDesignationStyle = (text) => {
   if (!text) return { fontStyle: "normal" };
   const len = text.length;
-  if (len > 60) return { fontSize: "10px", lineHeight: "13px" };
-  if (len > 40) return { fontSize: "12px", lineHeight: "15px" };
-  if (len > 25) return { fontSize: "14px", lineHeight: "18px" };
-  if (len > 15) return { fontSize: "16px", lineHeight: "21px" };
-  return { fontSize: "20px", lineHeight: "26px" };
+  if (len > 40) return { fontSize: "11px", lineHeight: "14px", whiteSpace: "normal" };
+  if (len > 28) return { fontSize: "13px", lineHeight: "16px", whiteSpace: "normal" };
+  if (len > 18) return { fontSize: "15px", lineHeight: "18px", whiteSpace: "normal" };
+  return { fontSize: "18px", lineHeight: "21px", whiteSpace: "normal" };
 };
 
 const getCircleCompanyStyle = (text) => {
@@ -432,66 +434,88 @@ const UnifiedMentorCard = ({
     );
   }
 
-  // For display mode, use standard capsule stadium card styling with details inside the circle
+
+  // For display mode — Group 48 structure with Subtract.png, Union.png, and Ellipse 7.svg:
   return (
     <div className="mentor-capsule-wrapper">
       <div className="mentor-capsule-card" data-mode={mode}>
-        {/* Profile Circle containing Designation and Company Name with invisible scroll */}
-        <div className="mentor-circle-avatar mentor-circle-info">
-          <div className="mentor-circle-scroll">
-            <div className="mentor-circle-designation" style={getCircleDesignationStyle(mentor?.designation || mentor?.work_profile)}>
-              {mentor?.designation || mentor?.work_profile || "Associate Product Manager"}
-            </div>
-            <div className="mentor-circle-company" style={getCircleCompanyStyle(mentor?.company_name || mentor?.name)}>
-              {mentor?.company_name || mentor?.name || "Company Name"}
-            </div>
-          </div>
-        </div>
 
-        {/* Information Section — combined scrollable area */}
-        <div className="mentor-info-section">
-          <div className="mentor-info-combined-scroll">
-            {/* Graduation Year */}
-            <div className="mentor-info-block mentor-grad-year">
-              <div className="mentor-label">Graduation Year:</div>
-              <div className="mentor-value">{mentor?.year || mentor?.graduation_year || "2023"}</div>
-            </div>
-
-            {/* Work Profile */}
-            <div className="mentor-info-block mentor-experience">
-              <div className="mentor-label">Experience:</div>
-              <div className="mentor-work-profile-text">
-                {mentor?.work_profile || "—"}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Add / Remove Wishlist Button */}
+        {/* 1. SUBTRACT BLOCK: Top section (Designation + Company Name) */}
         <div
-          className={`mentor-wishlist-btn ${isInWishlist ? "active" : ""}`}
-          onClick={mode === "wishlist" && showRemoveButton ? handleDelete : handleWishlistAction}
+          className="mentor-card-subtract"
+          style={{ backgroundImage: `url(${subtractCardSvg})` }}
         >
-          {mode === "wishlist" && showRemoveButton ? (
-            <>
-              <div>Remove</div>
-              <div>Wishlist</div>
-            </>
-          ) : isInWishlist ? (
-            <>
-              <div>In</div>
-              <div>Wishlist ✓</div>
-            </>
-          ) : (
-            <>
-              <div>Add to</div>
-              <div>Wishlist</div>
-            </>
-          )}
+          <div
+            className="mentor-card-designation"
+            style={getCircleDesignationStyle(mentor?.designation || mentor?.work_profile)}
+          >
+            {(mentor?.designation || "Associate Product Manager").toUpperCase()}
+          </div>
+          <div
+            className="mentor-card-company"
+            style={getCircleCompanyStyle(mentor?.company_name || mentor?.name)}
+          >
+            {mentor?.company_name || mentor?.name || "Company Name"}
+          </div>
         </div>
+
+        {/* 2. UNION BLOCK: Bottom section (Graduation Year + Experience + Ellipse 7.svg) */}
+        <div
+          className="mentor-card-union"
+          style={{ backgroundImage: `url(${unionCardSvg})` }}
+        >
+
+
+
+          {/* Graduation Year above Experience, inline format */}
+          <div className="mentor-card-grad-row">
+            Graduation year: <span className="mentor-card-grad-val">{mentor?.year || mentor?.graduation_year || "2023"}</span>
+          </div>
+
+          {/* Experience section below Graduation Year */}
+          <div className="mentor-card-exp-label">Experience:</div>
+          <div className="mentor-card-exp-scroll">
+            <div className="mentor-card-exp-text">
+              {mentor?.work_profile || "—"}
+            </div>
+          </div>
+
+          {/* Ellipse 7.svg Wishlist Button */}
+          <div
+            className={`mentor-card-ellipse-7 ${isInWishlist ? "active" : ""}`}
+            onClick={
+              mode === "wishlist" && showRemoveButton
+                ? handleDelete
+                : handleWishlistAction
+            }
+          >
+            <img src={ellipseSvg} alt="Wishlist shape" className="mentor-ellipse-svg-img" />
+            <div className="mentor-wishlist-btn-text">
+              {mode === "wishlist" && showRemoveButton
+                ? "REMOVE"
+                : isInWishlist
+                ? "IN WISHLIST ✓"
+                : "ADD TO WISHLIST"}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
+
+
+
+
+
+
 };
 
 export default UnifiedMentorCard;
+
+
+
+
+
+
+
