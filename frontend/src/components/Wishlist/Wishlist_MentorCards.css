@@ -1,6 +1,6 @@
 .wishlist-card {
   transition: all 0.3s ease;
-  background-color: #932C92;
+  background-color: #182153;
   border-radius: 0px;
   border-color: #fff;
   border-width: 4px;
@@ -694,342 +694,294 @@
    FIGMA STADIUM CAPSULE MENTOR CARD STYLES
    ========================================================== */
 
+/* ================================================================
+   MENTOR CAPSULE CARD — Vector SVG Shape Architecture
+   Card Container: 373px width x 533px height (proportional to Figma vector with shadow offsets)
+   Subtract (Block 1): Subtract.svg background (373px x 210px, top: 0px)
+   Union (Block 2): Union.svg background (373px x 408px, top: 135px)
+   Ellipse 7: Ellipse 7.svg (271px x 81px, bottom: 26px, z-index: 10)
+   ================================================================ */
+
 .mentor-capsule-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  width: 373px;
+  height: 533px;
+  overflow: visible;
+  flex-shrink: 0;
 }
 
+/* Group 48 - Overall Container */
 .mentor-capsule-card {
   box-sizing: border-box;
-  width: 257px;
-  height: 720px;
-  background: #2C465B;
-  border: 4px solid #ADB7AC;
-  border-radius: 128.5px;
-  /* Capsule stadium shape */
-  color: #FFFFFF;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 16px 0 16px;
   position: relative;
-  /* needed for absolute button */
+  width: 373px;
+  height: 533px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+  overflow: visible;
+  display: block;
+  flex-shrink: 0;
+  transform-origin: center center;
 }
 
 .mentor-capsule-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0px 16px 40px rgba(0, 0, 0, 0.7), 0 0 18px rgba(173, 183, 172, 0.5);
 }
 
-/* Ellipse 16 - Profile Picture Avatar Circle */
-.mentor-circle-avatar {
-  width: 225px;
-  height: 222px;
-  background: #54778A;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* 1. SUBTRACT BLOCK: Top section SVG background */
+.mentor-card-subtract {
+  box-sizing: border-box;
+  position: absolute;
+  width: 373px;
+  height: 210px;
+  left: 0px;
+  top: 0px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 2;
+}
+
+/* Designation inside Subtract - Wraps to 2 lines if long */
+.mentor-card-designation {
+  position: absolute;
+  width: 293px;
+  height: 48px;
+  left: 17px;
+  top: 15px;
+  font-family: 'BatmanForeverAlternate', 'Batman Forever Alternate', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.18);
-  flex-shrink: 0;
-  margin-top: 14px;
+  text-overflow: ellipsis;
 }
 
-.mentor-circle-avatar .mentor-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.mentor-circle-avatar .mentor-img-placeholder {
-  color: rgba(255, 255, 255, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Details inside the top avatar circle */
-.mentor-circle-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-/* Invisible scroll container inside circular avatar frame */
-.mentor-circle-scroll {
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 24px 12px 10px 12px;
-
-  /* Invisible scrollbar */
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-}
-
-.mentor-circle-scroll::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-.mentor-circle-designation {
-  font-family: 'Ek Mukta', sans-serif;
+/* Company Name inside Subtract - Wraps to 2 lines if long */
+.mentor-card-company {
+  position: absolute;
+  width: 305px;
+  height: 60px;
+  left: 17px;
+  top: 55px;
+  font-family: 'Exima Geometric', 'Exima', sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: -0.010em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2. UNION BLOCK: Bottom section SVG background */
+.mentor-card-union {
+  box-sizing: border-box;
+  position: absolute;
+  width: 373px;
+  height: 408px;
+  left: 0px;
+  top: 135px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Graduation Year single line row on top of Union */
+.mentor-card-grad-row {
+  position: absolute;
+  left: 17px;
+  top: 18px;
+  font-family: 'Oxanium', sans-serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: 20px;
-  line-height: 26px;
-  text-align: center;
+  line-height: 24px;
   color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  word-break: break-word;
-  max-width: 190px;
-  margin-top: 4px;
-  margin-bottom: 6px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  white-space: nowrap;
 }
 
-.mentor-circle-company {
-  font-family: 'Ek Mukta', sans-serif;
+.mentor-card-grad-val {
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-left: 6px;
+}
+
+/* Experience Label below Graduation Year */
+.mentor-card-exp-label {
+  position: absolute;
+  width: 137px;
+  height: 24px;
+  left: 17px;
+  top: 50px;
+  font-family: 'Oxanium', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
   color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  word-break: break-word;
-  max-width: 190px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* Graduation & Experience Wrapper Section */
-.mentor-info-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  padding-left: 28px;
-  padding-right: 14px;
-  margin-top: 20px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-}
-
-/* Combined scrollable container for Graduation Year + Work Profile */
-.mentor-info-combined-scroll {
-  width: 100%;
-  max-height: 180px;
+/* Experience Detail Scroll Box */
+.mentor-card-exp-scroll {
+  position: absolute;
+  width: 300px;
+  max-height: 195px;
+  left: 17px;
+  top: 78px;
   overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-right: 6px;
-  padding-bottom: 40px;
+  padding-right: 4px;
   box-sizing: border-box;
-
-  /* Transparent & aesthetic scrollbar by default */
   scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  transition: scrollbar-color 0.3s ease;
+  scrollbar-color: rgba(202, 208, 171, 0.6) transparent;
 }
 
-.mentor-info-combined-scroll:hover {
-  scrollbar-color: rgba(100, 220, 200, 0.45) transparent;
-}
-
-.mentor-info-combined-scroll::-webkit-scrollbar {
+.mentor-card-exp-scroll::-webkit-scrollbar {
   width: 4px;
 }
 
-.mentor-info-combined-scroll::-webkit-scrollbar-track {
+.mentor-card-exp-scroll::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.mentor-card-exp-scroll::-webkit-scrollbar-thumb {
+  background: rgba(202, 208, 171, 0.6);
   border-radius: 4px;
 }
 
-.mentor-info-combined-scroll::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-.mentor-info-combined-scroll:hover::-webkit-scrollbar-thumb {
-  background: rgba(100, 220, 200, 0.45);
-  box-shadow: 0 0 6px rgba(100, 220, 200, 0.3);
-}
-
-.mentor-info-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  width: 100%;
-}
-
-/* Graduation Year and Experience text rules */
-.mentor-label {
-  font-family: 'El Messiri', serif;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 22px;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: left;
-  letter-spacing: 0.04em;
-  text-transform: capitalize;
-}
-
-.mentor-value {
-  font-family: 'El Messiri', serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
-  color: #FFFFFF;
-  text-align: left;
-  letter-spacing: 0.04em;
-  text-transform: capitalize;
-}
-
-.mentor-grad-year,
-.mentor-experience {
-  margin: 0;
-}
-
-/* Work Profile text inside combined container */
-.mentor-work-profile-text {
-  font-family: 'El Messiri', serif;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
-  text-align: left;
-  letter-spacing: 0.02em;
-  word-break: break-word;
-  white-space: pre-line;
-}
-
-.mentor-info-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  width: 100%;
-}
-
-/* Graduation Year and Experience text rules */
-.mentor-label {
-  font-family: 'El Messiri', serif;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 22px;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: left;
-  letter-spacing: 0.04em;
-  text-transform: capitalize;
-}
-
-.mentor-value {
-  font-family: 'El Messiri', serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24px;
-  color: #FFFFFF;
-  text-align: left;
-  letter-spacing: 0.04em;
-  text-transform: capitalize;
-}
-
-/* Empty rules just to keep hooks safe */
-.mentor-grad-year,
-.mentor-experience {
-  margin: 0;
-}
-
-/* Work Profile text (plain — scroll is handled by the combined container) */
-.mentor-work-profile-text {
-  font-family: 'El Messiri', serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.72);
-  text-align: left;
-  letter-spacing: 0.02em;
-  word-break: break-word;
-  white-space: pre-line;
-}
-
-/* Legacy class — keep for safety, hidden */
-.mentor-work-profile-block {
-  display: none;
-}
-
-.mentor-work-profile-scroll {
-  display: none;
-}
-
-
-
-
-/* Rectangle 94 - Wishlist Button inside Capsule Card */
-.mentor-wishlist-btn {
-  box-sizing: border-box;
-  width: 215px;
-  height: 68px;
-  background: #121F2F;
-  border-radius: 22px;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'El Messiri', serif;
+.mentor-card-exp-text {
+  font-family: 'Libre Bodoni', serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 26px;
-  text-align: center;
-  letter-spacing: 0.06em;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
-  /* Always pinned cleanly above the bottom curve of the capsule card */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+/* 3. ELLIPSE 7 BUTTON: Exact Ellipse 7.svg (271px x 81px, bottom: 26px) */
+.mentor-card-ellipse-7 {
   position: absolute;
-  bottom: 76px;
+  width: 271px;
+  height: 81px;
+  left: 32.5px;
+  bottom: 26px;
+  /* Positioned inside the card frame */
+  z-index: 10;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mentor-card-ellipse-7:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.mentor-ellipse-svg-img {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mentor-card-ellipse-7.active .mentor-ellipse-svg-img {
+  filter: brightness(1.15) hue-rotate(180deg);
+}
+
+/* Add to Wishlist Text inside Ellipse 7.svg */
+.mentor-wishlist-btn-text {
+  position: absolute;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
+  font-family: 'BatmanForeverAlternate', 'Batman Forever Alternate', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 169px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  box-sizing: border-box;
+  padding-bottom: 8px;
+  /* Vertically balances text inside the ellipse */
 }
 
-.mentor-wishlist-btn:hover {
-  background: #1A2838;
-  border-color: #ADB7AC;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  transform: translateX(-50%) scale(1.02);
+/* ================================================================
+   🔒 PERFECT VECTOR RESCALING SYSTEM (NO overlapping, NO clipping)
+   Tablet: scales down to 0.85 (317px width)
+   Mobile: scales down to 0.75 (280px width)
+   Small Mobile: scales down to 0.65 (242px width)
+   ================================================================ */
+
+@media (max-width: 1024px) {
+  .mentor-capsule-wrapper {
+    width: 317px;
+    height: 453px;
+  }
+
+  .mentor-capsule-card {
+    transform: scale(0.72) !important;
+  }
 }
 
-.mentor-wishlist-btn.active {
-  background: #2A4868;
-  border-color: #ADB7AC;
-  color: #81D4FA;
+@media (max-width: 767px) {
+  .mentor-capsule-wrapper {
+    width: 224px;
+    height: 320px;
+  }
+
+  .mentor-capsule-card {
+    transform: scale(0.6) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mentor-capsule-wrapper {
+    width: 168px;
+    height: 240px;
+  }
+
+  .mentor-capsule-card {
+    transform: scale(0.42) !important;
+  }
 }
 
 /* ==========================================================
