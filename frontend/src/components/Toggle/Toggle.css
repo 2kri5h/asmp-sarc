@@ -148,14 +148,14 @@
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
-  gap: 40px;
+  gap: 80px;
   margin-bottom: 90px;
 }
 
 .filter-column {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 28px;
   flex: 1;
   max-width: 580px;
 }
@@ -170,7 +170,7 @@
   font-family: 'BatmanForeverAlternate', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 24px;
   color: #FFFFFF;
   display: flex;
@@ -280,10 +280,10 @@
   }
 
   .mentor-cards-grid {
-    grid-template-columns: repeat(2, 317px);
+    grid-template-columns: repeat(2, 355px);
     column-gap: 20px;
     row-gap: 40px;
-    width: 100%;
+    width: 110%;
     justify-content: center;
     align-items: center;
   }
@@ -316,7 +316,7 @@
   .filter-rectangles-container {
     flex-direction: row;
     justify-content: center;
-    gap: 12px;
+    gap: 28px;
     width: 100%;
     max-width: 460px;
     margin-bottom: 30px;
@@ -338,18 +338,18 @@
   }
 
   .mentor-cards-grid {
-    grid-template-columns: repeat(2, 224px);
+    grid-template-columns: repeat(2, 244px);
     justify-content: center;
     column-gap: 12px;
     row-gap: 30px;
-    width: 100%;
+    width: 105%;
     margin: 0 auto;
   }
 }
 
 @media (max-width: 480px) {
   .filter-rectangles-container {
-    gap: 12px;
+    gap: 2px;
     width: 100%;
     max-width: 348px;
   }
@@ -377,7 +377,7 @@
 
 @media (max-width: 360px) {
   .filter-rectangles-container {
-    gap: 8px;
+    gap: 22px;
     width: 100%;
     max-width: 304px;
   }
@@ -388,17 +388,17 @@
 
   .filter-rectangle-btn {
     height: 32px;
-    font-size: 7.2px;
+    font-size: 8.1px;
     line-height: 10px;
     padding: 0 2px;
   }
 
   .mentor-cards-grid {
-    grid-template-columns: repeat(2, 148px);
+    grid-template-columns: repeat(2, 150px);
     justify-content: center;
     column-gap: 8px;
     row-gap: 20px;
-    width: 100%;
+    width: 105%;
     margin: 0 auto;
   }
 }
