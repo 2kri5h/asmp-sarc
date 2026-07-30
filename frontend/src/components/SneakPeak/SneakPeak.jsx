@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./SneakPeak.css";
-import CursorAnimation from "../Cursor/CursorAnimation";
 import sneakBg from "../../assets/images/Sneakpeak.png";
 
 const slides = [
@@ -76,7 +75,6 @@ function Sneakpeak() {
 
   return (
     <>
-      <CursorAnimation />
       <div
         className="sneakpeak-container"
         style={{ backgroundImage: `url(${sneakBg})` }}

@@ -8,7 +8,6 @@ import Select from "react-select";
 import UseSignup from "../hooks/useSignup";
 import Swal from "sweetalert2";
 import { Navigate, useNavigate } from "react-router-dom";
-import CursorAnimation from "../components/Cursor/CursorAnimation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -307,7 +306,6 @@ function Register() {
     <Navigate to="/login" />
   ) : (
     <>
-      <CursorAnimation />
       <div className="register-page form-container">
         <div className="bg-container">
           <img src={bgImg} className="register-bg-img" alt="" />

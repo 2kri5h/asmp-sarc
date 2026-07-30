@@ -31,7 +31,6 @@ import image28 from "../../assets/images/Simran.jpeg";
 import image29 from "../../assets/images/Vesundhara.jpg";
 import image30 from "../../assets/images/Suhani.jpg";
 
-import CursorAnimation from "../Cursor/CursorAnimation";
 
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" className="icon social-icon" aria-hidden="true">
@@ -331,7 +330,6 @@ const Team = () => {
 
   return (
     <>
-      <CursorAnimation />
       <div className="team-members">
         <h1 className="headingg">SARC TEAM 2024-25</h1>
 

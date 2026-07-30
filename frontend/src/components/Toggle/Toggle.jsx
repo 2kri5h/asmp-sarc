@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Toggle.css";
-import CursorAnimation from "../Cursor/CursorAnimation";
 import UnifiedMentorCard from "../Mentors/UnifiedMentorCard";
 import UseFetchMentors from "../../hooks/useFetchMentors";
 import batLogoImg from "../../assets/images/download__80_-removebg-preview 2.png";
@@ -146,7 +145,6 @@ const Toggle = () => {
 
   return (
     <>
-      <CursorAnimation />
       <div 
         className="figma-mentor-landing"
         style={{ backgroundImage: `url(${homeBg})` }}

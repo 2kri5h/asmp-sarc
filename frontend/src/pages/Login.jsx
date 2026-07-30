@@ -7,7 +7,6 @@ import group25Svg from "../assets/images/Group 25.svg";
 import bgImg from "../assets/images/login.png";
 import loginButtonBg from "../assets/images/loginbuttonbg.png";
 import loginbutton from "../assets/images/loginbutton.png";
-import CursorAnimation from "../components/Cursor/CursorAnimation";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -121,7 +120,6 @@ function Login() {
     <Navigate to="/toggle" />
   ) : (
     <>
-      <CursorAnimation />
       <div className="login-page form-container">
         <div className="bg-container">
           <img src={bgImg} className="register-bg-img" alt="" />

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Events.css";
-import CursorAnimation from "../Cursor/CursorAnimation";
 
 const EventImages = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -97,7 +96,6 @@ const EventImages = () => {
 
     return (
     <>
-      <CursorAnimation />
 
       <div
         className="main-container-events"

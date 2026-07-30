@@ -4,7 +4,6 @@ import UseFetchProfile from "../../hooks/useFetchProfile";
 import UseEditProfile from "../../hooks/useEditProfile";
 import UseRegisterMentors from "../../hooks/useRegisterMentors";
 import WishlistModal from "../Wishlist/WishlistModal";
-import CursorAnimation from "../Cursor/CursorAnimation";
 import Swal from "sweetalert2";
 import UnifiedMentorCard from "../Mentors/UnifiedMentorCard";
 
@@ -229,7 +228,6 @@ export default function Profile(props) {
 
   return (
     <>
-      <CursorAnimation />
       <div 
         className="profile-page-container"
         style={{ backgroundImage: `url(${profileBgImg})` }}

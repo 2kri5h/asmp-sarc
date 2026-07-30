@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CursorAnimation from "../Cursor/CursorAnimation";
 import "./Wishlist.css";
 import Swal from "sweetalert2";
 import UseFetchWishlist from "../../hooks/useFetchWishlist";
@@ -97,7 +96,6 @@ export default function Wishlist(props) {
 
   return (
     <>
-      <CursorAnimation />
       <div 
         className="wishlist-page-container"
         style={{ backgroundImage: `url(${gothamBg})` }}
