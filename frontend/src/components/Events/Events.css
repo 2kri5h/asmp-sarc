@@ -140,6 +140,8 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     margin:0 auto;
 
     perspective:1000px;
+    border-radius: 18px;
+    overflow: hidden;
 }
 
 
@@ -157,6 +159,7 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 
 .front{
   overflow:hidden;
+  border-radius: 18px;
 }
 .back {
   width: 100%;
@@ -169,9 +172,22 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 18px;  
   overflow: hidden;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: rotateY(180deg);
+  background-color:#BBCAD6;
+  color: black;
+  font-family: 'Libre Bodoni', serif;
+  text-align: justify;
+  z-index: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  padding: 0;
+  font-family: "Space Grotesk";
 }
 
 .front {
@@ -184,23 +200,6 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
   background-color: #111;
 }
 
-.back {
-  transform: rotateY(180deg);
-  background-color:#BBCAD6;
-  color: black;
-  font-family: 'Libre Bodoni', serif;
-  text-align: justify;
-  z-index: 1;
-  border-radius: 12px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  align-items: stretch;
-  padding: 0;
-  font-family: "Space Grotesk";
-}
 
 .event-description{
     width:100%;
@@ -432,4 +431,43 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
         font-size:14px;
         line-height:1.55;
     }
+}
+
+
+@media (min-width: 900px) and (max-width: 1600px) {
+  .event-images-container {
+    gap: 7rem;
+  }
+
+  .event-item {
+    max-width: 340px;
+  }
+
+  .flip-container {
+    max-width: 340px;
+    height: 340px;
+  }
+
+  .front {
+    border-radius: 14px;
+  }
+
+  .back {
+    border-radius: 14px;
+  }
+
+  .event-title {
+    max-width: 280px;
+    height: 46px;
+    font-size: 1.4rem;
+  }
+
+  .scroll-wrapper {
+    padding: 10px 12px;
+  }
+
+  .scroll-content {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
 }
