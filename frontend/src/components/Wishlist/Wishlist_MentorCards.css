@@ -990,16 +990,23 @@
 
 .wishlist-figma-card {
   box-sizing: border-box;
-  position: relative;
-  width: 287px;
-  height: 347px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 287px !important;
+  height: 347px !important;
+  min-width: 287px !important;
+  min-height: 347px !important;
+  max-width: 287px !important;
+  max-height: 347px !important;
+  flex-shrink: 0 !important;
   background: #A4B4B8;
   border-radius: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
   user-select: none;
   overflow: visible;
 }
@@ -1404,53 +1411,30 @@
 }
 
 /* ================================================================
-   🔒 PERFECT WISHLIST FIGMA CARD RESPONSIVE SCALING SYSTEM
-   Scales .wishlist-figma-card 100% proportionally with transform: scale()
-   All inner components (Subtract, Rectangle 47, logo, text, button)
-   remain 100% locked and centered inside the gray card box.
-   Tablet (<=768px): Wrapper 220px x 266px (Scale 0.7665)
-   Mobile (<=480px): Wrapper 165px x 200px (Scale 0.575)
-   Small Mobile (<=360px): Wrapper 148px x 179px (Scale 0.515)
+   🔒 LOCKED WISHLIST CARD UNIT RESPONSIVE SCALING SYSTEM
+   The 287px x 347px card unit is 100% LOCKED as a single piece.
+   transform: scale() scales the entire card unit (gray background + Batman logo +
+   Subtract.svg + Rectangle 47.svg + text + Remove button) 100% proportionally.
+   Nothing can EVER overflow or squish independently of the card background!
    ================================================================ */
 
 @media (max-width: 768px) {
-  .wishlist-grid-card-wrapper {
-    width: 220px !important;
-    height: 266px !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-
   .wishlist-figma-card {
     transform: scale(0.7665) !important;
-    transform-origin: top center !important;
+    transform-origin: 0 0 !important;
   }
 }
 
 @media (max-width: 480px) {
-  .wishlist-grid-card-wrapper {
-    width: 165px !important;
-    height: 200px !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-
   .wishlist-figma-card {
     transform: scale(0.575) !important;
-    transform-origin: top center !important;
+    transform-origin: 0 0 !important;
   }
 }
 
 @media (max-width: 360px) {
-  .wishlist-grid-card-wrapper {
-    width: 148px !important;
-    height: 179px !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-
   .wishlist-figma-card {
     transform: scale(0.515) !important;
-    transform-origin: top center !important;
+    transform-origin: 0 0 !important;
   }
 }
