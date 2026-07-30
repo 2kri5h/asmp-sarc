@@ -11,7 +11,7 @@
   height: 400px;
   color: #ffffff;
   padding: 1rem;
-  font-family: 'Libre Bodoni', serif;
+  font-family: 'Oxanium', sans-serif;
   position: relative;
   margin-bottom: 2rem;
   overflow-y: auto;
@@ -874,7 +874,7 @@
 }
 
 .mentor-card-exp-text {
-  font-family: 'Libre Bodoni', serif;
+  font-family: 'Oxanium', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
