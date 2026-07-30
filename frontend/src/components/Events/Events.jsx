@@ -40,6 +40,7 @@ const EventImages = () => {
   ];
 
   const handleClick = (index) => {
+    if(window.innerWidth > 768) return;
     setActiveIndex(index === activeIndex ? null : index);
   };
 
