@@ -990,16 +990,11 @@
 
 .wishlist-figma-card {
   box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 287px !important;
-  height: 347px !important;
-  min-width: 287px !important;
-  min-height: 347px !important;
-  max-width: 287px !important;
-  max-height: 347px !important;
-  flex-shrink: 0 !important;
+  position: relative;
+  width: 287px;
+  height: 347px;
+  min-width: 287px;
+  min-height: 347px;
   background: #A4B4B8;
   border-radius: 14px;
   display: flex;
@@ -1009,6 +1004,7 @@
   transition: box-shadow 0.3s ease;
   user-select: none;
   overflow: visible;
+  flex-shrink: 0;
 }
 
 .wishlist-figma-card:hover {
@@ -1421,20 +1417,20 @@
 @media (max-width: 768px) {
   .wishlist-figma-card {
     transform: scale(0.7665) !important;
-    transform-origin: 0 0 !important;
+    transform-origin: top center !important;
   }
 }
 
 @media (max-width: 480px) {
   .wishlist-figma-card {
     transform: scale(0.575) !important;
-    transform-origin: 0 0 !important;
+    transform-origin: top center !important;
   }
 }
 
 @media (max-width: 360px) {
   .wishlist-figma-card {
     transform: scale(0.515) !important;
-    transform-origin: 0 0 !important;
+    transform-origin: top center !important;
   }
 }

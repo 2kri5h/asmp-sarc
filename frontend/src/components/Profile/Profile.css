@@ -338,6 +338,8 @@
 .profile-pref-card {
   width: 270px !important;
   height: 322px !important;
+  min-width: 270px !important;
+  min-height: 322px !important;
   background: rgba(164, 180, 184, 0.95) !important;
   border-radius: 12px !important;
   position: relative !important;
@@ -496,5 +498,35 @@
   .profile-textarea-frame {
     max-width: 100%;
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .preferences-grid-top,
+  .preferences-grid-bottom {
+    gap: 20px;
+  }
+
+  .profile-pref-card {
+    transform: scale(0.8) !important;
+    transform-origin: top center !important;
+    margin-bottom: -64px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .preferences-cards-wrapper {
+    gap: 20px;
+  }
+
+  .preferences-grid-top,
+  .preferences-grid-bottom {
+    gap: 12px;
+  }
+
+  .profile-pref-card {
+    transform: scale(0.62) !important;
+    transform-origin: top center !important;
+    margin-bottom: -122px !important;
   }
 }
