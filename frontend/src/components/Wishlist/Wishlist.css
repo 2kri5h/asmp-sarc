@@ -12,7 +12,6 @@
   background-attachment: fixed;
   color: #FFFFFF;
   font-family: 'Oxanium', sans-serif;
-  /* CRITICAL: do NOT use overflow-x: hidden here — it clips the batman logo overflow */
   padding-bottom: 100px;
 }
 
@@ -37,12 +36,10 @@
   z-index: 2;
   max-width: 1440px;
   margin: 0 auto;
-  /* Extra top padding to allow batman logos to breathe */
   padding: 20px 40px 60px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* CRITICAL: overflow visible so batman logos are not clipped */
   overflow: visible;
 }
 
@@ -60,32 +57,31 @@
   max-width: 800px;
   display: flex;
   justify-content: center;
-  /* Extra top padding so batman logo (which overflows upward) is not clipped */
   padding-top: 20px;
   margin-bottom: 60px;
-  /* CRITICAL: never clip overflow here */
   overflow: visible;
 }
 
 .wishlist-grid-container {
   display: grid;
-  /* Fixed 287px columns matching Figma card width exactly */
   grid-template-columns: repeat(2, 287px);
   column-gap: 60px;
   row-gap: 60px;
   justify-items: center;
   align-items: start;
-  /* CRITICAL: allow batman logos to visually overflow above */
   overflow: visible;
   padding-top: 16px;
 }
 
 .wishlist-grid-card-wrapper {
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  /* CRITICAL: allow batman logos to visually overflow above */
+  width: 287px;
+  height: 347px;
   overflow: visible;
+  flex-shrink: 0;
 }
 
 /* Empty Wishlist Message */
@@ -125,26 +121,50 @@
 }
 
 /* ----------------------------------------------------------
-   RESPONSIVE DESIGN ADJUSTMENTS
+   RESPONSIVE DESIGN ADJUSTMENTS FOR WISHLIST GRID
    ---------------------------------------------------------- */
 
-@media (max-width: 700px) {
-  .wishlist-grid-container {
-    grid-template-columns: repeat(2, 220px);
-    column-gap: 24px;
-    row-gap: 40px;
+@media (max-width: 768px) {
+  .wishlist-content-wrapper {
+    padding: 10px 16px 40px 16px;
   }
 
   .wishlist-cards-section {
     max-width: 100%;
-    padding: 20px 16px 0 16px;
+    padding-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  .wishlist-grid-container {
+    grid-template-columns: repeat(2, 220px);
+    column-gap: 20px;
+    row-gap: 40px;
+    padding-top: 10px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
+  .wishlist-content-wrapper {
+    padding: 10px 6px 30px 6px;
+  }
+
+  .wishlist-cards-section {
+    padding: 10px 2px 0 2px;
+    margin-bottom: 30px;
+  }
+
   .wishlist-grid-container {
-    grid-template-columns: repeat(2, 160px);
-    column-gap: 16px;
+    grid-template-columns: repeat(2, 165px);
+    column-gap: 12px;
     row-gap: 30px;
+    padding-top: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .wishlist-grid-container {
+    grid-template-columns: repeat(2, 148px);
+    column-gap: 8px;
+    row-gap: 24px;
   }
 }

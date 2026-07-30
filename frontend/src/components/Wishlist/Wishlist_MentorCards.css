@@ -1402,3 +1402,47 @@
     line-height: 13.5px !important;
   }
 }
+
+/* ================================================================
+   🔒 PERFECT WISHLIST FIGMA CARD RESPONSIVE SCALING SYSTEM
+   Scales .wishlist-figma-card 100% proportionally with transform: scale()
+   Tablet (<=768px): Wrapper 220px x 266px (Scale 0.7665)
+   Mobile (<=480px): Wrapper 165px x 200px (Scale 0.575)
+   Small Mobile (<=360px): Wrapper 148px x 179px (Scale 0.515)
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .wishlist-grid-card-wrapper {
+    width: 220px !important;
+    height: 266px !important;
+  }
+
+  .wishlist-figma-card {
+    transform: scale(0.7665) !important;
+    transform-origin: top left !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wishlist-grid-card-wrapper {
+    width: 165px !important;
+    height: 200px !important;
+  }
+
+  .wishlist-figma-card {
+    transform: scale(0.575) !important;
+    transform-origin: top left !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .wishlist-grid-card-wrapper {
+    width: 148px !important;
+    height: 179px !important;
+  }
+
+  .wishlist-figma-card {
+    transform: scale(0.515) !important;
+    transform-origin: top left !important;
+  }
+}
