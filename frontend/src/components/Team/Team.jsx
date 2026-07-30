@@ -1,7 +1,5 @@
 import React from "react";
 import "./Team.css";
-import instagramIcon from "/teampage/instagram.svg";
-import linkedinIcon from "/teampage/linkedin.svg";
 
 // Overall Coordinator
 import imageoc1 from "../../assets/images/oc1.jpeg";
@@ -34,6 +32,46 @@ import image29 from "../../assets/images/Vesundhara.jpg";
 import image30 from "../../assets/images/Suhani.jpg";
 
 import CursorAnimation from "../Cursor/CursorAnimation";
+
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" className="icon social-icon" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-2.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25Z"
+    />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    className="icon social-icon"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <text
+      x="12"
+      y="15.2"
+      textAnchor="middle"
+      dominantBaseline="middle"
+      fontSize="18"
+      fontWeight="700"
+      fontFamily="Arial, Helvetica, sans-serif"
+      fill="currentColor"
+    >
+      in
+    </text>
+  </svg>
+);
+
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 24 24" className="icon whatsapp-icon" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M12.04 2.5A9.54 9.54 0 0 0 2.5 12.04c0 1.68.44 3.32 1.28 4.76L2.5 21.5l4.77-1.27a9.53 9.53 0 0 0 4.77 1.27h.01a9.54 9.54 0 0 0 9.54-9.54A9.54 9.54 0 0 0 12.04 2.5Zm0 17.35a7.8 7.8 0 0 1-3.97-1.1l-.28-.17-2.83.75.76-2.76-.18-.29a7.8 7.8 0 1 1 6.5 3.57Zm4.38-5.83c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.63.77-.77.93-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.38-.41-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.15 1.53.09.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z"
+    />
+  </svg>
+);
 
 const getWhatsAppLink = (phone) => {
   if (!phone) return null;
@@ -259,13 +297,19 @@ const Team = () => {
               href={member.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Visit ${member.name} on Instagram`}
             >
-              <img src={instagramIcon} alt="Instagram" className="icon" />
+              <InstagramIcon />
             </a>
           )}
           {member.linkedin && (
-            <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-              <img src={linkedinIcon} alt="LinkedIn" className="icon" />
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${member.name} on LinkedIn`}
+            >
+              <LinkedInIcon />
             </a>
           )}
           {member.phone && (
@@ -276,16 +320,7 @@ const Team = () => {
               aria-label={`Message ${member.name} on WhatsApp`}
               className="whatsapp-link"
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="icon whatsapp-icon"
-                aria-hidden="true"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12.04 2.5A9.54 9.54 0 0 0 2.5 12.04c0 1.68.44 3.32 1.28 4.76L2.5 21.5l4.77-1.27a9.53 9.53 0 0 0 4.77 1.27h.01a9.54 9.54 0 0 0 9.54-9.54A9.54 9.54 0 0 0 12.04 2.5Zm0 17.35a7.8 7.8 0 0 1-3.97-1.1l-.28-.17-2.83.75.76-2.76-.18-.29a7.8 7.8 0 1 1 6.5 3.57Zm4.38-5.83c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.63.77-.77.93-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.38-.41-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.18 1.11.15 1.53.09.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z"
-                />
-              </svg>
+              <WhatsAppIcon />
             </a>
           )}
         </div>
