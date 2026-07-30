@@ -338,10 +338,11 @@ const UnifiedMentorCard = ({
                   <div className="wishlist-card-divider"></div>
                   <div className="wishlist-card-info-scroll">
                     <div className="wishlist-card-grad">
-                      Graduation year: {mentor.year || mentor.graduation_year || "2023"}
+                      <span className="wishlist-bat-label">Graduation year:</span> <span className="wishlist-grad-val">{mentor.year || mentor.graduation_year || "2023"}</span>
                     </div>
                     <div className="wishlist-card-exp">
-                      Experience: {mentor.work_profile || getExperienceText(mentor)}
+                      <span className="wishlist-bat-label">Experience:</span>
+                      <div className="wishlist-exp-body">{mentor.work_profile || getExperienceText(mentor)}</div>
                     </div>
                   </div>
                   <button
@@ -417,10 +418,11 @@ const UnifiedMentorCard = ({
 
             <div className="wishlist-card-info-scroll">
               <div className="wishlist-card-grad">
-                Graduation year: {mentor?.year || mentor?.graduation_year || "2023"}
+                <span className="wishlist-bat-label">Graduation year:</span> <span className="wishlist-grad-val">{mentor?.year || mentor?.graduation_year || "2023"}</span>
               </div>
               <div className="wishlist-card-exp">
-                Experience: {mentor?.work_profile || getExperienceText(mentor)}
+                <span className="wishlist-bat-label">Experience:</span>
+                <div className="wishlist-exp-body">{mentor?.work_profile || getExperienceText(mentor)}</div>
               </div>
             </div>
 
