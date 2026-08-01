@@ -447,17 +447,19 @@ const UnifiedMentorCard = ({
           className="mentor-card-subtract"
           style={{ backgroundImage: `url(${subtractCardSvg})` }}
         >
-          <div
-            className="mentor-card-designation"
-            style={getCircleDesignationStyle(mentor?.designation || mentor?.work_profile)}
-          >
-            {(mentor?.designation || "Associate Product Manager").toUpperCase()}
-          </div>
-          <div
-            className="mentor-card-company"
-            style={getCircleCompanyStyle(mentor?.company_name || mentor?.name)}
-          >
-            {mentor?.company_name || mentor?.name || "Company Name"}
+          <div className="mentor-card-top-scroll">
+            <div
+              className="mentor-card-designation"
+              style={getCircleDesignationStyle(mentor?.designation || mentor?.work_profile)}
+            >
+              {(mentor?.designation || "Associate Product Manager").toUpperCase()}
+            </div>
+            <div
+              className="mentor-card-company"
+              style={getCircleCompanyStyle(mentor?.company_name || mentor?.name)}
+            >
+              {mentor?.company_name || mentor?.name || "Company Name"}
+            </div>
           </div>
         </div>
 

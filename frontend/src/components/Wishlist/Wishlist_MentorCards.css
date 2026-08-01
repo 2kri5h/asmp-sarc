@@ -747,50 +747,75 @@
   z-index: 2;
 }
 
-/* Designation inside Subtract - Wraps to 2 lines if long */
-.mentor-card-designation {
+/* Scroll container inside top Subtract block for Designation & Company */
+.mentor-card-top-scroll {
   position: absolute;
-  width: 293px;
-  height: 48px;
   left: 17px;
   top: 15px;
+  width: 335px;
+  height: 110px;
+  max-height: 110px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 4px;
+  box-sizing: border-box;
+
+  /* Sleek aesthetic thin scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.mentor-card-top-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.mentor-card-top-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mentor-card-top-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+
+/* Designation inside Subtract */
+.mentor-card-designation {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
   font-family: 'BatmanForeverAlternate', 'Batman Forever Alternate', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 16.5px;
+  line-height: 20px;
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   white-space: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
-/* Company Name inside Subtract - Wraps to 2 lines if long */
+/* Company Name inside Subtract */
 .mentor-card-company {
-  position: absolute;
-  width: 305px;
-  height: 60px;
-  left: 17px;
-  top: 55px;
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
   font-family: 'Exima Geometric', 'Exima', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 19px;
-  line-height: 23px;
+  font-size: 17px;
+  line-height: 21px;
   letter-spacing: -0.010em;
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   white-space: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 /* 2. UNION BLOCK: Bottom section SVG background */
