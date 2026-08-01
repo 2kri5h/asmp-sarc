@@ -21,36 +21,42 @@ body::-webkit-scrollbar {
 .sneakpeak-container {
   min-height: 100vh;
   width: 100vw;
-  padding: 220px 90px 0 90px;
+  padding: 100px 80px 40px 80px;
   background-color: #0a0c10;
   background-size: cover;
   background-position: top center;
-  /* color: rgb(222, 22, 22); */
   font-family: 'Cinzel', serif;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
   box-sizing: border-box;
   position: relative;
 }
 
-/* Scrollable row of cards */
-.scroll-wrapper {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 80px;
-  padding: 100px 60px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+/* ===========================
+   SWIPER COVERFLOW
+=========================== */
+.mySwiper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;     
+  padding: 100px 0;
 }
 
-/* Hide scrollbar (Chrome/Safari) */
-.scroll-wrapper::-webkit-scrollbar {
-  display: none;
+.mySwiper .swiper-slide {
+  width: 360px;
+  display: flex;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+.mentor-slide {
+  display: flex !important;
+  justify-content: center;
 }
 
 /* Mentor card design — muted, light glass panel matching the mockup */
@@ -59,7 +65,7 @@ body::-webkit-scrollbar {
   width: 360px;
   height: 400px;
   background-color: #A4B4B8;
-  border: none; /* or use a solid border below */
+  border: none; 
   border-radius: 28px;
   opacity: 0.85;
   box-shadow:
@@ -69,8 +75,7 @@ body::-webkit-scrollbar {
   -webkit-backdrop-filter: none;
   border-radius: 28px;
   padding: 28px 24px;
-  margin-left: 20px;
-  scroll-snap-align: center;
+  margin-left: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease;
   text-align: center;
@@ -113,7 +118,7 @@ body::-webkit-scrollbar {
 
 .title-section {
   margin-bottom: 10px;
-  
+
 }
 
 
@@ -133,7 +138,7 @@ body::-webkit-scrollbar {
   padding-top: 8px;
   font-family: "BatmanForeverAlternate", sans-serif;
   color: #324046 !important;
-  
+
   opacity: 0.9;
 }
 
@@ -143,7 +148,7 @@ body::-webkit-scrollbar {
   font-weight: 400;
   color: #0a0a0afe;
   /* line-height: 1.2; */
-  
+
 }
 /* Button — darker muted slate pill with a bordered circular arrow, matching the mockup */
 .cssbuttons-io-button {
@@ -185,12 +190,9 @@ body::-webkit-scrollbar {
 .cssbuttons-io-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 24px rgba(4, 5, 87, 0.762);
-} 
+}
 
-/* .cssbuttons-io-button:hover .icon {
-  width: calc(100% - 0.6em);
-  background: rgba(255, 255, 255, 0.12);
-} */
+
 
 .cssbuttons-io-button .icon svg {
   width: 1.1em;
@@ -208,7 +210,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   width: 100%;
-  
+
 }
 
 .btn-wrapper a {
@@ -216,10 +218,11 @@ body::-webkit-scrollbar {
   color: inherit;
 }
 
-/* Arrow styles */
+/* Custom nav arrows — pinned to the full-width container so they stay
+   at the screen edges regardless of how narrow .mySwiper is */
 .arrow {
   position: absolute;
-  top: 60%;
+  top: 50%;
   transform: translateY(-50%);
   font-size: 2.5rem;
   color: white;
@@ -241,11 +244,11 @@ body::-webkit-scrollbar {
 }
 
 .arrow.left {
-  left: 10px;
+  left: 100px;
 }
 
 .arrow.right {
-  right: 10px;
+  right: 100px;
 }
 
 /* Responsive */
@@ -255,12 +258,16 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 1024px) {
 
   .sneakpeak-container{
-    padding: 160px 40px 40px;
+    padding: 90px 40px 30px;
   }
 
-  .scroll-wrapper{
-    gap: 45px;
-    padding: 60px 20px;
+  .mySwiper{
+    max-width: 900px;
+    padding: 60px 0;
+  }
+
+  .mySwiper .swiper-slide{
+    width: 320px;
   }
 
   .mentor-card{
@@ -292,6 +299,13 @@ body::-webkit-scrollbar {
     font-size: 2rem;
   }
 
+  .arrow.left{
+    left: 30px;
+  }
+  .arrow.right{
+    right: 30px;
+  }
+
 }
 
 /* ===========================
@@ -300,12 +314,16 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 768px) {
 
   .sneakpeak-container{
-    padding: 140px 25px 30px;
+    padding: 80px 25px 25px;
   }
 
-  .scroll-wrapper{
-    gap: 30px;
-    padding: 40px 10px;
+  .mySwiper{
+    max-width: 100%;
+    padding: 40px 0;
+  }
+
+  .mySwiper .swiper-slide{
+    width: 280px;
   }
 
   .mentor-card{
@@ -352,14 +370,16 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 600px) {
 
   .sneakpeak-container{
-    padding: 110px 15px 20px;
-    overflow-x: hidden;
+    padding: 70px 15px 20px;
   }
 
-  .scroll-wrapper{
-    gap: 20px;
-    padding: 20px 5px;
-    scroll-padding: 15px;
+  .mySwiper{
+    padding: 20px 0;
+  }
+
+  .mySwiper .swiper-slide{
+    width: calc(100vw - 40px);
+    max-width: 340px;
   }
 
   .mentor-card{
@@ -424,7 +444,7 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 400px) {
 
   .sneakpeak-container{
-    padding: 95px 10px 20px;
+    padding: 60px 10px 20px;
   }
 
   .mentor-card{
