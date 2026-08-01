@@ -14,8 +14,8 @@ body,
     min-height: 100vh;
 
     background-image: url("../../assets/gotham-bg.png");
-    background-size: 100% auto;
-    background-position: top-center;
+    background-size: cover;
+    background-position: center top ;
     background-repeat: no-repeat;
     /* background-color: #05070a; */
     z-index: 1;
@@ -37,4 +37,11 @@ body,
 .home-background-image > * {
     position: relative;
     z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .home-background-image {
+        background-position: center top;
+        background-size: cover 100%;
+    }
 }
