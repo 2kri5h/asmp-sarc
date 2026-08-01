@@ -91,30 +91,23 @@ export default function WishlistModalContent({ onSelect, selectedMentorIds = [] 
   return (
     <div style={{ overflowY: "auto", padding: "0 0px" }}>
       <h2 className="wishlist-modal-title">MY WISHLIST</h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "28px",
-          padding: "10px 0 30px 0",
-        }}
-      >
+      <div className="wishlist-modal-grid">
         {mentors.map((mentor) => {
           const isAlreadySelected = selectedMentorIds.includes(mentor.id);
           return (
-            <UnifiedMentorCard
-              key={mentor.id}
-              mentor={mentor}
-              mentors={mentors}
-              setMentors={setMentors}
-              mode="selection"
-              onSelect={isAlreadySelected ? undefined : onSelect}
-              onDelete={handleDelete}
-              showAddButton={false}
-              showRemoveButton={true}
-              isAlreadySelected={isAlreadySelected}
-            />
+            <div key={mentor.id} className="selection-card-wrapper">
+              <UnifiedMentorCard
+                mentor={mentor}
+                mentors={mentors}
+                setMentors={setMentors}
+                mode="selection"
+                onSelect={isAlreadySelected ? undefined : onSelect}
+                onDelete={handleDelete}
+                showAddButton={false}
+                showRemoveButton={true}
+                isAlreadySelected={isAlreadySelected}
+              />
+            </div>
           );
         })}
       </div>

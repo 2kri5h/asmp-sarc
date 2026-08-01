@@ -49,12 +49,12 @@
 }
 
 /* ----------------------------------------------------------
-   WISHLIST CARDS GRID (2 COLUMNS MATCHING FIGMA DESIGN)
+   WISHLIST CARDS GRID (3 COLUMNS ON DESKTOP, 2 COLUMNS ON MOBILE)
    ---------------------------------------------------------- */
 
 .wishlist-cards-section {
   width: 100%;
-  max-width: 800px;
+  max-width: 1150px;
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -64,8 +64,8 @@
 
 .wishlist-grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 287px);
-  column-gap: 60px;
+  grid-template-columns: repeat(3, 287px);
+  column-gap: 50px;
   row-gap: 60px;
   justify-items: center;
   align-items: start;
@@ -125,6 +125,18 @@
 /* ----------------------------------------------------------
    RESPONSIVE DESIGN ADJUSTMENTS FOR WISHLIST GRID
    ---------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .wishlist-cards-section {
+    max-width: 750px;
+  }
+
+  .wishlist-grid-container {
+    grid-template-columns: repeat(2, 287px);
+    column-gap: 40px;
+    row-gap: 50px;
+  }
+}
 
 @media (max-width: 768px) {
   .wishlist-content-wrapper {

@@ -277,15 +277,15 @@ const UnifiedMentorCard = ({
 
           {/* Content overlaid inside Rectangle 47 */}
           <div className="wishlist-card-content selection-card-content">
-            <div className="wishlist-card-designation selection-card-designation" style={getDesignationStyle(mentor?.designation || mentor?.work_profile)}>
-              {(mentor?.designation || mentor?.work_profile || "Associate Product Manager").toUpperCase()}
-            </div>
+            <div className="selection-card-text-scroll">
+              <div className="wishlist-card-designation selection-card-designation" style={getDesignationStyle(mentor?.designation || mentor?.work_profile)}>
+                {(mentor?.designation || mentor?.work_profile || "Associate Product Manager").toUpperCase()}
+              </div>
 
-            <div className="wishlist-card-company-text selection-card-company-text" style={getCompanyStyle(mentor?.company_name || mentor?.name)}>
-              {mentor?.company_name || mentor?.name || "Company Name"}
+              <div className="wishlist-card-company-text selection-card-company-text" style={getCompanyStyle(mentor?.company_name || mentor?.name)}>
+                {mentor?.company_name || mentor?.name || "Company Name"}
+              </div>
             </div>
-
-            <div className="wishlist-card-divider"></div>
 
             {/* Vertical Stacked Buttons */}
             <div className="selection-card-buttons">

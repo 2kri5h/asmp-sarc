@@ -10,7 +10,7 @@ export default function WishlistModal({ onClose, onSelect, selectedMentorIds = [
       }}
     >
       <div
-        className="wishlist-modal-container w-full max-w-[500px] h-[80vh] max-h-[650px] rounded-xl shadow-2xl p-6 relative flex flex-col overflow-hidden"
+        className="wishlist-modal-container w-[95vw] max-w-[1060px] h-[85vh] max-h-[750px] rounded-xl shadow-2xl p-3 sm:p-6 relative flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <button

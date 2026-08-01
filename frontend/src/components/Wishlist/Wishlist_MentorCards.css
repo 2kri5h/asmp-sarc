@@ -1312,14 +1312,14 @@
 
 .selection-card-buttons {
   position: absolute !important;
-  top: 120px !important;
+  top: 122px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
   margin: 0 !important;
   z-index: 5 !important;
 }
@@ -1369,28 +1369,140 @@
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Specific Typography Swapping & Size Limits for Selection / Modal Cards */
+.selection-card-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 287px;
+  height: 347px;
+  min-width: 287px;
+  min-height: 347px;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+/* Wishlist Modal Cards Grid (3 Columns on Desktop, 2 Columns on Mobile) */
+.wishlist-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 287px);
+  column-gap: 30px;
+  row-gap: 40px;
+  justify-content: center;
+  align-items: start;
+  padding: 10px 0 30px 0;
+  width: 100%;
+}
+
+@media (max-width: 1050px) {
+  .wishlist-modal-grid {
+    grid-template-columns: repeat(2, 287px);
+    column-gap: 24px;
+    row-gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wishlist-modal-grid {
+    grid-template-columns: repeat(2, 165px);
+    column-gap: 12px;
+    row-gap: 20px;
+    padding: 5px 0 20px 0;
+  }
+
+  .wishlist-modal-grid .selection-card-wrapper {
+    width: 165px !important;
+    height: 200px !important;
+    min-width: 165px !important;
+    min-height: 200px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .wishlist-modal-grid {
+    grid-template-columns: repeat(2, 145px);
+    column-gap: 8px;
+    row-gap: 16px;
+  }
+
+  .wishlist-modal-grid .selection-card-wrapper {
+    width: 145px !important;
+    height: 176px !important;
+    min-width: 145px !important;
+    min-height: 176px !important;
+  }
+}
+
+/* Scroll container for Selection/Modal card Designation & Company text */
+.selection-card-text-scroll {
+  position: absolute !important;
+  top: 12px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 185px !important;
+  max-height: 104px !important;
+  height: 104px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 2px 4px 2px 2px !important;
+  box-sizing: border-box !important;
+
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(18, 27, 61, 0.4) transparent !important;
+  transition: scrollbar-color 0.3s ease !important;
+}
+
+.selection-card-text-scroll::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+.selection-card-text-scroll::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.selection-card-text-scroll::-webkit-scrollbar-thumb {
+  background: rgba(18, 27, 61, 0.4) !important;
+  border-radius: 3px !important;
+}
+
 .selection-card-designation {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  height: auto !important;
   font-family: 'BatmanForeverAlternate', sans-serif !important;
   font-style: normal !important;
   font-weight: 400 !important;
-  font-size: 15px !important;
-  line-height: 18px !important;
+  font-size: 13px !important;
+  line-height: 15.5px !important;
   color: #121B3D !important;
   text-transform: uppercase !important;
   text-align: center !important;
+  word-break: break-word !important;
+  margin-bottom: 4px !important;
 }
 
 .selection-card-company-text {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  height: auto !important;
   font-family: 'Exima Geometric', sans-serif !important;
   font-style: normal !important;
   font-weight: 700 !important;
-  font-size: 12.5px !important;
-  line-height: 16px !important;
+  font-size: 11.5px !important;
+  line-height: 14.5px !important;
   color: #121B3D !important;
   text-transform: uppercase !important;
   text-align: center !important;
-  margin-top: 6px !important;
+  word-break: break-word !important;
 }
 
 .mentor-label,
