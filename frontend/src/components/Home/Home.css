@@ -2,19 +2,20 @@
   position: relative;
   width: 100vw !important;
   max-width: 100vw;
+  min-height: 55vh;
   margin: 0;
-  padding: 0;
+  padding-top: 6vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: transparent;
   overflow: hidden;
 }
 
 #img, .homeback-img {
-  width: 100%;
+  width: 40%;
+  max-width: 480px;
   height: auto;
-  margin-top: -15px;
   display: block;
   background: transparent;
 }
@@ -29,8 +30,18 @@
   z-index: 5;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   #img, .homeback-img {
-    margin-top: 50px;
+    width: 60%;
   }
-}
+}
+
+@media (max-width: 480px) {
+  .home-hero-container {
+    padding-top: 4vh;
+    min-height: 40vh;
+  }
+  #img, .homeback-img {
+    width: 75%;
+  }
+}

@@ -13,10 +13,11 @@ body,
     width: 100%;
     min-height: 100vh;
 
-    background-image: url("../../assets/backofhomee.png");
-    background-size: cover;
-    background-position: center;
+    background-image: url("../../assets/gotham-bg.png");
+    background-size: 100% auto;
+    background-position: top-center;
     background-repeat: no-repeat;
+    /* background-color: #05070a; */
     z-index: 1;
 }
 

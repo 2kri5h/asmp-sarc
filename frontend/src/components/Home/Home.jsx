@@ -1,11 +1,11 @@
 import React from "react";
-import homeback from "../../assets/homeback.png";
+import asmpLogo from "../../assets/asmp.png"; 
 import "./Home.css";
 
 export default function Home() {
   return (
     <div id="mainsection" className="home-hero-container">
-      <img src={homeback} id="img" alt="ASMP Home" className="homeback-img" />
+      <img src={asmpLogo} id="img" alt="ASMP Logo" className="homeback-img" />
     </div>
   );
 }
