@@ -5,6 +5,8 @@ import axios from "axios";
 
 import { API_BASE_URL } from "../apiConfig";
 
+const mentorCache = {};
+
 const UseFetchMentors = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,6 +14,12 @@ const UseFetchMentors = () => {
   const [mentors, setMentors] = useState(null);
 
   const fetchMentors = useCallback(async (field) => {
+    if (field && mentorCache[field]) {
+      setMentors(mentorCache[field]);
+      setSuccess(true);
+      return;
+    }
+
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -35,7 +43,7 @@ const UseFetchMentors = () => {
 
       if (response.status === 200) {
         setSuccess(true);
-        // console.log(response.data);
+        mentorCache[field] = response.data;
         setMentors(response.data);
       } else {
         setError("Unexpected response status");

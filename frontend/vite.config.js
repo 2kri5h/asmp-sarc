@@ -26,16 +26,21 @@ export default defineConfig({
     strictPort: true,
   },
   build: {
-    sourcemap: false, // Disable source maps in production
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          swiper: ['swiper'],
+          sweetalert: ['sweetalert2']
+        }
+      }
+    }
   },
-  // Add the following block
   resolve: {
     alias: {
-      '@': '/src', // Adjust according to your project structure
+      '@': '/src',
     },
   },
-  // Ensure proper routing for SPA
-  // esbuild: {
-  //   jsxInject: `import React from 'react'`,
-  // },
 })
