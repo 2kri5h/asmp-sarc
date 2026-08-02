@@ -15,7 +15,7 @@ body,
 
     background-image: url("../../assets/gotham-bg.png");
     background-size: cover;
-    background-position: center top ;
+    background-position: center top;
     background-repeat: no-repeat;
     /* background-color: #05070a; */
     z-index: 1;
@@ -27,14 +27,14 @@ body,
     position: absolute;
     inset: 0;
 
-    background:"transparent";
+    background: "transparent";
 
     z-index: 1;
     pointer-events: none;
 }
 
 /* All page content above overlay */
-.home-background-image > * {
+.home-background-image>* {
     position: relative;
     z-index: 2;
 }

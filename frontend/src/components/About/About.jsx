@@ -7,7 +7,6 @@ const About = () => {
   return (
     <div className='about_page'>
       <div className='abt'>
-        <img src={ASMPLogo} alt='logo'></img>
       </div>
       <p id='about'>ABOUT ASMP</p>
       <p id='content'>

@@ -90,7 +90,15 @@ const TestimonialSlider = () => {
               <SwiperSlide key={idx}>
                 <article className="testimonial-card">
                   <div className="testimonial-avatar">
-                    <img src={testimonial.image} alt={testimonial.name} />
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        e.target.parentElement.classList.add("avatar-fallback");
+                        e.target.parentElement.innerText = testimonial.name.charAt(0);
+                      }}
+                    />
                   </div>
                   <h3 className="testimonial-name">{testimonial.name}</h3>
                   <p className="testimonial-content">{testimonial.feedback}</p>
