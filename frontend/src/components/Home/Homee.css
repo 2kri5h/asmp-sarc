@@ -39,9 +39,27 @@ body,
     z-index: 2;
 }
 
+@media (max-width: 1024px) {
+    .home-background-image {
+        background-position: center top;
+    }
+}
+
 @media (max-width: 768px) {
     .home-background-image {
         background-position: center top;
-        background-size: cover 100%;
+        background-size: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-background-image {
+        background-position: center center;
+    }
+}
+
+@media (max-width: 375px) {
+    .home-background-image {
+        background-position: center center;
     }
 }
