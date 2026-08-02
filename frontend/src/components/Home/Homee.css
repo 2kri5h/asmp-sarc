@@ -14,13 +14,11 @@ body,
     min-height: 100vh;
 
     background-image: url("../../assets/gotham-bg.webp");
-    background-size: 105% auto;
-    background-position: center -30px;
-
+    background-size: cover;
+    background-position: center top;
     background-repeat: no-repeat;
     /* background-color: #05070a; */
     z-index: 1;
-
 }
 
 /* Dark overlay over background image */
