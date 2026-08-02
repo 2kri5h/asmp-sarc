@@ -15,7 +15,8 @@ body,
 
     background-image: url("../../assets/gotham-bg.webp");
     background-size: cover;
-    background-position: center top;
+    background-position: center -80px;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     /* background-color: #05070a; */
     z-index: 1;
@@ -39,27 +40,8 @@ body,
     z-index: 2;
 }
 
-@media (max-width: 1024px) {
-    .home-background-image {
-        background-position: center top;
-    }
-}
-
 @media (max-width: 768px) {
     .home-background-image {
-        background-position: center top;
         background-size: cover;
-    }
-}
-
-@media (max-width: 480px) {
-    .home-background-image {
-        background-position: center center;
-    }
-}
-
-@media (max-width: 375px) {
-    .home-background-image {
-        background-position: center center;
     }
 }

@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../apiConfig";
 
 const UseFetchProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -14,9 +15,13 @@ const UseFetchProfile = () => {
 
     try {
       const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) {
+        setLoading(false);
+        return;
+      }
 
       const response = await axios.get(
-        `https://asmp.sarc-iitb.org/api/authentication/profile/`,
+        `${API_BASE_URL}/api/authentication/profile/`,
         {
           params: {
             accessToken: accessToken,
@@ -30,21 +35,45 @@ const UseFetchProfile = () => {
       if (response.status === 200) {
         setSuccess(true);
         setFetchedProfile(response.data);
-      } else if (response.status === 400 || response.status === 404) {
+      } else {
+        // Invalid token on backend - purge stale localStorage items
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("userRoll");
+        localStorage.removeItem("userName");
+        setFetchedProfile(null);
         setError(response.data);
       }
     } catch (err) {
-      console.warn("Backend server unreachable for profile, returning mock profile fallback:", err);
-      const userEmail = localStorage.getItem("userEmail") || "testid123@iitb.ac.in";
-      setSuccess(true);
-      setFetchedProfile({
-        name: "Test Student",
-        email: userEmail,
-        roll_number: "25B3004",
-        department: "Computer Science & Engineering",
-        degree: "B.Tech.",
-        contact_number: "+91 9876543210"
-      });
+      console.warn("Profile fetch issue or backend response error:", err);
+      if (err.response && (err.response.status === 401 || err.response.status === 404)) {
+        // Stale token! Clear invalid localStorage items
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("userRoll");
+        localStorage.removeItem("userName");
+        setFetchedProfile(null);
+      } else {
+        // Network offline - check if valid stored credentials exist
+        const storedEmail = localStorage.getItem("userEmail") || "";
+        const storedRoll = localStorage.getItem("userRoll") || "";
+        const storedName = localStorage.getItem("userName") || "";
+
+        if (storedEmail && storedRoll) {
+          setSuccess(true);
+          setFetchedProfile({
+            user: {
+              fullname: storedName,
+              ldap: storedEmail.includes("@") ? storedEmail : `${storedEmail}@iitb.ac.in`,
+              roll: storedRoll,
+            },
+            email: storedEmail,
+            roll_number: storedRoll,
+          });
+        } else {
+          setFetchedProfile(null);
+        }
+      }
     } finally {
       setLoading(false);
     }

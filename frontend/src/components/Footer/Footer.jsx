@@ -9,8 +9,8 @@ const Footer = () => {
             {/* <p>Made with ❤️ by SARC</p> */}
             <div className="heart">
                 <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-                    <p style={{ margin: '0' }} className="Footerfont">Made with love</p>
-                    <p style={{ margin: '0'}} className="Footerfont"> &nbsp;&nbsp;by SARC</p>
+                    <p style={{ margin: '0' }} className="Footerfont">Made with love by SARC</p>
+                    {/* <p style={{ margin: '0'}} className="Footerfont"> &nbsp;&nbsp;by SARC</p> */}
                 </div>
             </div>
             <div className="social-links">

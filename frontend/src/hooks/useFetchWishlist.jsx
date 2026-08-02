@@ -16,7 +16,12 @@ const UseFetchWishlist = () => {
     setSuccess(false);
 
     try {
-      const accessToken = localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a";
+      const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) {
+        setMentors([]);
+        setLoading(false);
+        return;
+      }
 
       const response = await axios.get(
         `${API_BASE_URL}/api/registration/wishlist/`,

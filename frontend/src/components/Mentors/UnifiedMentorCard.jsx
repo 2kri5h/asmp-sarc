@@ -37,20 +37,20 @@ const getCompanyStyle = (text) => {
 const getCircleDesignationStyle = (text) => {
   if (!text) return { fontStyle: "normal" };
   const len = text.length;
-  if (len > 45) return { fontSize: "11px", lineHeight: "14px", whiteSpace: "normal" };
-  if (len > 30) return { fontSize: "12.5px", lineHeight: "16px", whiteSpace: "normal" };
-  if (len > 18) return { fontSize: "14px", lineHeight: "18px", whiteSpace: "normal" };
-  return { fontSize: "15.5px", lineHeight: "20px", whiteSpace: "normal" };
+  if (len > 40) return { fontSize: "10.5px", lineHeight: "13.5px", whiteSpace: "normal" };
+  if (len > 28) return { fontSize: "11.5px", lineHeight: "15px", whiteSpace: "normal" };
+  if (len > 18) return { fontSize: "12.5px", lineHeight: "16px", whiteSpace: "normal" };
+  return { fontSize: "14px", lineHeight: "18px", whiteSpace: "normal" };
 };
 
 const getCircleCompanyStyle = (text) => {
   if (!text) return { fontStyle: "normal" };
   const len = text.length;
-  if (len > 60) return { fontSize: "11px", lineHeight: "14px" };
-  if (len > 40) return { fontSize: "13px", lineHeight: "16.5px" };
-  if (len > 25) return { fontSize: "15px", lineHeight: "19px" };
-  if (len > 15) return { fontSize: "17.5px", lineHeight: "22px" };
-  return { fontSize: "20px", lineHeight: "25px" };
+  if (len > 60) return { fontSize: "10.5px", lineHeight: "13.5px" };
+  if (len > 40) return { fontSize: "12px", lineHeight: "15px" };
+  if (len > 25) return { fontSize: "13.5px", lineHeight: "17px" };
+  if (len > 15) return { fontSize: "15px", lineHeight: "19px" };
+  return { fontSize: "17px", lineHeight: "21px" };
 };
 
 const getExperienceText = (mentor) => {
@@ -88,7 +88,8 @@ const UnifiedMentorCard = ({
   useEffect(() => {
     let isMounted = true;
     const checkWishlist = async () => {
-      const accessToken = localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a";
+      const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) return;
       let mentorInWishlist = false;
 
       // First check localWishlist for instant UI response

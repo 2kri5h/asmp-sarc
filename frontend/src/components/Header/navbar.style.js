@@ -39,6 +39,8 @@ export const LeftContainer = styled.div`
   height: 100%;
   width: 12%;
   box-sizing: border-box;
+  padding-left: clamp(0.75rem, 1.5vw, 2rem);
+  padding-right: clamp(0.5rem, 1vw, 1.25rem);
 
   img {
     display: block;
@@ -81,13 +83,17 @@ export const MiddleContainer = styled.div`
 
   height: 100%;
   width: 78%;
+  padding-left: clamp(0.75rem, 1.5vw, 2.5rem);
+  box-sizing: border-box;
 
   @media (max-width: 1050px) {
     width: 75%;
+    padding-left: clamp(0.5rem, 1.2vw, 1.5rem);
   }
 
   @media (max-width: 600px) {
     width: 64%;
+    padding-left: 0;
   }
 
   @media (max-width: 490px) {
@@ -97,8 +103,9 @@ export const MiddleContainer = styled.div`
 
 export const MiddleInnerContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  gap: clamp(1.2rem, 2vw, 3rem);
 
   height: 100%;
   width: 100%;
@@ -108,47 +115,77 @@ export const MiddleInnerContainer = styled.div`
   list-style-type: none;
   text-decoration: none;
 
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex: 0 0 auto;
 
-    min-height: 70px;
-    padding: 12px 25px;
+  min-height: 70px;
+  padding: 12px 25px;
 
-    color: #121b3d;
-    border: 10px solid transparent;
-    border-radius: 999px;
+  color: #121b3d;
+  border: 10px solid transparent;
+  border-radius: 999px;
 
-    box-sizing: border-box;
-    cursor: pointer;
+  box-sizing: border-box;
+  cursor: pointer;
 
-    transition:
-      border-color 0.25s ease,
-      background-color 0.25s ease,
-      color 0.25s ease;
-  }
+  transform: scale(1);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
+li:hover {
+  color: #121b3d;
+  background-color: #a4b4b8;
+  border-color: #334956;
+  transform: scale(1.06);
+}
+
+li:hover:not(.selected) {
+  animation: popIn 0.25s ease-out;
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.92); }
+  60%  { transform: scale(1.08); }
+  100% { transform: scale(1.06); }
+}
+
+.selected {
+  color: #121b3d;
+  background-color: #a4b4b8;
+  border: 10px solid #334956;
+  border-radius: 999px;
+  font-weight: 400;
+}
+
+.selected:hover {
+  color: #121b3d;
+  background-color: #a4b4b8;
+  border-color: #334956;
+  transform: scale(1.06);
+}
+
+/* prevent the hover pill from sticking on touch devices */
+@media (hover: none) {
   li:hover {
-    color: #121b3d;
+    transform: none;
+    background-color: transparent;
+    border-color: transparent;
   }
-
-  .selected {
-    color: #121b3d;
-    background-color: #a4b4b8;
-    border: 10px solid #334956;
-    border-radius: 999px;
-    font-weight: 400;
-  }
-
-  .selected:hover {
-    color: #121b3d;
-    background-color: #a4b4b8;
-    border-color: #334956;
-  }
+}
 
   @media (max-width: 1200px) {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
+
+    gap: clamp(0.9rem, 1.5vw, 2rem);
 
     li {
       min-height: 64px;
@@ -162,7 +199,9 @@ export const MiddleInnerContainer = styled.div`
   }
 
   @media (max-width: 1050px) {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
+
+    gap: clamp(0.8rem, 1.2vw, 1.5rem);
 
     li {
       min-height: 58px;

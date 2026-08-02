@@ -1,9 +1,10 @@
 .preloader {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  z-index: var(--loader-z, 9999);
   transform-origin: var(--tear-x, 50%) var(--tear-y, 50%);
-  will-change: transform, opacity;
+  will-change: transform, opacity, z-index;
+  pointer-events: auto;
 }
 
 .preloader-canvas {
@@ -12,4 +13,14 @@
   width: 100%;
   height: 100%;
   display: block;
+}
+
+/* Bat renders on top of the black layer so it's always visible */
+.preloader-canvas--tear {
+  z-index: 2;
+}
+
+.preloader-canvas--bat {
+  z-index: 3;
+  pointer-events: none;
 }

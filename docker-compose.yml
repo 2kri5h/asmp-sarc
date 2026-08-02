@@ -1,25 +1,60 @@
-version: '3.8'
+# version: '3.8'
+
+# services:
+#   backend:
+#     build:
+#       context: ./frontend/backend
+#       dockerfile: Dockerfile
+#     container_name: asmp_backend
+#     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./backend:/Backend
+#     environment:
+#       - PYTHONUNBUFFERED=1
+
+#   frontend:
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile
+#     container_name: asmp_frontend
+#     ports:
+#       - "5173:5173"
+#     depends_on:
+#       - backend
+
+
+version: '2.2'
 
 services:
-  backend:
+  asmpmenteebackend:
+    restart: unless-stopped
     build:
-      context: ./frontend/backend
+      context: ./Backend
       dockerfile: Dockerfile
-    container_name: asmp_backend
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
-      - "8000:8000"
+      - "8010:8000"
+    entrypoint: /Backend/wsgi-entrypoint.sh
     volumes:
-      - ./backend:/Backend
-    environment:
-      - PYTHONUNBUFFERED=1
+      - ./Backend:/Backend/
+    expose:
+      - 8000
+    networks:
+      - mynetwork
+  
 
-  frontend:
+  asmpmenteefrontend:
     build:
-      context: ./frontend
+      context: ./Frontend
       dockerfile: Dockerfile
-    container_name: asmp_frontend
     ports:
-      - "5173:5173"
-    depends_on:
-      - backend
+      - "5010:5010"
+    # volumes:
+    #   - ./Frontend:/frontend_asmp_mentee
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    name: yearbook23_mynetwork

@@ -750,17 +750,17 @@
 /* Scroll container inside top Subtract block for Designation & Company */
 .mentor-card-top-scroll {
   position: absolute;
-  left: 17px;
-  top: 16px;
-  width: 298px;
+  left: 20px;
+  top: 15px;
+  width: 235px;
   height: 110px;
   max-height: 110px;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-right: 10px;
+  gap: 10px;
+  padding-right: 6px;
   box-sizing: border-box;
   word-break: break-word;
   overflow-wrap: break-word;

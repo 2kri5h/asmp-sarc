@@ -88,7 +88,7 @@ function NavbarContent({ navigate, location }) {
       navLink: "/wishlist",
     },
     {
-      name: "Choose your Mentors",
+      name: "Choose Your Mentors",
       to: "toggle",
       className: "toggle",
       id: "toggle",
@@ -163,7 +163,7 @@ function NavbarContent({ navigate, location }) {
       navLink: "/wishlist",
     },
     {
-      name: "Choose your Mentors",
+      name: "Choose Your Mentors",
       to: "toggle",
       className: "toggle",
       id: "toggle",
@@ -349,8 +349,8 @@ function NavbarContent({ navigate, location }) {
                 style={{
                   cursor: "pointer",
                   fontFamily: "Fraunces, serif",
-                  fontSize: "1.5rem",
-                  lineHeight: "1.2",
+                  fontSize: "clamp(1.2rem, 1.25vw, 1.5rem)",
+                  lineHeight: "1.1",
                 }}
               >
                 {item.name}
@@ -382,8 +382,8 @@ function NavbarContent({ navigate, location }) {
                   style={{
                     cursor: "pointer",
                     fontFamily: "Fraunces, serif",
-                    fontSize: "1.5rem",
-                    lineHeight: "1.2",
+                    fontSize: "clamp(1rem, 1.25vw, 1.5rem)",
+                    lineHeight: "1.1",
                   }}
                 >
                   {item.name}

@@ -250,7 +250,7 @@ export default function Profile(props) {
                 <img src={rollNumberSvg} alt="ROLL NUMBER" className="label-svg-graphic" />
               </div>
               <div className="profile-input-frame text-display-field">
-                {fetchedProfile?.user?.roll_number || "25B3004"}
+                {fetchedProfile?.user?.roll || fetchedProfile?.user?.roll_number || fetchedProfile?.roll_number || "—"}
               </div>
             </div>
 
@@ -260,7 +260,7 @@ export default function Profile(props) {
                 <img src={usernameSvg} alt="USERNAME" className="label-svg-graphic" />
               </div>
               <div className="profile-input-frame text-display-field">
-                {fetchedProfile?.user?.first_name || fetchedProfile?.user?.username || "krish"}
+                {fetchedProfile?.user?.fullname || fetchedProfile?.user?.first_name || fetchedProfile?.user?.username || fetchedProfile?.name || "—"}
               </div>
             </div>
 
@@ -270,7 +270,7 @@ export default function Profile(props) {
                 <img src={ldapSvg} alt="LDAP" className="label-svg-graphic" />
               </div>
               <div className="profile-input-frame text-display-field">
-                {fetchedProfile?.user?.email || "25b3004@iitb.ac.in"}
+                {fetchedProfile?.user?.ldap || fetchedProfile?.user?.email || fetchedProfile?.email || "—"}
               </div>
             </div>
 

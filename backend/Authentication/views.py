@@ -91,7 +91,7 @@ class ProfileView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         print(user)
         try:
-            profile = Profile.objects.get(user=user)
+            profile, created = Profile.objects.get_or_create(user=user)
             serializer = ProfileSerializer(profile)
             return Response(serializer.data)
         except Exception as e:
@@ -327,22 +327,14 @@ def send_forgot_password_email(
     msgText = MIMEText(
         msghtml,
         "html",
-     )
-
-    msgAlternative.attach(msgText)
-    smtp = smtplib.SMTP("smtp-auth.iitb.ac.in", 587)
-    smtp.starttls()
-    print(
-        "everything is fine till now--------------------------------------------------"
-    )
-    # smtp.login("210010007@iitb.ac.in", "")
-
     try:
-      smtp.login("sarc@iitb.ac.in", "c1a90a1351390958f742b8097d9feaab")
-      response = smtp.sendmail(strFrom, strTo, msgRoot.as_string())
-      print("Response is ", response)
-      smtp.quit()
-      return response
+        smtp = smtplib.SMTP("smtp-auth.iitb.ac.in", 587, timeout=5)
+        smtp.starttls()
+        smtp.login("sarc@iitb.ac.in", "c1a90a1351390958f742b8097d9feaab")
+        response = smtp.sendmail(strFrom, strTo, msgRoot.as_string())
+        print("Response is ", response)
+        smtp.quit()
+        return response
     except Exception as e:
-      print(f"{e} this is eeeeeeeeeeeeeeeeeee")
-      pass
+        print(f"SMTP Error during password reset email: {e}")
+        return None

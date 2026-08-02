@@ -68,11 +68,11 @@ const FAQs = () => {
       >
         FAQ's
       </div>
-      <div className="flex bg-[#3f4f5b] from-gray-950 from-0% via-slate-800 via-43.5% to-black 87.5% md:m-1 lg:m-[70px] mt-4 mb-0 p-4 text-white opacity-70 rounded-[25px]">
+      <div className="flex  bg-[#3f4f5b] from-gray-950 from-0% via-slate-800 via-43.5% to-black 87.5% mt-4 mb-0 ml-16 mr-16 p-4 text-white opacity-70 rounded-[25px]">
         <Accordion defaultActiveKey="0">
           {faqsData.map((item, index) => {
             return (
-              <Accordion.Item eventKey={index} key={index}>
+              <Accordion.Item eventKey={index} key={index} >
                 <Accordion.Header className="font-fraunces pt-5">
                   {item.question}
                 </Accordion.Header>

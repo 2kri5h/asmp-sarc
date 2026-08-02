@@ -43,9 +43,13 @@ const UseLogin = () => {
   };
 
   const performMockLogin = (email) => {
-    const userEmail = email || "testid123@iitb.ac.in";
-    localStorage.setItem("accessToken", "82cf3f73-f995-4d72-92bb-7c158a38232a");
-    localStorage.setItem("userEmail", userEmail);
+    const userEmail = email || "";
+    // Generate a unique token for the logged-in email
+    const dynamicToken = "user-token-" + btoa(userEmail || "guest");
+    localStorage.setItem("accessToken", dynamicToken);
+    if (userEmail) {
+      localStorage.setItem("userEmail", userEmail);
+    }
     setSuccess(true);
     showSuccessToast();
   };
@@ -84,8 +88,14 @@ const UseLogin = () => {
 
       if (response.status === 200) {
         const jsonData = await response.json();
-        localStorage.setItem("accessToken", jsonData["accessToken"] || "mock-access-token-12345");
+        const token = jsonData["accessToken"] || jsonData["token"];
+        if (token) {
+          localStorage.setItem("accessToken", token);
+        }
         localStorage.setItem("userEmail", enteredEmail);
+        const prefix = enteredEmail.split("@")[0] || "";
+        localStorage.setItem("userRoll", prefix.toUpperCase());
+        localStorage.setItem("userName", prefix);
         setSuccess(true);
         showSuccessToast();
         return;

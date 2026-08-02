@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import "./swiper-custom.css";
 
-// import testimonialBg from "../../assets/Testimonial.png";
+import testimonialBg from "../../assets/Testimonial.png";
 
 const rawTestimonials = [
   {
@@ -63,7 +63,7 @@ const TestimonialSlider = () => {
       <div
         className="testimonial-background"
         style={{
-          // backgroundImage: `url(${testimonialBg})`,
+          backgroundImage: `url(${testimonialBg})`,
         }}
       />
 
@@ -90,14 +90,7 @@ const TestimonialSlider = () => {
             initialSlide={1}
             grabCursor={true}
             speed={600}
-            breakpoints={{
-              0: {
-                    slidesPerView: 1,
-                  },
-              641: {
-                slidesPerView: 3,
-              },
-            }}
+            slidesPerView={3}
           >
             {testimonials.map((testimonial, idx) => (
               <SwiperSlide key={idx}>

@@ -18,16 +18,81 @@
     font-family: "Oxanium", serif;
 }
 
+#faq .accordion-item {
+    background: transparent;
+    border: 0;
+    width: 100%;
+}
+
+#faq .accordion,
+#faq .accordion-collapse,
+#faq .accordion-body,
+#faq .accordion-button {
+    width: 100%;
+}
+
+#faq .accordion-item .accordion-header {
+    width: 100%;
+}
+
+#faq .accordion-button {
+    background: transparent;
+    color: #ffffff;
+    box-shadow: none;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 18px;
+    font-size: clamp(1.1rem, 1.4vw, 1.55rem);
+    padding: 1.1rem 1.25rem;
+}
+
+#faq .accordion-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transform: translateY(-1px);
+}
+
+#faq .accordion-button:not(.collapsed) {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+#faq .accordion-button:focus {
+    box-shadow: none;
+}
+
+#faq .accordion-button::after {
+    filter: brightness(0) invert(1);
+}
+
+#faq .accordion-body {
+    color: #ffffff;
+    font-size: clamp(1rem, 1.15vw, 1.3rem);
+    line-height: 1.8;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+#faq .accordion-item:last-of-type .accordion-button.collapsed,
+#faq .accordion-item:last-of-type .accordion-button:not(.collapsed) {
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+
 .faq-box {
     height: 100%;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(89, 84, 84, 0.7) 43.5%, rgba(0, 0, 0, 0.7) 87.5%, rgba(0, 0, 0, 0.7) 100%);
     border-radius: 0px;
+    width: 100%;
 }
 
 .faq-container {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
 }
 
 .faq-footer {

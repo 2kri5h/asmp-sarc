@@ -129,7 +129,7 @@ function Register() {
       if (accessToken) {
         try {
           const response = await axios.get(
-            "http://127.0.0.1:8000/api/authentication/profile/",
+            `${API_BASE_URL}/api/authentication/profile/`,
             {
               params: {
                 accessToken: accessToken,
@@ -145,11 +145,13 @@ function Register() {
           } else {
             // Token is invalid, clear it
             localStorage.removeItem("accessToken");
+            localStorage.removeItem("userEmail");
             setIsTokenValid(false);
           }
         } catch (error) {
-          // If API call fails (401, 403, etc.), token is invalid
+          // If API call fails (401, 404, etc.), token is invalid
           localStorage.removeItem("accessToken");
+          localStorage.removeItem("userEmail");
           setIsTokenValid(false);
         }
       } else {

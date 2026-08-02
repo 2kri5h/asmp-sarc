@@ -14,7 +14,8 @@ const UseDeleteFromWishlist = () => {
     setLoading(true);
     setError(null);
     setSuccess(false);
-    const token = localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a";
+    const token = localStorage.getItem("accessToken");
+    if (!token) return;
     const userData = {
       accessToken: token,
       mentor: id,

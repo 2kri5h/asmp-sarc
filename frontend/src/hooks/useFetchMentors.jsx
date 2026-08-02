@@ -24,7 +24,7 @@ const UseFetchMentors = () => {
     setError(null);
     setSuccess(false);
     const userData = {
-      accessToken: localStorage.getItem("accessToken") || "82cf3f73-f995-4d72-92bb-7c158a38232a",
+      accessToken: localStorage.getItem("accessToken") || "",
     };
 
     try {
