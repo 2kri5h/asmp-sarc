@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "./swiper-custom.css";
 
-import testimonialBg from "../../assets/Testimonial.png";
+import testimonialBg from "../../assets/Testimonial.webp";
 
 const testimonials = [
   {

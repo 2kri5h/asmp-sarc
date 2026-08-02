@@ -3,7 +3,7 @@ import "./Toggle.css";
 import UnifiedMentorCard from "../Mentors/UnifiedMentorCard";
 import UseFetchMentors from "../../hooks/useFetchMentors";
 import batLogoImg from "../../assets/images/download__80_-removebg-preview 2.png";
-import homeBg from "../../assets/images/Justice bleeds black 1.png";
+import homeBg from "../../assets/images/Justice bleeds black 1.webp";
 
 const MOCK_MENTORS = [
   {
