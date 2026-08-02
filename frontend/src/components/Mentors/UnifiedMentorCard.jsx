@@ -37,20 +37,20 @@ const getCompanyStyle = (text) => {
 const getCircleDesignationStyle = (text) => {
   if (!text) return { fontStyle: "normal" };
   const len = text.length;
-  if (len > 40) return { fontSize: "11px", lineHeight: "14px", whiteSpace: "normal" };
-  if (len > 28) return { fontSize: "13px", lineHeight: "16px", whiteSpace: "normal" };
-  if (len > 18) return { fontSize: "15px", lineHeight: "18px", whiteSpace: "normal" };
-  return { fontSize: "18px", lineHeight: "21px", whiteSpace: "normal" };
+  if (len > 45) return { fontSize: "11px", lineHeight: "14px", whiteSpace: "normal" };
+  if (len > 30) return { fontSize: "12.5px", lineHeight: "16px", whiteSpace: "normal" };
+  if (len > 18) return { fontSize: "14px", lineHeight: "18px", whiteSpace: "normal" };
+  return { fontSize: "15.5px", lineHeight: "20px", whiteSpace: "normal" };
 };
 
 const getCircleCompanyStyle = (text) => {
   if (!text) return { fontStyle: "normal" };
   const len = text.length;
-  if (len > 60) return { fontSize: "10px", lineHeight: "13px" };
-  if (len > 40) return { fontSize: "12px", lineHeight: "15px" };
-  if (len > 25) return { fontSize: "14px", lineHeight: "18px" };
-  if (len > 15) return { fontSize: "18px", lineHeight: "24px" };
-  return { fontSize: "24px", lineHeight: "32px" };
+  if (len > 60) return { fontSize: "11px", lineHeight: "14px" };
+  if (len > 40) return { fontSize: "13px", lineHeight: "16.5px" };
+  if (len > 25) return { fontSize: "15px", lineHeight: "19px" };
+  if (len > 15) return { fontSize: "17.5px", lineHeight: "22px" };
+  return { fontSize: "20px", lineHeight: "25px" };
 };
 
 const getExperienceText = (mentor) => {

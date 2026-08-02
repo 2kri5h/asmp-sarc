@@ -751,35 +751,42 @@
 .mentor-card-top-scroll {
   position: absolute;
   left: 17px;
-  top: 15px;
-  width: 335px;
+  top: 16px;
+  width: 298px;
   height: 110px;
   max-height: 110px;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-right: 4px;
+  gap: 8px;
+  padding-right: 12px;
   box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   /* Sleek aesthetic thin scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.2);
   transition: scrollbar-color 0.3s ease;
 }
 
 .mentor-card-top-scroll::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 .mentor-card-top-scroll::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .mentor-card-top-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+.mentor-card-top-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /* Designation inside Subtract */
@@ -791,13 +798,12 @@
   font-family: 'BatmanForeverAlternate', 'Batman Forever Alternate', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16.5px;
-  line-height: 20px;
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   white-space: normal;
   word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Company Name inside Subtract */
@@ -809,13 +815,12 @@
   font-family: 'Exima Geometric', 'Exima', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
-  line-height: 21px;
   letter-spacing: -0.010em;
   color: #FFFFFF;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   white-space: normal;
   word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 2. UNION BLOCK: Bottom section SVG background */
